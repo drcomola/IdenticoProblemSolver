@@ -1,8 +1,12 @@
 
 body {
     font-family: 'Roboto', Arial, sans-serif;
-    background: linear-gradient(90deg, #003366, #005B8C, #0080FF);
-    background-size: 400% 400%;
+    background: 
+        linear-gradient(90deg, rgba(0, 51, 102, 0.9), rgba(0, 91, 140, 0.9), rgba(0, 128, 255, 0.9)), 
+        url('sfondo.png');
+    background-size: cover, contain; /* Gradiente copre tutto, immagine centrata */
+    background-position: center, center; /* Posizione dell'immagine */
+    background-repeat: no-repeat, no-repeat; /* Non ripetere immagine né gradiente */
     animation: gradient 10s ease infinite;
     color: white;
     margin: 0;
@@ -19,6 +23,7 @@ body {
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
+
 
 .container {
     max-width: 800px;
