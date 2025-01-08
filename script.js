@@ -11,7 +11,7 @@ const popups = {
         <button onclick="showAnswer('Puó capitare, ogni mascherina ha un effetto diverso, assicurati di cambiarle la sera, prima di andare a dormire. Puoi eccezionalmente prendere un antinfiammatorio')">
             <span class="icon">💊</span> La mascherina nuova fa piú male del solito
         </button>
-        <button onclick="showAnswer('E\' un fatto del tutto normale, gli attachments vengono messi con una colla provvisoria, saremo noi a valutare se dovremo rimetterli, non anticipare il tuo appuntamento')">
+        <button onclick="showAnswer(' Tutto nella norma, gli attachments vengono messi con una colla provvisoria, saremo noi a valutare se dovremo rimetterli, NON anticipare il tuo appuntamento')">
             <span class="icon">🔧</span> Ho perso degli attachments
         </button>
         <button onclick="showAnswer('Continua assolutamente a portare gli elastici dal lato che te lo permette, chiama lo studio per anticipare il tuo appuntamento al primo disponibile')">
