@@ -56,9 +56,10 @@ const popups = {
         <button onclick="showAnswer('Per mangiare vanno rimossi')">
             <span class="icon">🍴</span> Mangiare
         </button>
-  <button onclick="showAnswer('Se non puoi lavare i denti, sciacqua bocca e mascherine con un po' di acqua, ma rimettile subito in bocca!')">
+          <button onclick="showAnswer('Se non puoi lavare i denti, sciacqua bocca e mascherine con un po' di acqua, ma rimettile subito in bocca')">
             <span>&#x1F355;</span> Dopo Mangiato
         </button>
+
        
         <button onclick="showAnswer('Si fuma con gli allineatori INDOSSATI')">
             <span class="icon">🚬</span> Fumare
