@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iDenTiCo Invisalign Problem Solver</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <img src="logo.png" alt="Logo" class="logo">
+        <h1>iDenTiCo Invisalign Problem Solver</h1>
+        <h2>By Dr. Giorgio Comola & Dr. Gregorio Tortora</h2>
+        <p class="subtitle">Risolvi il mio problema su</p>
+        <div class="buttons">
+            <button onclick="openPopup('gliAllineatori')">
+                <span class="icon">🦷</span> Gli allineatori
+            </button>
+            <button onclick="openPopup('leContenzioni')">
+                <span class="icon">⚙️</span> Le contenzioni
+            </button>
+            <button onclick="openPopup('usoManutenzione')">
+                <span class="icon">🧼</span> Uso, cambi, manutenzione
+            </button>
+        </div>
+    </div>
+
+    <!-- Popup template -->
+    <div id="popup" class="popup hidden">
+        <div class="popup-content">
+            <button class="close" onclick="closePopup()">✖</button>
+            <div id="popupBody"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
