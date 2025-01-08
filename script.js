@@ -56,6 +56,10 @@ const popups = {
         <button onclick="showAnswer('Per mangiare vanno rimossi')">
             <span class="icon">🍴</span> Mangiare
         </button>
+  <button onclick="showAnswer('Lava gli allineatori mentre lavi i denti, se non puoi lavarli ricorda di sciacquarli almeno con un po' di acqua ma rimane sempre più importante indossarli, la seduta di igiene del mattino e della sera bastano per mantenere i denti sani')">
+            <span>&#x1F355;</span> Dopo Mangiato
+        </button>
+       
         <button onclick="showAnswer('Si fuma con gli allineatori INDOSSATI')">
             <span class="icon">🚬</span> Fumare
         </button>
