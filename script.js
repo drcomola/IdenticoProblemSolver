@@ -23,6 +23,9 @@ const popups = {
         <button onclick="showAnswer('Mantieni l\'ultima solo di notte fino al tuo prossimo appuntamento, NON RIMANERE MAI SENZA!')">
             <span class="icon">⏳</span> Non ho piú mascherine da cambiare
         </button>
+        <button onclick="showAnswer('Lima il bordo tagliente con una limetta per le unghie senza alcun timore')">
+            <span>&#x1FA78;</span> Il bordo della mascherina mi graffia
+        </button>
     `,
     leContenzioni: `
         <h2>Le contenzioni</h2>
@@ -76,7 +79,8 @@ function closePopup() {
 }
 
 function showAnswer(answer) {
-    alert(answer);
+    const popupBody = document.getElementById('popupBody');
+    popupBody.innerHTML = `<h3>Fai così:</h3><p>${answer}</p>`;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
