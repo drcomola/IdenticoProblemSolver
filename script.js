@@ -17,10 +17,10 @@ const popups = {
         <button onclick="showAnswer('Continua assolutamente a portare gli elastici dal lato che te lo permette, chiama lo studio per anticipare il tuo appuntamento al primo disponibile')">
             <span class="icon">🦷</span> Ho perso uno dei bottoni per mettere gli elastici
         </button>
-        <button onclick="showAnswer('Allunga di alcuni giorni l\'utilizzo della mascherina fino ad un massimo di una settimana extra, assicurati di usarla per 22h al giorno. NOTA BENE Se succede sui due denti superiori laterali la problematica NON è rilevante, continua normalmente')">
+        <button onclick="showAnswer('Mantieni per la stessa mascherina ancora, fino ad un massimo di una settimana extra, assicurati di usarla per 22h al giorno. NOTA BENE Se succede sui due denti superiori laterali la problematica NON è rilevante, continua normalmente')">
             <span class="icon">⚠️</span> La mascherina calza male / Non copre tutti miei denti
         </button>
-        <button onclick="showAnswer('Mantieni l\'ultima solo di notte fino al tuo prossimo appuntamento, NON RIMANERE MAI SENZA!')">
+        <button onclick="showAnswer('Usa il tuo ultimo allineatore solo di notte fino al tuo prossimo appuntamento, NON RIMANERE MAI SENZA!')">
             <span class="icon">⏳</span> Non ho piú mascherine da cambiare
         </button>
         <button onclick="showAnswer('Lima il bordo tagliente con una limetta per le unghie senza alcun timore')">
@@ -56,7 +56,7 @@ const popups = {
         <button onclick="showAnswer('Per mangiare vanno rimossi')">
             <span class="icon">🍴</span> Mangiare
         </button>
-          <button onclick="showAnswer('Non puoi lavare i denti? sciacqua bocca e mascherine con un po' di acqua, ma indossale')">
+          <button onclick="showAnswer('Non puoi lavare i denti? sciacqua bocca e mascherine con un pochino di acqua, ma indossale')">
             <span>&#x1F355;</span> Dopo Mangiato
         </button>
 
