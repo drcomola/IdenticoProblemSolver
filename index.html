@@ -9,12 +9,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
     <div class="container">
         <img src="logo.png" alt="Logo" class="logo">
         <h1>iDenTiCo Invisalign Problem Solver</h1>
         <h2>By Dr. Giorgio Comola & Dr. Gregorio Tortora</h2>
         <p class="subtitle">Risolvi il mio problema su</p>
         <div class="buttons">
+            <div class="search-container">
+                <input type="text" id="searchBox" placeholder="Cerca una soluzione..." onkeypress="handleSearch(event)">
+            </div>
             <button onclick="openPopup('gliAllineatori')">
                 <span class="icon">🦷</span> Gli allineatori
             </button>
@@ -24,7 +28,11 @@
             <button onclick="openPopup('usoManutenzione')">
                 <span class="icon">🧼</span> Uso, cambi, manutenzione
             </button>
+            <button onclick="openPopup('fastidi')">
+                <span class="icon">😖</span> Fastidi
+            </button>
         </div>
+        <p class="footer-note">iDenTiCo Invisalign Problem Solver è un programma ideato e sviluppato dal Dr. Giorgio Comola. L'utilizzo è gratuito per tutti i colleghi che desiderano usarlo purché ne venga attestata la provenienza. L'edizione corrente è la 1.0.2</p>
     </div>
 
     <!-- Popup template -->

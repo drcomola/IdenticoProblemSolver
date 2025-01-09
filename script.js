@@ -8,9 +8,7 @@ const popups = {
         <button onclick="showAnswer('Prova quella successiva, se anche quella dopo non entra torna alla precedente e contatta lo studio per anticipare la tua visita')">
             <span class="icon">➡️</span> La mascherina dopo non calza
         </button>
-        <button onclick="showAnswer('Puó capitare, ogni mascherina ha un effetto diverso, assicurati di cambiarle la sera, prima di andare a dormire. Puoi eccezionalmente prendere un antinfiammatorio')">
-            <span class="icon">💊</span> La mascherina nuova fa piú male del solito
-        </button>
+
         <button onclick="showAnswer(' Tutto nella norma, gli attachments vengono messi con una colla provvisoria, saremo noi a valutare se dovremo rimetterli, NON anticipare il tuo appuntamento')">
             <span class="icon">🔧</span> Ho perso degli attachments
         </button>
@@ -23,9 +21,7 @@ const popups = {
         <button onclick="showAnswer('Usa il tuo ultimo allineatore solo di notte fino al tuo prossimo appuntamento, NON RIMANERE MAI SENZA!')">
             <span class="icon">⏳</span> Non ho piú mascherine da cambiare
         </button>
-        <button onclick="showAnswer('Lima il bordo tagliente con una limetta per le unghie senza alcun timore')">
-            <span>&#x1FA78;</span> Il bordo della mascherina mi graffia
-        </button>
+
     `,
     leContenzioni: `
         <h2>Le contenzioni</h2>
@@ -64,6 +60,25 @@ const popups = {
         <button onclick="showAnswer('Si fuma con gli allineatori INDOSSATI')">
             <span class="icon">🚬</span> Fumare
         </button>
+    
+    `,
+    fastidi: `
+        <h2>Fastidi</h2>
+        <button onclick="showAnswer('• Dolenzia generalizzata <br> • Sensazione di non chiudere più la bocca normalmente <br> • Aumento della salivazione' <br> Non si può far nulla, passano spontaneamente come fastidi)">
+            <span class="icon">🩺</span> Fastidi comuni
+        </button>
+        <button onclick="showAnswer('• Sensazione di tensione muscolare <br> • Diminuzione della salivazione <br> • Aumento della sensibilità dentale <br> • Infiammazione gengivale' <br> Sono fastidi che tendono a durare di piu, fino ad un mese ed oltre, nuovamente bisogna aver pazienza passeranno spontaneamente)">
+            <span class="icon">⚠️</span> Fastidi non comuni ma normali
+        </button>
+                <button onclick="showAnswer('Puó capitare, ogni mascherina ha un effetto diverso, assicurati di cambiarle la sera, prima di andare a dormire. Puoi eccezionalmente prendere un antinfiammatorio')">
+            <span class="icon">💊</span> La mascherina nuova fa piú male del solito
+        </button>
+                <button onclick="showAnswer('Lima il bordo tagliente con una limetta per le unghie senza alcun timore')">
+            <span>&#x1FA78;</span> Il bordo della mascherina mi graffia
+        </button>
+       <button onclick="showAnswer('Potresti aver sviluppato una contrattura muscolare involontaria, <a href=&quot;gnato.pdf&quot; download target=&quot;_blank&quot;>Clicca qui</a>')">
+    <span class="icon">🤐</span> Ho problemi ad aprire la bocca e la mandibola schiocca
+</button>
     `
 };
 
@@ -75,6 +90,44 @@ function openPopup(type) {
         document.getElementById('popup').style.display = 'flex';
     } else {
         popupBody.innerHTML = '<p>Errore: Contenuto non trovato</p>';
+    }
+}
+function handleSearch(event) {
+    if (event.key === "Enter") { // L'utente preme "Invio"
+        const searchText = document.getElementById('searchBox').value.toLowerCase();
+        let found = false; // Flag per verificare se la ricerca ha trovato risultati
+
+        // Cerca nei contenuti di tutti i popup
+        Object.keys(popups).forEach(section => {
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = popups[section]; // Carica il contenuto del popup
+            const buttons = tempDiv.querySelectorAll('button'); // Trova i bottoni
+
+            buttons.forEach(button => {
+                const buttonText = button.textContent.toLowerCase();
+                if (buttonText.includes(searchText) && searchText !== "") {
+                    found = true;
+
+                    // Apri il popup corretto
+                    openPopup(section);
+
+                    // Evidenzia il bottone corrispondente
+                    const popupBody = document.getElementById('popupBody');
+                    const popupButtons = popupBody.querySelectorAll('button');
+                    popupButtons.forEach(popupButton => {
+                        if (popupButton.textContent.toLowerCase().includes(searchText)) {
+                            popupButton.classList.add('highlight'); // Aggiungi classe highlight
+                        } else {
+                            popupButton.classList.remove('highlight');
+                        }
+                    });
+                }
+            });
+        });
+
+        if (!found && searchText !== "") {
+            alert("Nessuna corrispondenza trovata");
+        }
     }
 }
 

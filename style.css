@@ -1,9 +1,7 @@
 
 body {
     font-family: 'Roboto', Arial, sans-serif;
-    background: 
-        linear-gradient(90deg, rgba(0, 51, 102, 0.9), rgba(0, 91, 140, 0.9), rgba(0, 128, 255, 0.9)), 
-        url('sfondo.png');
+    background: linear-gradient(90deg, rgba(0, 51, 102, 0.9), rgba(0, 91, 140, 0.9), rgba(0, 128, 255, 0.9)), url('sfondo.png');
     background-size: cover, contain; /* Gradiente copre tutto, immagine centrata */
     background-position: center, center; /* Posizione dell'immagine */
     background-repeat: no-repeat, no-repeat; /* Non ripetere immagine né gradiente */
@@ -11,7 +9,15 @@ body {
     color: white;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    min-height: 100vh;
     display: flex;
+    flex-direction: column;    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -26,6 +32,7 @@ body {
 
 
 .container {
+    flex: 1;
     max-width: 800px;
     padding: 20px;
     border-radius: 15px;
@@ -33,6 +40,10 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
+footer {
+    margin: 0; /* Rimuove margini dal footer */
+    padding: 0;
+}
 .logo {
     width: 300px;
     margin: 20px auto;
@@ -65,6 +76,12 @@ body {
 .buttons button:hover {
     background-color: #FFD700;
     transform: scale(1.05);
+}
+button.highlight {
+    background-color: #FF8800 !important;
+    color: #FFFFFF;
+    transform: scale(1.1);
+    transition: all 0.3s ease;
 }
 
 .popup {
@@ -99,6 +116,25 @@ body {
     font-size: 1.8em;
     color: #005B8C;
 }
+.search-container {
+    margin: 20px auto;
+    text-align: center;
+}
+
+#searchBox {
+    padding: 15px;
+    width: 80%;
+    font-size: 1.2em;
+    border: 2px solid #003366;
+    border-radius: 8px;
+    outline: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+    #searchBox:focus {
+        border-color: #005B8C;
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+    }
 
 .popup-content button {
     display: flex;
