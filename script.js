@@ -64,10 +64,10 @@ const popups = {
     `,
     fastidi: `
         <h2>Fastidi</h2>
-        <button onclick="showAnswer('• Dolenzia generalizzata <br> • Sensazione di non chiudere più la bocca normalmente <br> • Aumento della salivazione' <br> Non si può far nulla, passano spontaneamente come fastidi)">
+        <button onclick="showAnswer('Dolenzia generalizzata <br> Sensazione di non chiudere più la bocca normalmente <br> Aumento della salivazione' <br> Non si può far nulla, passano spontaneamente come fastidi)">
             <span class="icon">🩺</span> Fastidi comuni
         </button>
-        <button onclick="showAnswer('• Sensazione di tensione muscolare <br> • Diminuzione della salivazione <br> • Aumento della sensibilità dentale <br> • Infiammazione gengivale' <br> Sono fastidi che tendono a durare di piu, fino ad un mese ed oltre, nuovamente bisogna aver pazienza passeranno spontaneamente)">
+        <button onclick="showAnswer(' Sensazione di tensione muscolare <br>  Diminuzione della salivazione <br>  Aumento della sensibilità dentale <br> Infiammazione gengivale' <br> Sono fastidi che tendono a durare di piu, fino ad un mese ed oltre, nuovamente bisogna aver pazienza passeranno spontaneamente)">
             <span class="icon">⚠️</span> Fastidi non comuni ma normali
         </button>
                 <button onclick="showAnswer('Puó capitare, ogni mascherina ha un effetto diverso, assicurati di cambiarle la sera, prima di andare a dormire. Puoi eccezionalmente prendere un antinfiammatorio')">
