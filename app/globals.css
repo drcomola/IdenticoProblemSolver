@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-canvas text-ink antialiased;
+    font-feature-settings: "ss01", "cv01";
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Premium typographic defaults */
+  h1,
+  h2,
+  h3 {
+    @apply font-display tracking-tightish text-balance;
+  }
+
+  /* Visible, on-brand focus ring for keyboard users */
+  :focus-visible {
+    @apply outline-none ring-2 ring-aqua ring-offset-2 ring-offset-canvas;
+  }
+
+  ::selection {
+    @apply bg-aqua/30 text-teal-deep;
+  }
+}
+
+@layer components {
+  /* Constrained, generous content column */
+  .container-px {
+    @apply mx-auto w-full max-w-content px-6 sm:px-8 lg:px-12;
+  }
+
+  /* Hairline used to separate premium sections */
+  .hairline {
+    @apply border-titanium/60;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Subtle luxury-tech gradient field for hero/dark sections */
+  .bg-night-field {
+    background:
+      radial-gradient(
+        80% 120% at 15% 10%,
+        rgba(79, 179, 191, 0.16) 0%,
+        rgba(11, 17, 23, 0) 55%
+      ),
+      radial-gradient(
+        70% 110% at 90% 90%,
+        rgba(127, 215, 227, 0.1) 0%,
+        rgba(11, 17, 23, 0) 50%
+      ),
+      #0b1117;
+  }
+
+  .bg-aqua-wash {
+    background:
+      radial-gradient(
+        90% 120% at 80% -10%,
+        rgba(79, 179, 191, 0.12) 0%,
+        rgba(248, 250, 251, 0) 60%
+      ),
+      #f8fafb;
+  }
+}
+
+/* Respect reduced-motion preferences globally */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
