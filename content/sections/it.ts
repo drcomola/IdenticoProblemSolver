@@ -286,6 +286,26 @@ export const patientsSectionsIt: AudienceSections = {
     secondaryCta: p("invisalign", "Scopri Invisalign"),
   },
 
+  "patient-expert-program": {
+    seo: {
+      title: "Patient Expert Program Allineatori | Dr. Giorgio Comola",
+      description:
+        "Quiz digitale per pazienti in terapia con allineatori: certificato PDF scaricabile, condivisibile e valido per premio solo con ID paziente Align.",
+    },
+    h1: "Patient Expert Program",
+    subtitle:
+      "Un quiz rapido per verificare le regole essenziali della terapia con allineatori e generare il certificato paziente.",
+    lead: "Rispondi a 25 domande. Il quiz e superato con almeno l'80% di risposte corrette. Il certificato e valido per premio solo se contiene anche l'ID paziente Align.",
+    blocks: [
+      {
+        type: "patientExpertProgram",
+        heading: "Patient Expert Program",
+      },
+    ],
+    primaryCta: p("clinics", "Prenota una valutazione"),
+    secondaryCta: p("invisalign", "Scopri gli allineatori"),
+  },
+
   "first-consultation": {
     seo: {
       title: "Prima visita ortodontica digitale | Dr. Giorgio Comola",

@@ -17,6 +17,7 @@ import { CaseCard } from "../ui/CaseCard";
 import { ClinicsDirectory } from "../ui/ClinicsDirectory";
 import { FAQAccordion } from "../ui/FAQAccordion";
 import { ContactForm, type ClinicPicker } from "../ui/ContactForm";
+import { PatientExpertProgram } from "../patient-expert/PatientExpertProgram";
 
 /** Central inbox for form submissions (mailto, Phase 1 — no backend). */
 const CONTACT_EMAIL = "drcomola@gmail.com";
@@ -330,6 +331,13 @@ function renderBlock(
               allow="fullscreen; clipboard-write; web-share"
             />
           </div>
+        </Reveal>
+      );
+
+    case "patientExpertProgram":
+      return (
+        <Reveal>
+          <PatientExpertProgram />
         </Reveal>
       );
   }

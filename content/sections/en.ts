@@ -259,6 +259,26 @@ export const patientsSectionsEn: AudienceSections = {
     secondaryCta: p("invisalign", "Discover aligners"),
   },
 
+  "patient-expert-program": {
+    seo: {
+      title: "Patient Expert Program Aligners | Dr. Giorgio Comola",
+      description:
+        "Digital quiz for patients in clear aligner treatment, with downloadable PDF certificate and prize validity linked to the Align patient ID.",
+    },
+    h1: "Patient Expert Program",
+    subtitle:
+      "A quick quiz to check the essential rules of aligner treatment and generate a patient certificate.",
+    lead: "Answer 25 questions. The quiz is passed with at least 80% correct answers. The certificate is valid for the prize only if it also includes the Align patient ID.",
+    blocks: [
+      {
+        type: "patientExpertProgram",
+        heading: "Patient Expert Program",
+      },
+    ],
+    primaryCta: p("clinics", "Book an assessment"),
+    secondaryCta: p("invisalign", "Discover aligners"),
+  },
+
   "first-consultation": {
     seo: {
       title: "First orthodontic consultation | Dr. Giorgio Comola",

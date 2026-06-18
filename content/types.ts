@@ -111,7 +111,8 @@ export type Block =
       src: string;
       title: string;
       directLinkLabel: string;
-    };
+    }
+  | { type: "patientExpertProgram"; heading: string };
 
 export type SectionContent = {
   seo: SeoMeta;
