@@ -10,21 +10,28 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Brand Identity v1 — Dr. Giorgio Comola
+        // iDenTiCo luxury-tech palette
         teal: {
-          DEFAULT: "#0F4C5C", // Primary — Deep Teal
-          deep: "#0F4C5C",
+          DEFAULT: "#006D88",
+          deep: "#00323D",
         },
         aqua: {
-          DEFAULT: "#4FB3BF", // Secondary — Aqua Luxury
-          dark: "#7FD7E3", // Dark-mode accent
+          DEFAULT: "#00DDF9",
+          dark: "#00DDF9",
+          soft: "#4FB3BF",
         },
-        titanium: "#C5CCD3", // Accent — Silver Titanium
-        canvas: "#F8FAFB", // Light background
-        ink: "#111827", // Text
+        blue: {
+          accent: "#0039A3",
+        },
+        titanium: "#C5CCD3",
+        silver: "#C5CCD3",
+        canvas: "#F8FAFB",
+        ink: "#111827",
+        muted: "#A8B5BE",
         night: {
-          DEFAULT: "#0B1117", // Dark premium background
-          soft: "#101822",
+          DEFAULT: "#02070A",
+          soft: "#071116",
+          panel: "#06141A",
         },
       },
       fontFamily: {
@@ -35,7 +42,12 @@ const config: Config = {
         content: "72rem",
       },
       letterSpacing: {
-        tightish: "-0.015em",
+        tightish: "0em",
+      },
+      boxShadow: {
+        soft: "0 24px 80px -46px rgba(0, 50, 61, 0.45)",
+        glow: "0 0 0 1px rgba(0, 221, 249, 0.18), 0 24px 80px -44px rgba(0, 221, 249, 0.5)",
+        panel: "0 30px 90px -55px rgba(2, 7, 10, 0.8)",
       },
       keyframes: {
         "fade-up": {

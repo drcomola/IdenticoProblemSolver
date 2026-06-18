@@ -17,12 +17,17 @@ export function SectionNavGrid({
   heading: string;
 }) {
   const sections = orderedSections(audience);
+  const dark = audience === "colleagues";
 
   return (
-    <section className="bg-canvas">
+    <section className={dark ? "bg-night text-canvas" : "bg-canvas"}>
       <Container className="py-16 sm:py-20">
         <Reveal>
-          <h2 className="text-2xl font-semibold text-teal-deep sm:text-3xl">
+          <h2
+            className={`text-2xl font-semibold sm:text-3xl ${
+              dark ? "text-canvas" : "text-teal-deep"
+            }`}
+          >
             {heading}
           </h2>
         </Reveal>
@@ -31,19 +36,35 @@ export function SectionNavGrid({
             <Reveal key={section} delay={i * 0.04}>
               <Link
                 href={sectionPath(locale, audience, section)}
-                className="group flex items-center gap-4 rounded-2xl border border-titanium/60 bg-white p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-aqua/50 hover:shadow-[0_18px_40px_-26px_rgba(15,76,92,0.5)]"
+                className={`group flex items-center gap-4 rounded-xl border p-5 transition-all duration-300 hover:-translate-y-0.5 ${
+                  dark
+                    ? "border-white/10 bg-white/[0.045] shadow-panel hover:border-aqua/55 hover:bg-white/[0.07]"
+                    : "border-titanium/60 bg-white shadow-soft hover:border-aqua/50 hover:shadow-glow"
+                }`}
               >
-                <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-teal-deep/6 text-teal-deep ring-1 ring-teal-deep/8 transition-colors group-hover:bg-aqua/15">
+                <span
+                  className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-lg ring-1 transition-colors ${
+                    dark
+                      ? "bg-aqua/10 text-aqua ring-aqua/20 group-hover:bg-aqua/[0.18]"
+                      : "bg-teal-deep/6 text-teal-deep ring-teal-deep/8 group-hover:bg-aqua/15"
+                  }`}
+                >
                   <Icon name={sectionIconName(audience, section)} className="h-7 w-7" />
                 </span>
-                <span className="font-medium text-ink/85 group-hover:text-teal-deep">
+                <span
+                  className={`font-semibold ${
+                    dark
+                      ? "text-canvas/[0.78] group-hover:text-canvas"
+                      : "text-ink/85 group-hover:text-teal-deep"
+                  }`}
+                >
                   {sectionLabel(locale, audience, section)}
                 </span>
                 <span
                   aria-hidden
                   className="ml-auto text-aqua opacity-0 transition-opacity group-hover:opacity-100"
                 >
-                  →
+                  -&gt;
                 </span>
               </Link>
             </Reveal>

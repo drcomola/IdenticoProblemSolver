@@ -37,27 +37,25 @@ export function NavMenu({
   const [mobileGroup, setMobileGroup] = useState<string | null>(groups[0]?.key ?? null);
   const pathname = usePathname();
 
-  // Close menus on route change.
   useEffect(() => {
     setOpenDesktop(null);
     setMobileOpen(false);
   }, [pathname]);
 
   return (
-    <div className="flex h-16 items-center justify-between gap-4">
-      <Link href={homeHref} className="flex items-center gap-2.5" aria-label={brandName}>
-        <Logo tone="light" priority className="h-11 w-auto shrink-0" />
-        <span className="flex flex-col leading-none">
-          <span className="font-display text-lg font-semibold tracking-tightish text-teal-deep">
+    <div className="flex min-h-16 items-center justify-between gap-4 py-2">
+      <Link href={homeHref} className="flex min-w-0 items-center gap-2.5" aria-label={brandName}>
+        <Logo tone="light" priority className="h-12 w-auto shrink-0" />
+        <span className="flex min-w-0 flex-col leading-none">
+          <span className="truncate font-display text-base font-semibold text-teal-deep sm:text-lg">
             {brandName}
           </span>
-          <span className="text-[0.6rem] font-medium uppercase tracking-[0.2em] text-aqua">
+          <span className="hidden text-[0.58rem] font-semibold uppercase tracking-[0.22em] text-teal sm:block">
             {brandTagline}
           </span>
         </span>
       </Link>
 
-      {/* Desktop nav */}
       <nav className="hidden items-center gap-1 lg:flex" aria-label={brandName}>
         {groups.map((group) => {
           const open = openDesktop === group.key;
@@ -73,7 +71,7 @@ export function NavMenu({
                 aria-expanded={open}
                 aria-haspopup="true"
                 onClick={() => setOpenDesktop(open ? null : group.key)}
-                className="flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium text-ink/75 transition-colors hover:text-teal-deep"
+                className="flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold text-ink/[0.68] transition-all duration-300 hover:bg-teal-deep/5 hover:text-teal-deep"
               >
                 {group.label}
                 <Icon
@@ -84,25 +82,25 @@ export function NavMenu({
 
               {open ? (
                 <div className="absolute left-0 top-full z-50 pt-2">
-                  <div className="w-72 overflow-hidden rounded-2xl border border-titanium/60 bg-canvas/95 p-2 shadow-[0_24px_60px_-30px_rgba(15,76,92,0.55)] backdrop-blur-md">
+                  <div className="w-80 overflow-hidden rounded-xl border border-titanium/60 bg-canvas/[0.96] p-2 shadow-panel backdrop-blur-xl">
                     <Link
                       href={group.href}
-                      className="mb-1 flex items-center justify-between rounded-xl px-3 py-2 text-sm font-semibold text-teal-deep hover:bg-teal-deep/5"
+                      className="mb-1 flex items-center justify-between rounded-lg px-3 py-2.5 text-sm font-semibold text-teal-deep hover:bg-teal-deep/5"
                     >
                       {group.label}
-                      <span aria-hidden>→</span>
+                      <span aria-hidden>-&gt;</span>
                     </Link>
                     <ul>
                       {group.items.map((item) => (
                         <li key={item.href}>
                           <Link
                             href={item.href}
-                            className="group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-ink/80 transition-colors hover:bg-aqua/10 hover:text-teal-deep"
+                            className="group flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-ink/[0.78] transition-colors hover:bg-teal-deep/5 hover:text-teal-deep"
                           >
-                            <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-teal-deep/6 text-teal-deep transition-colors group-hover:bg-aqua/20">
+                            <span className="flex h-10 w-10 items-center justify-center rounded-md bg-teal-deep/6 text-teal-deep ring-1 ring-teal-deep/8 transition-colors group-hover:bg-aqua/[0.12] group-hover:text-teal">
                               <Icon name={item.iconName} className="h-[22px] w-[22px]" />
                             </span>
-                            {item.label}
+                            <span className="min-w-0">{item.label}</span>
                           </Link>
                         </li>
                       ))}
@@ -115,26 +113,24 @@ export function NavMenu({
         })}
       </nav>
 
-      <div className="flex items-center gap-3">
+      <div className="flex shrink-0 items-center gap-3">
         <div className="hidden sm:block">
           <LanguageSelector current={locale} ariaLabel={langAria} />
         </div>
 
-        {/* Mobile trigger */}
         <button
           type="button"
           aria-label="Menu"
           aria-expanded={mobileOpen}
           onClick={() => setMobileOpen((v) => !v)}
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-titanium/60 text-teal-deep lg:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-titanium/60 bg-white/70 text-teal-deep transition-colors hover:border-aqua/70 lg:hidden"
         >
           <Icon name={mobileOpen ? "close" : "menu"} className="h-5 w-5" />
         </button>
       </div>
 
-      {/* Mobile panel */}
       {mobileOpen ? (
-        <div className="fixed inset-x-0 top-16 z-40 max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-titanium/60 bg-canvas shadow-[0_24px_70px_-30px_rgba(15,76,92,0.65)] lg:hidden">
+        <div className="fixed inset-x-0 top-16 z-40 max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-titanium/55 bg-canvas/[0.98] shadow-panel backdrop-blur-xl lg:hidden">
           <div className="container-px py-6">
             <div className="flex gap-2">
               {groups.map((group) => (
@@ -145,8 +141,8 @@ export function NavMenu({
                   aria-pressed={mobileGroup === group.key}
                   className={`flex-1 rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                     mobileGroup === group.key
-                      ? "bg-teal-deep text-canvas"
-                      : "border border-titanium/60 text-ink/70"
+                      ? "bg-teal-deep text-canvas shadow-glow"
+                      : "border border-titanium/60 bg-white/70 text-ink/70"
                   }`}
                 >
                   {group.label}
@@ -161,22 +157,22 @@ export function NavMenu({
                   <li>
                     <Link
                       href={group.href}
-                      className="flex items-center justify-between rounded-xl px-3 py-3 text-sm font-semibold text-teal-deep"
+                      className="flex items-center justify-between rounded-lg px-3 py-3 text-sm font-semibold text-teal-deep"
                     >
                       {group.label}
-                      <span aria-hidden>→</span>
+                      <span aria-hidden>-&gt;</span>
                     </Link>
                   </li>
                   {group.items.map((item) => (
                     <li key={item.href}>
                       <Link
                         href={item.href}
-                        className="flex items-center gap-3 rounded-xl px-3 py-3 text-sm text-ink/80 hover:bg-aqua/10"
+                        className="flex items-center gap-3 rounded-lg px-3 py-3 text-sm text-ink/80 hover:bg-teal-deep/5"
                       >
-                        <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-teal-deep/6 text-teal-deep">
+                        <span className="flex h-11 w-11 items-center justify-center rounded-md bg-teal-deep/6 text-teal-deep ring-1 ring-teal-deep/8">
                           <Icon name={item.iconName} className="h-6 w-6" />
                         </span>
-                        {item.label}
+                        <span className="min-w-0">{item.label}</span>
                       </Link>
                     </li>
                   ))}

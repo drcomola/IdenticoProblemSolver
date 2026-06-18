@@ -277,7 +277,7 @@ export const patientsSectionsIt: AudienceSections = {
       {
         type: "game",
         heading: "Gioco Allineatori",
-        src: "/invisalign-video-game/",
+        src: "/gioco-allineatori/index.html",
         title: "Gioco Allineatori",
         directLinkLabel: "Apri a schermo intero",
       },

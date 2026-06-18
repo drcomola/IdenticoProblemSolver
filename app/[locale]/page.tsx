@@ -51,14 +51,15 @@ export default async function LocaleLandingPage({
       />
 
       <section className="bg-canvas">
-        <Container className="py-16 sm:py-20">
+        <Container className="py-20 sm:py-24">
           <Reveal className="mx-auto mb-12 max-w-2xl text-center">
-            <p className="text-lg leading-relaxed text-ink/75">
+            <p className="text-lg leading-relaxed text-ink/[0.72]">
               {landing.keyMessage}
             </p>
           </Reveal>
 
           <AudienceSelector
+            actionLabel={landing.primaryCta}
             patients={{
               href: audiencePath(loc, "patients"),
               label: landing.patientChoice.label,

@@ -15,20 +15,26 @@ export function Footer({ locale }: { locale: Locale }) {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-night text-canvas">
-      <Container className="py-16">
-        <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
+    <footer className="relative overflow-hidden bg-night text-canvas">
+      <div className="bg-technical-grid pointer-events-none absolute inset-0 opacity-45" />
+      <Logo
+        tone="dark"
+        alt=""
+        className="pointer-events-none absolute -right-20 bottom-8 h-80 w-auto opacity-[0.035]"
+      />
+      <Container className="relative z-10 py-16 sm:py-20">
+        <div className="grid gap-12 md:grid-cols-[1.4fr_0.8fr_1fr]">
           <div>
             <div className="flex items-center gap-3">
-              <Logo tone="dark" className="h-12 w-auto" />
-              <p className="font-display text-xl font-semibold tracking-tightish">
+              <Logo tone="dark" className="h-14 w-auto" />
+              <p className="font-display text-2xl font-semibold">
                 {dict.brandName}
               </p>
             </div>
-            <p className="mt-3 text-sm uppercase tracking-[0.2em] text-aqua-dark">
+            <p className="mt-4 max-w-md text-sm font-semibold uppercase tracking-[0.2em] text-aqua">
               {SITE_TAGLINE}
             </p>
-            <p className="mt-6 max-w-sm text-sm leading-relaxed text-canvas/60">
+            <p className="mt-6 max-w-sm text-sm leading-relaxed text-canvas/[0.62]">
               {dict.footer.medicalNote}
             </p>
             <div className="mt-5">
@@ -37,14 +43,14 @@ export function Footer({ locale }: { locale: Locale }) {
           </div>
 
           <nav aria-label={dict.footer.sectionsTitle}>
-            <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-canvas/50">
+            <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">
               {dict.footer.sectionsTitle}
             </h2>
-            <ul className="mt-4 space-y-3 text-sm">
+            <ul className="mt-5 space-y-3 text-sm">
               <li>
                 <Link
                   href={audiencePath(locale, "patients")}
-                  className="text-canvas/80 transition-colors hover:text-aqua-dark"
+                  className="text-canvas/[0.78] transition-colors hover:text-aqua"
                 >
                   {dict.nav.patients}
                 </Link>
@@ -52,7 +58,7 @@ export function Footer({ locale }: { locale: Locale }) {
               <li>
                 <Link
                   href={audiencePath(locale, "colleagues")}
-                  className="text-canvas/80 transition-colors hover:text-aqua-dark"
+                  className="text-canvas/[0.78] transition-colors hover:text-aqua"
                 >
                   {dict.nav.colleagues}
                 </Link>
@@ -61,14 +67,14 @@ export function Footer({ locale }: { locale: Locale }) {
           </nav>
 
           <div>
-            <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-canvas/50">
+            <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">
               {dict.footer.legalTitle}
             </h2>
-            <ul className="mt-4 space-y-3 text-sm">
+            <ul className="mt-5 space-y-3 text-sm">
               <li>
                 <Link
                   href={`/${locale}/legal/privacy`}
-                  className="text-canvas/80 transition-colors hover:text-aqua-dark"
+                  className="text-canvas/[0.78] transition-colors hover:text-aqua"
                 >
                   {dict.footer.privacy}
                 </Link>
@@ -76,13 +82,13 @@ export function Footer({ locale }: { locale: Locale }) {
               <li>
                 <Link
                   href={`/${locale}/legal/cookie`}
-                  className="text-canvas/80 transition-colors hover:text-aqua-dark"
+                  className="text-canvas/[0.78] transition-colors hover:text-aqua"
                 >
                   {dict.footer.cookie}
                 </Link>
               </li>
             </ul>
-            <div className="mt-5">
+            <div className="mt-6">
               <LanguageSelector
                 current={locale}
                 ariaLabel={dict.languageSelector.ariaLabel}
@@ -96,13 +102,13 @@ export function Footer({ locale }: { locale: Locale }) {
           <p className="text-xs leading-relaxed text-canvas/45">
             {dict.footer.disclaimer}
           </p>
-          <p className="mt-4 text-xs leading-relaxed text-canvas/40">
-            {PRACTITIONER.name} — {PRACTITIONER.address}, {PRACTITIONER.zip}{" "}
-            {PRACTITIONER.city} — P.IVA {PRACTITIONER.vat} — C.F.{" "}
+          <p className="mt-4 text-xs leading-relaxed text-canvas/[0.38]">
+            {PRACTITIONER.name} - {PRACTITIONER.address}, {PRACTITIONER.zip}{" "}
+            {PRACTITIONER.city} - P.IVA {PRACTITIONER.vat} - C.F.{" "}
             {PRACTITIONER.fiscalCode}
           </p>
-          <p className="mt-2 text-xs text-canvas/40">
-            © {year} {dict.brandName}. {dict.footer.rights}
+          <p className="mt-2 text-xs text-canvas/[0.38]">
+            (c) {year} {dict.brandName}. {dict.footer.rights}
           </p>
         </div>
       </Container>

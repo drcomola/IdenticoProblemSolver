@@ -1,5 +1,5 @@
-const INSTAGRAM_URL = "https://www.instagram.com/drgio.92/";
-const INSTAGRAM_HANDLE = "@drgio.92";
+const INSTAGRAM_URL = "https://www.instagram.com/dr.gio92/";
+const INSTAGRAM_HANDLE = "@dr.gio92";
 
 function InstagramIcon({ className = "h-5 w-5" }: { className?: string }) {
   return (
@@ -30,7 +30,7 @@ export function InstagramInlineLink({ tone = "light" }: { tone?: "light" | "dark
       target="_blank"
       rel="noopener noreferrer"
       className={`inline-flex items-center gap-2 text-sm font-medium transition-colors ${
-        dark ? "text-canvas/80 hover:text-aqua-dark" : "text-teal-deep hover:text-aqua"
+        dark ? "text-canvas/[0.86] hover:text-aqua" : "text-teal-deep hover:text-teal"
       }`}
     >
       <InstagramIcon />
@@ -46,7 +46,7 @@ export function InstagramFloatingLink() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`Follow me on Instagram ${INSTAGRAM_HANDLE}`}
-      className="fixed bottom-24 right-4 z-[70] inline-flex items-center gap-2 rounded-full border border-white/25 bg-night/92 px-4 py-3 text-sm font-semibold text-canvas shadow-[0_18px_45px_-20px_rgba(15,76,92,0.7)] backdrop-blur-md transition-transform hover:-translate-y-0.5 hover:bg-teal-deep sm:bottom-6 sm:right-6"
+      className="fixed bottom-24 right-4 z-[70] inline-flex items-center gap-2 rounded-full border border-aqua/70 bg-aqua px-4 py-3 text-sm font-bold text-night shadow-[0_0_36px_-12px_rgba(0,221,249,0.95),0_18px_45px_-24px_rgba(2,7,10,0.9)] backdrop-blur-md transition-all hover:-translate-y-0.5 hover:bg-canvas hover:text-teal-deep sm:bottom-6 sm:right-6"
     >
       <InstagramIcon className="h-5 w-5" />
       <span className="hidden sm:inline">Follow me on IG</span>

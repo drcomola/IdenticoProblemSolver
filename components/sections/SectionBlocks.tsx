@@ -310,22 +310,22 @@ function renderBlock(
     case "game":
       return (
         <Reveal className="mx-auto max-w-6xl">
-          <div className="flex flex-wrap items-center justify-between gap-4">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <h2 className="text-2xl font-semibold text-teal-deep sm:text-3xl">
               {block.heading}
             </h2>
             <Link
               href={block.src}
-              className="rounded-full border border-titanium/70 px-5 py-2.5 text-sm font-semibold text-teal-deep transition-colors hover:border-aqua/60 hover:bg-aqua/10"
+              className="inline-flex w-full items-center justify-center rounded-full border border-titanium/70 bg-white/80 px-5 py-2.5 text-sm font-semibold text-teal-deep transition-colors hover:border-aqua/60 hover:bg-aqua/10 sm:w-auto"
             >
               {block.directLinkLabel}
             </Link>
           </div>
-          <div className="mt-8 overflow-hidden rounded-2xl border border-titanium/60 bg-night shadow-soft">
+          <div className="mt-8 overflow-hidden rounded-xl border border-titanium/60 bg-night shadow-panel">
             <iframe
               src={block.src}
               title={block.title}
-              className="h-[720px] w-full"
+              className="h-[660px] w-full sm:h-[720px]"
               loading="lazy"
               allow="fullscreen; clipboard-write; web-share"
             />

@@ -22,7 +22,7 @@ export function Header({ locale }: { locale: Locale }) {
   }));
 
   return (
-    <header className="sticky top-0 z-50 border-b border-titanium/50 bg-canvas/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-titanium/45 bg-canvas/[0.86] backdrop-blur-xl">
       <Container>
         <NavMenu
           brandName={dict.brandName}

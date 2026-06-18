@@ -12,4 +12,4 @@ Open `index.html` in a browser to play. No backend, no database, no build step.
 
 The current MVP uses Canvas instead of Phaser so it can run as a single static client-side app without external dependencies. It is structured so Phaser, audio, leaderboard, richer sprites, and share-card generation can be added later.
 
-Note: the end screen includes a local "codice sala d'attesa" visual. Replace it with a true QR code after publishing the game to a stable web URL.
+Note: the QR code for the waiting room is generated separately as a printable asset after publishing the game to a stable web URL.

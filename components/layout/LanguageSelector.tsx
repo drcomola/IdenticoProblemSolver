@@ -22,35 +22,37 @@ export function LanguageSelector({
   const dark = tone === "dark";
 
   return (
-    <nav aria-label={ariaLabel} className="flex items-center gap-1">
-      {locales.map((locale, i) => {
+    <nav
+      aria-label={ariaLabel}
+      className={[
+        "inline-flex items-center gap-1 rounded-full border p-1",
+        dark
+          ? "border-white/[0.12] bg-white/[0.04]"
+          : "border-titanium/60 bg-white/75 shadow-[0_12px_35px_-28px_rgba(0,50,61,0.9)]",
+      ].join(" ")}
+    >
+      {locales.map((locale) => {
         const isCurrent = locale === current;
         return (
-          <span key={locale} className="flex items-center">
-            {i > 0 ? (
-              <span aria-hidden className={dark ? "text-white/25" : "text-titanium"}>
-                /
-              </span>
-            ) : null}
-            <Link
-              href={translatePath(pathname, locale)}
-              hrefLang={locale}
-              aria-current={isCurrent ? "true" : undefined}
-              className={[
-                "px-2 py-1 text-xs font-medium uppercase tracking-wider transition-colors",
-                isCurrent
-                  ? dark
-                    ? "text-aqua-dark"
-                    : "text-teal-deep"
-                  : dark
-                    ? "text-white/55 hover:text-white"
-                    : "text-ink/50 hover:text-teal-deep",
-              ].join(" ")}
-            >
-              <span className="sr-only">{localeNames[locale]} — </span>
-              {locale}
-            </Link>
-          </span>
+          <Link
+            key={locale}
+            href={translatePath(pathname, locale)}
+            hrefLang={locale}
+            aria-current={isCurrent ? "true" : undefined}
+            className={[
+              "rounded-full px-3 py-1.5 text-xs font-semibold uppercase tracking-wider transition-all duration-300",
+              isCurrent
+                ? dark
+                  ? "bg-aqua text-night shadow-[0_0_24px_-12px_rgba(0,221,249,0.95)]"
+                  : "bg-teal-deep text-canvas"
+                : dark
+                  ? "text-white/[0.58] hover:bg-white/[0.08] hover:text-white"
+                  : "text-ink/55 hover:bg-teal-deep/5 hover:text-teal-deep",
+            ].join(" ")}
+          >
+            <span className="sr-only">{localeNames[locale]} - </span>
+            {locale}
+          </Link>
         );
       })}
     </nav>

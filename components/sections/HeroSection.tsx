@@ -2,6 +2,7 @@ import { type ReactNode } from "react";
 import { Container } from "../ui/Container";
 import { Reveal } from "../ui/Reveal";
 import { Filigree } from "../ui/Filigree";
+import { Logo } from "../ui/Logo";
 
 /**
  * Primary hero. Renders the single page H1. `eyebrow` is a small label above the
@@ -31,6 +32,17 @@ export function HeroSection({
     <section
       className={`relative overflow-hidden ${dark ? "bg-night-field text-canvas" : "bg-aqua-wash text-ink"}`}
     >
+      {dark ? (
+        <>
+          <div className="bg-technical-grid pointer-events-none absolute inset-0 opacity-80" />
+          <Logo
+            tone="dark"
+            alt=""
+            className="pointer-events-none absolute -right-16 top-10 h-[24rem] w-auto opacity-[0.045] sm:h-[31rem] lg:right-8 lg:h-[38rem]"
+          />
+          <div className="aqua-rule pointer-events-none absolute left-0 top-0 h-px w-full opacity-70" />
+        </>
+      ) : null}
       <Filigree tone={dark ? "dark" : "light"} />
       <Container className="relative z-10 py-20 sm:py-28 lg:py-32">
         <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
@@ -42,7 +54,7 @@ export function HeroSection({
                     <span
                       className={`flex h-14 w-14 items-center justify-center rounded-2xl [&_svg]:h-8 [&_svg]:w-8 ${
                         dark
-                          ? "bg-white/5 text-aqua-dark ring-1 ring-white/10"
+                          ? "bg-white/5 text-aqua ring-1 ring-white/10"
                           : "bg-teal-deep/8 text-teal-deep ring-1 ring-teal-deep/10"
                       }`}
                     >
@@ -52,7 +64,7 @@ export function HeroSection({
                   {eyebrow ? (
                     <p
                       className={`text-xs font-semibold uppercase tracking-[0.22em] ${
-                        dark ? "text-aqua-dark" : "text-aqua"
+                        dark ? "text-aqua" : "text-teal"
                       }`}
                     >
                       {eyebrow}
@@ -63,7 +75,7 @@ export function HeroSection({
             ) : null}
 
             <Reveal delay={0.05}>
-              <h1 className="text-balance text-4xl font-semibold leading-[1.08] sm:text-5xl lg:text-6xl">
+              <h1 className="text-balance text-4xl font-semibold leading-[1.06] sm:text-5xl lg:text-6xl">
                 {title}
               </h1>
             </Reveal>
@@ -72,7 +84,7 @@ export function HeroSection({
               <Reveal delay={0.12}>
                 <p
                   className={`mt-6 max-w-xl text-lg leading-relaxed ${
-                    dark ? "text-canvas/75" : "text-ink/70"
+                    dark ? "text-canvas/[0.78]" : "text-ink/70"
                   }`}
                 >
                   {subtitle}
@@ -84,7 +96,7 @@ export function HeroSection({
               <Reveal delay={0.16}>
                 <p
                   className={`mt-5 max-w-xl text-[0.98rem] leading-relaxed ${
-                    dark ? "text-canvas/60" : "text-ink/60"
+                    dark ? "text-muted" : "text-ink/60"
                   }`}
                 >
                   {intro}
