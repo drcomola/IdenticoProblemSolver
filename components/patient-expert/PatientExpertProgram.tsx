@@ -395,67 +395,211 @@ function wrapLine(text: string, max = 78) {
   return lines;
 }
 
-function createPdf(report: Report) {
-  const certificateCode = makeCertificateCode(report);
-  const lines = [
-    "Patient Expert Certificate",
-    "Terapia con allineatori trasparenti",
-    "",
-    `Nome: ${report.firstName} ${report.lastName}`,
-    `ID paziente Align: ${hasAlignId(report.alignId) ? report.alignId.trim() : "NON INSERITO"}`,
-    `Data completamento: ${report.completedAt}`,
-    `Punteggio: ${report.score}/${questions.length} - ${report.percent}%`,
-    `Stato: ${report.prizeStatus}`,
-    `Codice certificato: ${certificateCode}`,
-    "",
-    "Risposte errate:",
-    ...(report.wrongAnswers.length
-      ? report.wrongAnswers.flatMap((item, index) =>
-          wrapLine(
-            `${index + 1}. ${item.question} - risposta data: ${item.selected}; corretta: ${item.correct}`,
-            84,
-          ),
-        )
-      : ["Nessuna risposta errata."]),
-    "",
-    "Il premio e assegnabile solo se il certificato contiene Nome, Cognome e ID paziente Align.",
-  ];
+function loadImage(src: string) {
+  return new Promise<HTMLImageElement | null>((resolve) => {
+    const image = new window.Image();
+    image.onload = () => resolve(image);
+    image.onerror = () => resolve(null);
+    image.src = src;
+  });
+}
 
-  const objects: string[] = [];
-  const content = [
-    "BT",
-    "/F1 22 Tf",
-    "50 785 Td",
-    `(${normalizePdfText(lines[0])}) Tj`,
-    "/F1 10 Tf",
-    "0 -24 Td",
-    `(${normalizePdfText(lines[1])}) Tj`,
-    "/F1 11 Tf",
-    ...lines.slice(2).flatMap((line) => ["0 -18 Td", `(${normalizePdfText(line)}) Tj`]),
-    "ET",
-  ].join("\n");
+function drawWrappedCanvasText(
+  ctx: CanvasRenderingContext2D,
+  text: string,
+  x: number,
+  y: number,
+  maxWidth: number,
+  lineHeight: number,
+) {
+  const words = text.split(" ");
+  let line = "";
+  words.forEach((word) => {
+    const nextLine = `${line} ${word}`.trim();
+    if (ctx.measureText(nextLine).width > maxWidth && line) {
+      ctx.fillText(line, x, y);
+      y += lineHeight;
+      line = word;
+    } else {
+      line = nextLine;
+    }
+  });
+  if (line) ctx.fillText(line, x, y);
+}
 
-  objects.push("<< /Type /Catalog /Pages 2 0 R >>");
-  objects.push("<< /Type /Pages /Kids [3 0 R] /Count 1 >>");
-  objects.push(
-    "<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>",
-  );
-  objects.push("<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>");
-  objects.push(`<< /Length ${content.length} >>\nstream\n${content}\nendstream`);
-
-  let pdf = "%PDF-1.4\n";
+function jpegBytesToPdf(jpegBytes: Uint8Array) {
+  const encoder = new TextEncoder();
+  const chunks: Uint8Array[] = [];
   const offsets = [0];
-  objects.forEach((object, index) => {
-    offsets.push(pdf.length);
-    pdf += `${index + 1} 0 obj\n${object}\nendobj\n`;
+  let offset = 0;
+
+  const addString = (value: string) => {
+    const bytes = encoder.encode(value);
+    chunks.push(bytes);
+    offset += bytes.length;
+  };
+  const addBytes = (bytes: Uint8Array) => {
+    chunks.push(bytes);
+    offset += bytes.length;
+  };
+  const addObject = (id: number, body: () => void) => {
+    offsets[id] = offset;
+    addString(`${id} 0 obj\n`);
+    body();
+    addString("\nendobj\n");
+  };
+
+  const pageContent = "q 595 0 0 842 0 0 cm /CertImage Do Q";
+  addString("%PDF-1.4\n");
+  addObject(1, () => addString("<< /Type /Catalog /Pages 2 0 R >>"));
+  addObject(2, () => addString("<< /Type /Pages /Kids [3 0 R] /Count 1 >>"));
+  addObject(3, () =>
+    addString(
+      "<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /XObject << /CertImage 4 0 R >> >> /Contents 5 0 R >>",
+    ),
+  );
+  addObject(4, () => {
+    addString(
+      `<< /Type /XObject /Subtype /Image /Width 1240 /Height 1754 /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${jpegBytes.length} >>\nstream\n`,
+    );
+    addBytes(jpegBytes);
+    addString("\nendstream");
   });
-  const xrefOffset = pdf.length;
-  pdf += `xref\n0 ${objects.length + 1}\n0000000000 65535 f \n`;
-  offsets.slice(1).forEach((offset) => {
-    pdf += `${String(offset).padStart(10, "0")} 00000 n \n`;
-  });
-  pdf += `trailer\n<< /Size ${objects.length + 1} /Root 1 0 R >>\nstartxref\n${xrefOffset}\n%%EOF`;
-  return new Blob([pdf], { type: "application/pdf" });
+  addObject(5, () =>
+    addString(`<< /Length ${pageContent.length} >>\nstream\n${pageContent}\nendstream`),
+  );
+
+  const xrefOffset = offset;
+  addString("xref\n0 6\n0000000000 65535 f \n");
+  for (let i = 1; i <= 5; i += 1) {
+    addString(`${String(offsets[i]).padStart(10, "0")} 00000 n \n`);
+  }
+  addString(`trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n${xrefOffset}\n%%EOF`);
+  const blobParts = chunks.map((chunk) => new Uint8Array(chunk).buffer);
+  return new Blob(blobParts, { type: "application/pdf" });
+}
+
+async function createPdf(report: Report) {
+  const certificateCode = makeCertificateCode(report);
+  const validPrize = report.passed && hasAlignId(report.alignId);
+  const patientName = `${report.firstName.trim()} ${report.lastName.trim()}`.trim();
+  const statusTitle = validPrize
+    ? "Valido per il ritiro dello Smile Kit Extra"
+    : "Non valido per il ritiro dello Smile Kit Extra";
+  const statusBody = validPrize
+    ? "Questo documento conferisce diritto al ritiro dello Smile Kit Extra."
+    : "Per convalidarlo presentarsi eventualmente con il KIT INIZIALE fornito ad inizio terapia o ripetere il test inserendo il proprio ID Align.";
+  const canvas = document.createElement("canvas");
+  canvas.width = 1240;
+  canvas.height = 1754;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) throw new Error("Canvas non disponibile");
+
+  const [logo, watermark] = await Promise.all([
+    loadImage("/images/brand/logo-trimmed.png"),
+    loadImage("/images/brand/identico-filigree-watermark.png"),
+  ]);
+
+  ctx.fillStyle = "#F8FAFB";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  if (watermark) {
+    ctx.globalAlpha = 0.5;
+    ctx.drawImage(watermark, 0, 0, canvas.width, canvas.height);
+    ctx.globalAlpha = 1;
+  }
+  const wash = ctx.createLinearGradient(0, 0, 0, canvas.height);
+  wash.addColorStop(0, "rgba(248,250,251,0.92)");
+  wash.addColorStop(1, "rgba(239,248,250,0.96)");
+  ctx.fillStyle = wash;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = "#02070A";
+  ctx.fillRect(0, 0, canvas.width, 220);
+  ctx.fillStyle = "#00323D";
+  ctx.fillRect(0, 220, canvas.width, 18);
+  ctx.fillStyle = "#00DDF9";
+  ctx.fillRect(120, 232, 360, 5);
+
+  if (logo) {
+    const logoHeight = 112;
+    const logoWidth = (logo.width / logo.height) * logoHeight;
+    ctx.drawImage(logo, 110, 52, logoWidth, logoHeight);
+  } else {
+    ctx.fillStyle = "#F8FAFB";
+    ctx.font = "700 54px Arial";
+    ctx.fillText("iDenTiCo", 120, 118);
+  }
+  ctx.fillStyle = "#F8FAFB";
+  ctx.font = "700 30px Arial";
+  ctx.fillText("iDenTiCo", 260, 92);
+  ctx.fillStyle = "#C5CCD3";
+  ctx.font = "400 25px Arial";
+  ctx.fillText("Dr. Giorgio Comola", 260, 128);
+  ctx.fillStyle = "#00DDF9";
+  ctx.font = "700 16px Arial";
+  ctx.fillText("DIGITAL ORTHODONTICS & CLINICAL EDUCATION", 260, 162);
+
+  ctx.fillStyle = "#006D88";
+  ctx.font = "700 26px Arial";
+  ctx.fillText("PATIENT EXPERT CERTIFICATE", 120, 386);
+  ctx.fillStyle = "#A8B5BE";
+  ctx.font = "400 21px Arial";
+  ctx.fillText("Terapia con allineatori trasparenti", 120, 424);
+
+  ctx.fillStyle = "#111827";
+  ctx.font = "400 34px Arial";
+  ctx.fillText("Si attesta che:", 120, 545);
+  ctx.fillStyle = "#00323D";
+  ctx.font = "700 72px Arial";
+  ctx.fillText(patientName, 120, 638);
+  ctx.fillStyle = "#111827";
+  ctx.font = "400 38px Arial";
+  ctx.fillText(`ha ottenuto ${report.percent}% di risposte corrette`, 120, 710);
+  ctx.fillStyle = "#006D88";
+  ctx.font = "700 22px Arial";
+  ctx.fillText(`${report.score}/${questions.length} risposte corrette`, 120, 752);
+
+  ctx.fillStyle = validPrize ? "#E8FCFF" : "#FFF7ED";
+  ctx.strokeStyle = validPrize ? "#00DDF9" : "#F59E0B";
+  ctx.lineWidth = 4;
+  ctx.beginPath();
+  ctx.roundRect(120, 910, 1000, 270, 22);
+  ctx.fill();
+  ctx.stroke();
+  ctx.fillStyle = validPrize ? "#00323D" : "#92400E";
+  ctx.font = "700 34px Arial";
+  ctx.fillText(statusTitle, 170, 1004);
+  ctx.fillStyle = "#111827";
+  ctx.font = "400 25px Arial";
+  drawWrappedCanvasText(ctx, statusBody, 170, 1060, 890, 36);
+
+  ctx.fillStyle = "#111827";
+  ctx.font = "400 22px Arial";
+  ctx.fillText(
+    `ID Align: ${hasAlignId(report.alignId) ? report.alignId.trim() : "non inserito"}`,
+    120,
+    1288,
+  );
+  ctx.fillText(`Data: ${report.completedAt}`, 120, 1330);
+  ctx.fillText(`Codice certificato: ${certificateCode}`, 120, 1372);
+
+  ctx.fillStyle = "#02070A";
+  ctx.fillRect(0, 1595, canvas.width, 159);
+  ctx.fillStyle = "#F8FAFB";
+  ctx.font = "700 32px Arial";
+  ctx.fillText("iDenTiCo", 120, 1680);
+  ctx.fillStyle = "#C5CCD3";
+  ctx.font = "400 21px Arial";
+  ctx.fillText("Dr. Giorgio Comola", 300, 1680);
+  ctx.fillStyle = "#00DDF9";
+  ctx.font = "700 22px Arial";
+  ctx.fillText("Smile Kit Extra", 910, 1680);
+
+  const dataUrl = canvas.toDataURL("image/jpeg", 0.92);
+  const binary = window.atob(dataUrl.split(",")[1]);
+  const jpegBytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i += 1) jpegBytes[i] = binary.charCodeAt(i);
+  return jpegBytesToPdf(jpegBytes);
 }
 
 function saveReport(report: Report) {
@@ -521,8 +665,8 @@ export function PatientExpertProgram() {
       percent,
       passed,
       prizeStatus: validPrize
-        ? "Valido per premio"
-        : "Non valido per premio - ID Align non inserito",
+        ? "Valido per il ritiro dello Smile Kit Extra"
+        : "Non valido per il ritiro dello Smile Kit Extra",
       completedAt: new Date().toLocaleString("it-IT"),
       wrongAnswers: questions
         .map((question, index) => ({
@@ -562,7 +706,7 @@ export function PatientExpertProgram() {
 
   async function downloadPdf(nextReport = report) {
     if (!nextReport) return null;
-    const blob = createPdf(nextReport);
+    const blob = await createPdf(nextReport);
     const fileName = `patient-expert-certificate-${nextReport.lastName || "paziente"}.pdf`;
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
@@ -575,7 +719,7 @@ export function PatientExpertProgram() {
 
   async function sharePdf() {
     if (!report) return;
-    const blob = createPdf(report);
+    const blob = await createPdf(report);
     const file = new File([blob], "patient-expert-certificate.pdf", {
       type: "application/pdf",
     });
@@ -606,7 +750,7 @@ export function PatientExpertProgram() {
           <p className="mt-3 text-sm leading-relaxed text-ink/[0.72]">
             Nome e cognome sono obbligatori. L&apos;ID paziente Align e opzionale per
             provare il quiz, ma necessario per rendere il certificato valido per
-            il premio.
+            il ritiro dello Smile Kit Extra.
           </p>
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
@@ -666,7 +810,7 @@ export function PatientExpertProgram() {
         </h2>
         <p className="mt-3 text-sm leading-relaxed text-canvas/[0.72]">
           Senza ID Align il certificato sara scaricabile, ma riportera: &quot;Non
-          valido per premio - ID Align non inserito&quot;.
+          valido per il ritiro dello Smile Kit Extra&quot;.
         </p>
         <label className="mt-6 grid gap-2 text-sm font-semibold text-canvas">
           ID paziente Align
@@ -713,8 +857,8 @@ export function PatientExpertProgram() {
             <p className="mt-3 text-sm leading-relaxed text-ink/[0.72]">
               {report.passed
                 ? validPrize
-                  ? "Complimenti, il certificato e valido per il premio e puo essere scaricato o condiviso via WhatsApp."
-                  : "Complimenti, il certificato e scaricabile ma non e valido per il premio perche non contiene l'ID paziente Align."
+                  ? "Complimenti, il certificato e valido per il ritiro dello Smile Kit Extra e puo essere scaricato o condiviso via WhatsApp."
+                  : "Complimenti, il certificato e scaricabile ma non e valido per il ritiro dello Smile Kit Extra perche non contiene l'ID paziente Align."
                 : "Non hai ancora raggiunto il punteggio minimo. Rivedi le risposte corrette e riprova."}
             </p>
           </div>
