@@ -83,6 +83,13 @@ export type Block =
         wide?: boolean;
       }[];
     }
+  | {
+      type: "video";
+      src: string;
+      poster?: string;
+      title: string;
+      caption?: string;
+    }
   | { type: "faq"; heading?: string; items: FaqEntry[] }
   | {
       type: "cases";

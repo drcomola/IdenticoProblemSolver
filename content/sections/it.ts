@@ -31,6 +31,11 @@ export const patientsSectionsIt: AudienceSections = {
         type: "imageGallery",
         images: [
           {
+            src: "/images/site/mainfoto.webp",
+            alt: "Ritratto del Dr. Giorgio Comola",
+            caption: "Ortodonzia digitale e comunicazione clinica.",
+          },
+          {
             src: "/images/site/chi-sono-1.webp",
             alt: "Il Dr. Giorgio Comola durante una relazione su ortodonzia digitale",
             caption: "Relazioni cliniche e formazione professionale.",
@@ -45,6 +50,11 @@ export const patientsSectionsIt: AudienceSections = {
             src: "/images/site/chi-sono-4.webp",
             alt: "Il Dr. Giorgio Comola spiega un movimento ortodontico",
             caption: "Dal piano digitale alla scelta clinica.",
+          },
+          {
+            src: "/images/site/faculty-meeting.webp",
+            alt: "Faculty meeting su ortodonzia digitale",
+            caption: "Confronto clinico e aggiornamento.",
           },
         ],
       },
@@ -173,7 +183,24 @@ export const patientsSectionsIt: AudienceSections = {
             caption: "Simulazione del possibile risultato.",
             wide: true,
           },
+          {
+            src: "/images/site/workflow-1.webp",
+            alt: "Workflow digitale per ortodonzia con allineatori",
+            caption: "Dal dato digitale alla strategia clinica.",
+          },
+          {
+            src: "/images/site/workflow-2.webp",
+            alt: "Pianificazione digitale del trattamento ortodontico",
+            caption: "Controllo del movimento e degli obiettivi.",
+          },
         ],
+      },
+      {
+        type: "video",
+        src: "/videos/pianificazione3d.mp4",
+        poster: "/images/site/workflow-3.webp",
+        title: "Video di pianificazione digitale 3D",
+        caption: "La pianificazione 3D aiuta a valutare sequenza dei movimenti, obiettivi e limiti prima di iniziare la terapia.",
       },
       {
         type: "statement",
@@ -264,6 +291,23 @@ export const patientsSectionsIt: AudienceSections = {
         type: "statement",
         heading: "Simulazione pre e post",
         body: "La simulazione digitale non è una promessa di risultato, ma uno strumento di comunicazione: aiuta a capire la direzione del trattamento, confrontare le opzioni e rendere più chiari limiti, tempi e obiettivi realistici.",
+      },
+      {
+        type: "imageGallery",
+        images: [
+          {
+            src: "/images/site/pre-post.webp",
+            alt: "Simulazione digitale prima e dopo trattamento",
+            caption: "Simulazione pre e post del possibile obiettivo.",
+            wide: true,
+          },
+          {
+            src: "/images/site/percorso-prima-visita.webp",
+            alt: "Percorso della prima visita ortodontica digitale",
+            caption: "Un percorso guidato dalla diagnosi.",
+            wide: true,
+          },
+        ],
       },
       {
         type: "statement",
@@ -471,7 +515,19 @@ export const colleaguesSectionsIt: AudienceSections = {
             alt: "Spiegazione clinica durante una presentazione",
             caption: "Metodo e biomeccanica.",
           },
+          {
+            src: "/images/site/faculty-meeting.webp",
+            alt: "Faculty meeting clinico",
+            caption: "Faculty meeting e confronto tra colleghi.",
+          },
         ],
+      },
+      {
+        type: "video",
+        src: "/videos/speaking-1.mp4",
+        poster: "/images/site/chi-sono-1.webp",
+        title: "Video di relazione clinica",
+        caption: "La formazione nasce dalla pratica clinica: casi reali, sequenze decisionali e controllo del trattamento.",
       },
       {
         type: "list",
@@ -545,6 +601,31 @@ export const colleaguesSectionsIt: AudienceSections = {
         heading: "Obiettivo",
         body: "Ridurre l'improvvisazione. Aumentare la capacità di diagnosi, prescrizione, staging e controllo clinico.",
       },
+      {
+        type: "imageGallery",
+        images: [
+          {
+            src: "/images/site/studio-riempimento-1.webp",
+            alt: "Momento di formazione clinica",
+            caption: "Formazione clinica in presenza.",
+          },
+          {
+            src: "/images/site/studio-riempimento-2.webp",
+            alt: "Discussione di workflow digitale",
+            caption: "Discussione del workflow.",
+          },
+          {
+            src: "/images/site/studio-riempimento-3.webp",
+            alt: "Sessione di aggiornamento su allineatori",
+            caption: "Aggiornamento sugli allineatori.",
+          },
+          {
+            src: "/images/site/studio-riempimento-4.webp",
+            alt: "Confronto tra colleghi",
+            caption: "Confronto tra colleghi.",
+          },
+        ],
+      },
     ],
     primaryCta: c("consulting", "Parliamo del tuo percorso"),
     secondaryCta: c("private-courses", "Scopri corsi privati"),
@@ -575,6 +656,13 @@ export const colleaguesSectionsIt: AudienceSections = {
         type: "statement",
         heading: "A chi serve",
         body: "A chi vuole passare da \"uso il software\" a \"controllo il trattamento\".",
+      },
+      {
+        type: "video",
+        src: "/videos/sas-meeting-milan.mp4",
+        poster: "/images/site/faculty-meeting.webp",
+        title: "Video SAS meeting Milano",
+        caption: "Sessioni pensate per trasformare il software in una scelta clinica controllata.",
       },
     ],
     primaryCta: c("consulting", "Richiedi un corso privato"),
@@ -608,6 +696,13 @@ export const colleaguesSectionsIt: AudienceSections = {
         type: "statement",
         heading: "Approccio",
         body: "Non teoria scollegata dalla clinica. Ogni concetto deve tradursi in una scelta concreta nel piano di trattamento.",
+      },
+      {
+        type: "video",
+        src: "/videos/dubai-top300.mp4",
+        poster: "/images/site/emea-ortho-summit-2026.webp",
+        title: "Video evento internazionale",
+        caption: "Formazione e confronto internazionale sugli allineatori e sui workflow digitali.",
       },
     ],
     primaryCta: c("consulting", "Richiedi informazioni sui corsi SAS"),

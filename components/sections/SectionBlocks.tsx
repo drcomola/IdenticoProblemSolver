@@ -131,6 +131,29 @@ function renderBlock(
         </div>
       );
 
+    case "video":
+      return (
+        <Reveal className="mx-auto max-w-5xl">
+          <figure className="overflow-hidden rounded-2xl border border-titanium/60 bg-white shadow-soft">
+            <video
+              className="aspect-video w-full bg-night object-cover"
+              controls
+              preload="metadata"
+              playsInline
+              poster={block.poster}
+              aria-label={block.title}
+            >
+              <source src={block.src} type="video/mp4" />
+            </video>
+            {block.caption ? (
+              <figcaption className="px-5 py-4 text-sm text-ink/65">
+                {block.caption}
+              </figcaption>
+            ) : null}
+          </figure>
+        </Reveal>
+      );
+
     case "faq":
       return (
         <div className="mx-auto max-w-3xl">

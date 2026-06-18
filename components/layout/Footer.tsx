@@ -7,6 +7,7 @@ import { SITE_TAGLINE } from "@/lib/seo";
 import { Container } from "../ui/Container";
 import { Logo } from "../ui/Logo";
 import { LanguageSelector } from "./LanguageSelector";
+import { InstagramInlineLink } from "./InstagramLink";
 
 /** Premium footer: journeys, language, legal/medical disclaimers. */
 export function Footer({ locale }: { locale: Locale }) {
@@ -30,6 +31,9 @@ export function Footer({ locale }: { locale: Locale }) {
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-canvas/60">
               {dict.footer.medicalNote}
             </p>
+            <div className="mt-5">
+              <InstagramInlineLink tone="dark" />
+            </div>
           </div>
 
           <nav aria-label={dict.footer.sectionsTitle}>

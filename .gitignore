@@ -20,6 +20,7 @@ next-env.d.ts
 # local source copies for optimized site assets
 /public/images/site/*.jpg
 /public/images/site/*.png
+/Fotodrop/
 
 # debug
 npm-debug.log*

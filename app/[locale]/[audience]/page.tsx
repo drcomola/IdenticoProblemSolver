@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import { isLocale, type Locale } from "@/lib/i18n";
 import { getContent } from "@/content";
 import { buildPageMetadata } from "@/lib/seo";
@@ -13,7 +14,6 @@ import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { ContentCard } from "@/components/ui/ContentCard";
-import { PremiumPlaceholder } from "@/components/ui/PremiumPlaceholder";
 import { SectionNavGrid } from "@/components/sections/SectionNavGrid";
 import { Filigree } from "@/components/ui/Filigree";
 import { HeroSection } from "@/components/sections/HeroSection";
@@ -80,15 +80,25 @@ export default async function AudienceHomePage({ params }: { params: Params }) {
           </>
         }
         aside={
-          <PremiumPlaceholder
-            label={
-              {
-                patients: { it: "Workflow digitale", en: "Digital workflow", es: "Flujo digital" },
-                colleagues: { it: "Formazione clinica", en: "Clinical education", es: "Formación clínica" },
-              }[audience][loc]
-            }
-            ratio="4 / 5"
-          />
+          <div className="relative overflow-hidden rounded-2xl border border-titanium/60 bg-white shadow-soft">
+            <div className="relative aspect-[4/5]">
+              <Image
+                src="/images/site/mainfoto.webp"
+                alt={
+                  {
+                    it: "Ritratto del Dr. Giorgio Comola",
+                    en: "Portrait of Dr. Giorgio Comola",
+                    es: "Retrato del Dr. Giorgio Comola",
+                  }[loc]
+                }
+                fill
+                priority
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 520px"
+                style={{ objectPosition: "50% center" }}
+              />
+            </div>
+          </div>
         }
       />
 

@@ -212,7 +212,99 @@ function clinicalCase({
   };
 }
 
+const views5: [string, CaseImageView][] = [
+  ["front", "front"],
+  ["right", "rightLateral"],
+  ["left", "leftLateral"],
+  ["upper", "upperArch"],
+  ["lower", "lowerArch"],
+];
+
+function pairedImages(
+  categorySlug: string,
+  caseSlug: string,
+  views: [string, CaseImageView][] = views5,
+): CaseImage[] {
+  return views.flatMap(([file, view]) => [
+    image(categorySlug, caseSlug, `before-${file}.webp`, "before", view),
+    image(categorySlug, caseSlug, `after-${file}.webp`, "after", view),
+  ]);
+}
+
 export const cases: ClinicalCase[] = [
+  clinicalCase({
+    slug: "affollamento-grave-followup",
+    categorySlug: "affollamento",
+    title: text("Affollamento grave con follow-up", "Severe crowding with follow-up", "Apinamiento severo con seguimiento"),
+    images: [
+      ...pairedImages("affollamento", "affollamento-grave-followup"),
+      image("affollamento", "affollamento-grave-followup", "followup-front.webp", "intraoral", "front"),
+      image("affollamento", "affollamento-grave-followup", "followup-right.webp", "intraoral", "rightLateral"),
+      image("affollamento", "affollamento-grave-followup", "followup-left.webp", "intraoral", "leftLateral"),
+      image("affollamento", "affollamento-grave-followup", "followup-upper.webp", "intraoral", "upperArch"),
+      image("affollamento", "affollamento-grave-followup", "followup-lower.webp", "intraoral", "lowerArch"),
+    ],
+  }),
+  clinicalCase({
+    slug: "affollamento-grave-adulto",
+    categorySlug: "affollamento",
+    title: text("Affollamento grave nell'adulto", "Severe adult crowding", "Apinamiento severo en adulto"),
+    images: pairedImages("affollamento", "affollamento-grave-adulto", [
+      ...views5.slice(0, 3),
+      ["overjet", "overjet"],
+      ...views5.slice(3),
+    ]),
+  }),
+  clinicalCase({
+    slug: "affollamento-seconda-classe",
+    categorySlug: "seconda-classe",
+    title: text("Affollamento e Seconda Classe", "Crowding and Class II", "Apinamiento y Clase II"),
+    images: pairedImages("seconda-classe", "affollamento-seconda-classe"),
+  }),
+  clinicalCase({
+    slug: "canino-incluso",
+    categorySlug: "casi-complessi",
+    title: text("Canino incluso", "Impacted canine", "Canino incluido"),
+    images: pairedImages("casi-complessi", "canino-incluso"),
+  }),
+  clinicalCase({
+    slug: "espansione-terza-classe-crescita",
+    categorySlug: "terza-classe",
+    title: text("Espansione e Terza Classe in crescita", "Expansion and growing Class III", "Expansion y Clase III en crecimiento"),
+    images: pairedImages("terza-classe", "espansione-terza-classe-crescita", [
+      ...views5.slice(0, 3),
+      ["profile", "profile"],
+      ...views5.slice(3),
+    ]),
+  }),
+  clinicalCase({
+    slug: "invisalign-palatal-expander",
+    categorySlug: "morso-crociato",
+    title: text("Espansione palatale con workflow digitale", "Palatal expansion with digital workflow", "Expansion palatina con workflow digital"),
+    images: pairedImages("morso-crociato", "invisalign-palatal-expander", views5.slice(0, 4)),
+  }),
+  clinicalCase({
+    slug: "seconda-classe-canini-alti",
+    categorySlug: "seconda-classe",
+    title: text("Seconda Classe con canini alti", "Class II with high canines", "Clase II con caninos altos"),
+    images: pairedImages("seconda-classe", "seconda-classe-canini-alti"),
+  }),
+  clinicalCase({
+    slug: "seconda-classe-grave-adolescente",
+    categorySlug: "seconda-classe",
+    title: text("Seconda Classe grave nell'adolescente", "Severe adolescent Class II", "Clase II severa en adolescente"),
+    images: pairedImages("seconda-classe", "seconda-classe-grave-adolescente", [
+      ...views5.slice(0, 3),
+      ["profile", "profile"],
+      ...views5.slice(3),
+    ]),
+  }),
+  clinicalCase({
+    slug: "shift-linee-medie",
+    categorySlug: "casi-complessi",
+    title: text("Correzione delle linee medie", "Midline correction", "Correccion de lineas medias"),
+    images: pairedImages("casi-complessi", "shift-linee-medie"),
+  }),
   clinicalCase({
     slug: "affollamento-adulto-01",
     categorySlug: "affollamento",

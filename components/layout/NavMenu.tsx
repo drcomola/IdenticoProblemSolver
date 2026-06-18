@@ -134,7 +134,7 @@ export function NavMenu({
 
       {/* Mobile panel */}
       {mobileOpen ? (
-        <div className="fixed inset-x-0 top-16 z-40 max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-titanium/60 bg-canvas/98 backdrop-blur-md lg:hidden">
+        <div className="fixed inset-x-0 top-16 z-40 max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-titanium/60 bg-canvas shadow-[0_24px_70px_-30px_rgba(15,76,92,0.65)] lg:hidden">
           <div className="container-px py-6">
             <div className="flex gap-2">
               {groups.map((group) => (
