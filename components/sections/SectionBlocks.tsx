@@ -1,6 +1,7 @@
 import type { Block } from "@/content/types";
 import type { Audience, Locale } from "@/lib/i18n";
 import Image from "next/image";
+import Link from "next/link";
 import { getDictionary } from "@/content";
 import {
   clinics,
@@ -305,5 +306,31 @@ function renderBlock(
         </div>
       );
     }
+
+    case "game":
+      return (
+        <Reveal className="mx-auto max-w-6xl">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <h2 className="text-2xl font-semibold text-teal-deep sm:text-3xl">
+              {block.heading}
+            </h2>
+            <Link
+              href={block.src}
+              className="rounded-full border border-titanium/70 px-5 py-2.5 text-sm font-semibold text-teal-deep transition-colors hover:border-aqua/60 hover:bg-aqua/10"
+            >
+              {block.directLinkLabel}
+            </Link>
+          </div>
+          <div className="mt-8 overflow-hidden rounded-2xl border border-titanium/60 bg-night shadow-soft">
+            <iframe
+              src={block.src}
+              title={block.title}
+              className="h-[720px] w-full"
+              loading="lazy"
+              allow="fullscreen; clipboard-write; web-share"
+            />
+          </div>
+        </Reveal>
+      );
   }
 }

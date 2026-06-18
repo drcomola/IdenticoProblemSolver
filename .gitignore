@@ -21,6 +21,8 @@ next-env.d.ts
 /public/images/site/*.jpg
 /public/images/site/*.png
 /Fotodrop/
+/InvisalignVideoGame/chrome-test-profile/
+/InvisalignVideoGame/chrome-test-profile-mobile/
 
 # debug
 npm-debug.log*

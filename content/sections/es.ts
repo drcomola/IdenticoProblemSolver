@@ -237,6 +237,28 @@ export const patientsSectionsEs: AudienceSections = {
     secondaryCta: p("clinical-cases", "Ver casos clínicos"),
   },
 
+  "invisalign-game": {
+    seo: {
+      title: "Juego alineadores | Dr. Giorgio Comola",
+      description:
+        "Un mini juego de navegador sobre alineadores transparentes, pensado para la sala de espera y pacientes curiosos.",
+    },
+    h1: "Juega con los alineadores.",
+    subtitle:
+      "Una experiencia ligera para descubrir buenos habitos y pequenos imprevistos del tratamiento con alineadores.",
+    blocks: [
+      {
+        type: "game",
+        heading: "Juego alineadores",
+        src: "/invisalign-video-game/",
+        title: "Juego alineadores",
+        directLinkLabel: "Abrir a pantalla completa",
+      },
+    ],
+    primaryCta: p("clinics", "Reservar una valoracion"),
+    secondaryCta: p("invisalign", "Descubrir alineadores"),
+  },
+
   "first-consultation": {
     seo: {
       title: "Primera visita ortodóncica | Dr. Giorgio Comola",

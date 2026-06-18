@@ -167,6 +167,7 @@ const sectionIconMap: Record<Audience, Partial<Record<SectionKey, IconName>>> = 
     "what-i-offer": "clipboard",
     "digital-orthodontics": "scan",
     invisalign: "aligner",
+    "invisalign-game": "aligner",
     "first-consultation": "stethoscope",
     "clinical-cases": "cases",
     clinics: "pin",

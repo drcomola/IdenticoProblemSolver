@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aligner Breaker - Rompi la malocclusione</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="game-panel" aria-label="Aligner Breaker">
+        <div class="top-bar">
+          <div>
+            <p class="eyebrow">Premium orthodontic arcade</p>
+            <h1>Aligner Breaker</h1>
+            <p class="signature">by Dr. Giorgio Comola</p>
+          </div>
+          <div class="top-actions">
+            <div class="challenge-pill" id="challengePill">Challenge 22h attiva</div>
+            <div class="level-pill" id="levelName">Affollamento</div>
+          </div>
+        </div>
+
+        <div class="hud" aria-label="Stato partita">
+          <div class="hud-item">
+            <span>Score</span>
+            <strong id="score">0</strong>
+          </div>
+          <div class="hud-item">
+            <span>Lives</span>
+            <strong id="lives">3</strong>
+          </div>
+          <div class="hud-item wide">
+            <span>Smile Progress</span>
+            <strong id="progressText">0%</strong>
+            <div class="smile-steps" id="smileSteps" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <div class="stage-wrap">
+          <canvas id="gameCanvas" width="960" height="620" aria-label="Area di gioco"></canvas>
+
+          <div class="screen active" id="titleScreen">
+            <div class="screen-inner">
+              <p class="screen-kicker">Rompi la malocclusione</p>
+              <h2>Aligner Breaker</h2>
+              <p class="intro">
+                Muovi l'allineatore, fai rimbalzare la forza ortodontica e completa il sorriso.
+                Collaborazione, elastici e 22 ore fanno la differenza.
+              </p>
+              <div class="starter-grid" aria-label="Elementi ortodontici">
+                <span>22h</span>
+                <span>Elastici</span>
+                <span>Tracking</span>
+              </div>
+              <div class="button-row">
+                <button class="primary" id="startBtn">Inizia</button>
+                <button class="secondary" id="howBtn">Come si gioca</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="screen" id="howScreen">
+            <div class="screen-inner compact">
+              <p class="screen-kicker">Guida rapida</p>
+              <h2>Come si gioca</h2>
+              <p class="intro">
+                Trascina o muovi l'allineatore. Distruggi gli elementi di malocclusione, raccogli gli aiuti
+                e proteggi il tracking del sorriso.
+              </p>
+              <div class="help-grid">
+                <span>Mouse / touch</span><strong>muovi l'allineatore</strong>
+                <span>Frecce</span><strong>controllo da tastiera</strong>
+                <span>Obiettivo</span><strong>100% Smile Progress</strong>
+                <span>Challenge 22h</span><strong>evita minus e vite perse</strong>
+                <span>Coach</span><strong>leggi il perche clinico degli eventi</strong>
+              </div>
+              <button class="primary" id="backBtn">Torna</button>
+            </div>
+          </div>
+
+          <div class="screen" id="levelScreen">
+            <div class="screen-inner compact">
+              <p class="screen-kicker" id="levelKicker">Livello 1</p>
+              <h2 id="levelTitle">Affollamento</h2>
+              <p class="intro" id="levelMessage">Libera spazio e allinea il sorriso.</p>
+              <button class="primary" id="levelStartBtn">Gioca</button>
+            </div>
+          </div>
+
+          <div class="screen" id="endScreen">
+            <div class="screen-inner">
+              <p class="screen-kicker">Risultato finale</p>
+              <h2 id="resultTitle">Sorriso in tracking perfetto</h2>
+              <p class="intro" id="resultBody">Final score: 0</p>
+              <div class="result-card" id="resultCard">
+                <div>
+                  <span>Aligner Breaker</span>
+                  <strong id="cardScore">0 punti</strong>
+                </div>
+                <div class="final-smile" id="finalSmile" aria-hidden="true"></div>
+                <p id="challengeResult">Challenge 22h in corso</p>
+                <small>by Dr. Giorgio Comola</small>
+              </div>
+              <div class="stats-grid">
+                <div><span>Livelli</span><strong id="levelsStat">0/5</strong></div>
+                <div><span>Perfect tracking</span><strong id="perfectStat">0</strong></div>
+                <div><span>Minus evitati</span><strong id="minusStat">0</strong></div>
+              </div>
+              <div class="leaderboard">
+                <span>Classifica locale</span>
+                <ol id="leaderboardList"></ol>
+              </div>
+              <div class="qr-panel">
+                <canvas id="qrCanvas" width="116" height="116" aria-label="Codice sala d'attesa"></canvas>
+                <div>
+                  <span id="qrLabel">Codice sala d'attesa</span>
+                  <strong>Pronto per il QR quando pubblichi il link</strong>
+                </div>
+              </div>
+              <div class="button-row">
+                <button class="primary" id="replayBtn">Rigioca</button>
+                <a class="secondary cta" id="bookingLink" href="/it/pazienti/studi" target="_top">Prenota una valutazione</a>
+                <button class="secondary" id="shareBtn">Condividi risultato</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-deck">
+          <div class="message-strip" id="effectMessage">Pronto per iniziare.</div>
+          <div class="tip-card">
+            <span>Coach ortodontico</span>
+            <strong id="tipText">Non buttare mai via le tue mascherine: possono servire come riferimento o backup.</strong>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="config.js"></script>
+    <script src="game.js"></script>
+  </body>
+</html>

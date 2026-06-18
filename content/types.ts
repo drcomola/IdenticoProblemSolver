@@ -104,6 +104,13 @@ export type Block =
       fields: FormField[];
       microcopy?: string;
       submitLabel: string;
+    }
+  | {
+      type: "game";
+      heading: string;
+      src: string;
+      title: string;
+      directLinkLabel: string;
     };
 
 export type SectionContent = {

@@ -25,6 +25,7 @@ export const sectionKeys = {
     "what-i-offer",
     "digital-orthodontics",
     "invisalign",
+    "invisalign-game",
     "first-consultation",
     "clinical-cases",
     "clinics",
@@ -60,6 +61,11 @@ export const sectionSlugs: Record<
       es: "ortodoncia-digital",
     },
     invisalign: { it: "invisalign", en: "invisalign", es: "invisalign" },
+    "invisalign-game": {
+      it: "gioco-allineatori",
+      en: "aligner-game",
+      es: "juego-alineadores",
+    },
     "first-consultation": {
       it: "prima-visita",
       en: "first-consultation",

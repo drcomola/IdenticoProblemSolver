@@ -237,6 +237,28 @@ export const patientsSectionsEn: AudienceSections = {
     secondaryCta: p("clinical-cases", "View clinical cases"),
   },
 
+  "invisalign-game": {
+    seo: {
+      title: "Aligner game | Dr. Giorgio Comola",
+      description:
+        "A browser mini game about clear aligners, designed for the waiting room and curious patients.",
+    },
+    h1: "Play with aligners.",
+    subtitle:
+      "A light experience to discover good habits and small surprises during clear aligner treatment.",
+    blocks: [
+      {
+        type: "game",
+        heading: "Aligner game",
+        src: "/invisalign-video-game/",
+        title: "Aligner game",
+        directLinkLabel: "Open full screen",
+      },
+    ],
+    primaryCta: p("clinics", "Book an assessment"),
+    secondaryCta: p("invisalign", "Discover aligners"),
+  },
+
   "first-consultation": {
     seo: {
       title: "First orthodontic consultation | Dr. Giorgio Comola",
