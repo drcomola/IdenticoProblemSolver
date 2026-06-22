@@ -79,7 +79,7 @@ export function CaseCard({
     <article className="overflow-hidden rounded-2xl border border-titanium/60 bg-white transition-all duration-300 group-hover:-translate-y-1 group-hover:border-aqua/50">
       {media}
       <div className="p-5">
-        <p className="text-xs font-medium uppercase tracking-[0.16em] text-aqua">
+        <p className="text-xs font-medium uppercase tracking-[0.16em] text-teal">
           {category}
         </p>
         {title ? (

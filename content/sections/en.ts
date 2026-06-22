@@ -602,6 +602,11 @@ export const colleaguesSectionsEn: AudienceSections = {
       "Individual or team education built around real clinical cases from the practice.",
     blocks: [
       {
+        type: "statement",
+        heading: "To be announced",
+        body: "Upcoming private-course dates and programs are being finalised. Leave a request to be notified first.",
+      },
+      {
         type: "list",
         heading: "Format",
         items: [
@@ -650,6 +655,15 @@ export const colleaguesSectionsEn: AudienceSections = {
         heading: "Approach",
         body: "Not theory disconnected from practice. Every concept must translate into a clear treatment planning decision.",
       },
+      {
+        type: "embed",
+        logo: "/images/brand/sas.png",
+        logoAlt: "Smart Aligner Services",
+        heading: "Smart Aligner Services",
+        body: "Explore programs, events and educational paths directly on the official SAS website.",
+        url: "https://smartalignerservices.com/it/",
+        linkLabel: "Open smartalignerservices.com",
+      },
     ],
     primaryCta: c("consulting", "Request SAS course information"),
     secondaryCta: c("consulting", "Discover mentorship"),
@@ -661,31 +675,19 @@ export const colleaguesSectionsEn: AudienceSections = {
       description:
         "A space to analyze cases, doubts and treatment strategies with clear aligners.",
     },
-    h1: "Align P2P. Clinical exchange between colleagues.",
-    subtitle:
-      "A space to analyze cases, doubts and treatment strategies with aligners.",
+    h1: "Align P2P.",
+    subtitle: "The Peer to Peer program is managed directly by Invisalign.",
     blocks: [
       {
-        type: "list",
-        heading: "Topics",
-        items: [
-          "Case reading.",
-          "Realistic objectives.",
-          "Prescription.",
-          "Staging.",
-          "Attachments and auxiliaries.",
-          "Elastics and biomechanical control.",
-          "Refinement and unexpected problems.",
-        ],
-      },
-      {
-        type: "statement",
-        heading: "Value",
-        body: "The best discussion does not simply confirm what you already decided. It shows what you were underestimating.",
+        type: "embed",
+        logo: "/images/brand/invisalign.png",
+        logoAlt: "Invisalign",
+        heading: "A program managed by Invisalign",
+        body: "Align P2P (Peer to Peer) is an initiative managed directly by Align Technology / Invisalign. For information, requirements and enrolment, contact your reference Invisalign Territory Manager, who can guide you to the most suitable path.",
       },
     ],
-    primaryCta: c("consulting", "Request P2P information"),
-    secondaryCta: c("consulting", "Go to consulting"),
+    primaryCta: c("consulting", "Go to consulting"),
+    secondaryCta: c("education", "Discover education"),
   },
 
   "clinical-cases": {
@@ -765,7 +767,6 @@ export const colleaguesSectionsEn: AudienceSections = {
             options: [
               "Private course",
               "Mentorship",
-              "Align P2P",
               "ClinCheck consulting",
               "SAS courses",
             ],

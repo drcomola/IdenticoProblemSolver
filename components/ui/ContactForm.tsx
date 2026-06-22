@@ -158,7 +158,7 @@ export function ContactForm({
 
           {selectedClinic ? (
             <div className="mt-2 rounded-xl border border-aqua/30 bg-aqua/5 p-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.15em] text-aqua">
+              <p className="text-xs font-semibold uppercase tracking-[0.15em] text-teal">
                 {clinicPicker.contactTitle}
               </p>
               <div className="mt-3 flex flex-wrap gap-2">
@@ -207,7 +207,7 @@ export function ContactForm({
             >
               <label htmlFor={field.name} className="text-sm font-medium text-ink/80">
                 {field.label}
-                {field.required ? <span className="text-aqua"> *</span> : null}
+                {field.required ? <span className="text-teal"> *</span> : null}
               </label>
               {field.type === "textarea" ? (
                 <textarea

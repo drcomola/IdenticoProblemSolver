@@ -6,6 +6,7 @@ import {
   clinicPoints,
   clinicWhatsappUrl,
 } from "@/content/clinics";
+import Image from "next/image";
 import type { Dictionary } from "@/content/types";
 import { Icon } from "./icons";
 import { ClinicsMap } from "./ClinicsMap";
@@ -28,7 +29,7 @@ export function ClinicsDirectory({ labels }: { labels: Labels }) {
       {/* Combined overview map: a Google "My Maps" embed if configured, otherwise
           a keyless Leaflet/OpenStreetMap map with every pin. */}
       <div className="mb-10">
-        <h3 className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-aqua">
+        <h3 className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-teal">
           {labels.mapOverviewTitle}
         </h3>
         {overviewUrl ? (
@@ -52,9 +53,20 @@ export function ClinicsDirectory({ labels }: { labels: Labels }) {
             key={clinic.id}
             className="flex flex-col rounded-2xl border border-titanium/60 bg-white p-6"
           >
+            {clinic.logo ? (
+              <div className="relative mb-4 h-14 w-36">
+                <Image
+                  src={clinic.logo}
+                  alt={clinic.name}
+                  fill
+                  className="object-contain object-left"
+                  sizes="144px"
+                />
+              </div>
+            ) : null}
             <h3 className="text-base font-semibold text-teal-deep">{clinic.name}</h3>
             <p className="mt-2 flex items-start gap-2 text-sm leading-relaxed text-ink/70">
-              <Icon name="pin" className="mt-0.5 h-4 w-4 shrink-0 text-aqua" />
+              <Icon name="pin" className="mt-0.5 h-4 w-4 shrink-0 text-teal" />
               <span>
                 {clinic.address ? (
                   <>
@@ -107,7 +119,7 @@ export function ClinicsDirectory({ labels }: { labels: Labels }) {
             </div>
 
             <details className="group mt-4">
-              <summary className="cursor-pointer list-none text-xs font-medium text-aqua hover:text-teal-deep">
+              <summary className="cursor-pointer list-none text-xs font-medium text-teal hover:text-teal-deep">
                 {labels.showMap}
               </summary>
               <div className="mt-3 overflow-hidden rounded-xl border border-titanium/60">

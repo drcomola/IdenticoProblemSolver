@@ -45,7 +45,7 @@ export function SectionNavGrid({
                 <span
                   className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-lg ring-1 transition-colors ${
                     dark
-                      ? "bg-aqua/10 text-aqua ring-aqua/20 group-hover:bg-aqua/[0.18]"
+                      ? "bg-aqua/10 text-teal ring-aqua/20 group-hover:bg-aqua/[0.18]"
                       : "bg-teal-deep/6 text-teal-deep ring-teal-deep/8 group-hover:bg-aqua/15"
                   }`}
                 >
@@ -62,7 +62,7 @@ export function SectionNavGrid({
                 </span>
                 <span
                   aria-hidden
-                  className="ml-auto text-aqua opacity-0 transition-opacity group-hover:opacity-100"
+                  className="ml-auto text-teal opacity-0 transition-opacity group-hover:opacity-100"
                 >
                   -&gt;
                 </span>

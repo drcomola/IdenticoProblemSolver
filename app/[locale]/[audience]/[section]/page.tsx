@@ -22,6 +22,14 @@ import { Icon, sectionIconName } from "@/components/ui/icons";
 import { sectionLabel } from "@/content/navigation";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { SectionBlocks } from "@/components/sections/SectionBlocks";
+import { ClinicalCasesExplorer } from "@/components/cases/ClinicalCasesExplorer";
+import {
+  caseCategoryLabels,
+  caseCategoryOrder,
+  casesByCategory,
+  getCasePreviews,
+} from "@/content/cases";
+import { explorerStrings, quizQuestions } from "@/content/casesQuiz";
 
 const heroImages: Partial<
   Record<
@@ -237,14 +245,18 @@ export default async function SectionPage({ params }: { params: Params }) {
   const faqBlock = data.blocks.find((b) => b.type === "faq");
   const heroImage = heroImages[sec];
 
+  // Patient clinical-cases page → browse-by-category + "find a smile like yours".
+  const isPatientCases = aud === "patients" && sec === "clinical-cases";
+  const xs = explorerStrings[loc];
+
   return (
     <>
       <HeroSection
         eyebrow={sectionLabel(loc, aud, sec)}
         icon={<Icon name={sectionIconName(aud, sec)} className="h-6 w-6" />}
-        title={data.h1}
-        subtitle={data.subtitle}
-        intro={data.lead}
+        title={isPatientCases ? xs.heroTitle : data.h1}
+        subtitle={isPatientCases ? xs.heroSubtitle : data.subtitle}
+        intro={isPatientCases ? undefined : data.lead}
         aside={
           heroImage ? <SectionHeroImage image={heroImage} locale={loc} /> : undefined
         }
@@ -263,7 +275,34 @@ export default async function SectionPage({ params }: { params: Params }) {
         }
       />
 
-      <SectionBlocks blocks={data.blocks} locale={loc} audience={aud} />
+      {isPatientCases ? (
+        <ClinicalCasesExplorer
+          strings={xs}
+          categories={caseCategoryOrder
+            .map((key) => ({
+              key,
+              label: caseCategoryLabels[key][loc],
+              count: casesByCategory(key).length,
+            }))
+            .filter((c) => c.count > 0)}
+          previews={getCasePreviews(loc)}
+          questions={quizQuestions.map((q) => ({
+            id: q.id,
+            question: q.question[loc],
+            options: q.options.map((o) => ({
+              id: o.id,
+              label: o.label[loc],
+              categories: o.categories,
+              tags: o.tags,
+              patientType: o.patientType,
+            })),
+          }))}
+          basePath={sectionPath(loc, aud, "clinical-cases")}
+          bookHref={sectionPath(loc, "patients", "book")}
+        />
+      ) : (
+        <SectionBlocks blocks={data.blocks} locale={loc} audience={aud} />
+      )}
 
       {/* Closing conversion band */}
       <section className="relative overflow-hidden bg-night-field text-canvas">

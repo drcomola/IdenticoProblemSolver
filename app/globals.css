@@ -81,9 +81,10 @@
     background:
       linear-gradient(180deg, rgba(248, 250, 251, 0.94) 0%, rgba(239, 248, 250, 0.9) 100%),
       linear-gradient(135deg, rgba(0, 221, 249, 0.08), rgba(0, 57, 163, 0.04)),
-      url("/images/brand/identico-filigree-watermark.png");
-    background-position: center;
-    background-size: cover;
+      url("/images/brand/filigree-wave.png");
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-position: center, center, right center;
+    background-size: cover, cover, cover;
   }
 
   .aqua-rule {

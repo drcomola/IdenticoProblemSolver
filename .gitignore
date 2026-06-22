@@ -20,6 +20,10 @@ next-env.d.ts
 # local source copies for optimized site assets
 /public/images/site/*.jpg
 /public/images/site/*.png
+# source logos / raw case photos (already normalized into /public/images)
+/Loghi Studi/
+/Logo brand/
+/Casiclinici/
 /Fotodrop/
 /InvisalignVideoGame/chrome-test-profile/
 /InvisalignVideoGame/chrome-test-profile-mobile/

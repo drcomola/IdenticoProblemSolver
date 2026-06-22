@@ -16,6 +16,7 @@ export type Clinic = {
   tel?: string; // dialable, e.g. +393396897057
   mobile?: boolean; // true → WhatsApp-capable
   email: string; // booking inbox for this clinic
+  logo?: string; // /images/clinics/<id>.<ext> — empty when no logo supplied
 };
 
 /** Fallback inbox for clinics without a dedicated address. */
@@ -224,6 +225,30 @@ export const clinics: Clinic[] = [
     email: CENTRAL_EMAIL,
   },
 ];
+
+/**
+ * Clinic logos (from the "Loghi Studi" folder, normalized into public/images/clinics).
+ * Studi without a supplied logo are intentionally absent → no logo shown.
+ */
+const clinicLogos: Record<string, string> = {
+  "calabrese-torino": "/images/clinics/calabrese-torino.webp",
+  "givi-seregno": "/images/clinics/givi.png",
+  "givi-monza": "/images/clinics/givi.png",
+  "zorzi-piera": "/images/clinics/zorzi-piera.jpg",
+  "marco-pasqualini-milano": "/images/clinics/marco-pasqualini-milano.png",
+  "massimo-pasqualini-trento": "/images/clinics/massimo-pasqualini-trento.png",
+  "manenti-bergamo": "/images/clinics/manenti-bergamo.jpg",
+  "dental-chiese-creto": "/images/clinics/dental-chiese-creto.avif",
+  "methas-montebelluna": "/images/clinics/methas-montebelluna.webp",
+  "leonardi-genova": "/images/clinics/leonardi-genova.jpg",
+  "clinica-sorriso-tione": "/images/clinics/clinica-sorriso-tione.jpg",
+  "tv-odontoiatria-gardolo": "/images/clinics/tv-odontoiatria-gardolo.webp",
+  "identico-pagani": "/images/clinics/identico-pagani.png",
+};
+
+for (const c of clinics) {
+  if (clinicLogos[c.id]) c.logo = clinicLogos[c.id];
+}
 
 /** Full one-line address for display and geocoding (skips missing parts). */
 export function clinicFullAddress(c: Clinic): string {

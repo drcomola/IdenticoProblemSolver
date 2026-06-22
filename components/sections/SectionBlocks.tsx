@@ -90,7 +90,7 @@ function renderBlock(
     case "statement":
       return (
         <Reveal className="mx-auto max-w-3xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-aqua">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-teal">
             {block.heading}
           </p>
           <p className="mt-4 font-display text-2xl leading-snug text-teal-deep sm:text-3xl">
@@ -153,6 +153,56 @@ function renderBlock(
               </figcaption>
             ) : null}
           </figure>
+        </Reveal>
+      );
+
+    case "embed":
+      return (
+        <Reveal className="mx-auto max-w-4xl">
+          <div className="rounded-2xl border border-titanium/60 bg-white p-8 text-center shadow-soft sm:p-10">
+            {block.logo ? (
+              <div className="relative mx-auto mb-6 h-16 w-56">
+                <Image
+                  src={block.logo}
+                  alt={block.logoAlt ?? ""}
+                  fill
+                  className="object-contain"
+                  sizes="224px"
+                />
+              </div>
+            ) : null}
+            {block.heading ? (
+              <h2 className="text-2xl font-semibold text-teal-deep sm:text-3xl">
+                {block.heading}
+              </h2>
+            ) : null}
+            {block.body ? (
+              <p className="mx-auto mt-4 max-w-2xl leading-relaxed text-ink/75">
+                {block.body}
+              </p>
+            ) : null}
+            {block.url ? (
+              <div className="mt-8 overflow-hidden rounded-xl border border-titanium/60">
+                <iframe
+                  src={block.url}
+                  title={block.heading ?? block.logoAlt ?? "Embed"}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="h-[520px] w-full bg-white"
+                />
+              </div>
+            ) : null}
+            {block.url ? (
+              <a
+                href={block.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-teal hover:text-teal-deep"
+              >
+                {block.linkLabel ?? block.url} ↗
+              </a>
+            ) : null}
+          </div>
         </Reveal>
       );
 

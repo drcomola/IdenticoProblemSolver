@@ -30,7 +30,7 @@ export function FAQAccordion({ items }: { items: FaqItem[] }) {
                 <span>{item.question}</span>
                 <span
                   aria-hidden
-                  className={`shrink-0 text-aqua transition-transform duration-300 ${
+                  className={`shrink-0 text-teal transition-transform duration-300 ${
                     isOpen ? "rotate-45" : ""
                   }`}
                 >

@@ -216,7 +216,7 @@ export default async function AudienceHomePage({ params }: { params: Params }) {
             <Reveal>
               <div className="grid gap-8 rounded-xl border border-white/10 bg-white/[0.045] p-6 shadow-panel backdrop-blur-md sm:p-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-aqua">
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-teal">
                     {gameSpotlight[loc].eyebrow}
                   </p>
                   <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
@@ -252,7 +252,7 @@ export default async function AudienceHomePage({ params }: { params: Params }) {
           <div className="bg-technical-grid pointer-events-none absolute inset-0" />
           <Container className="relative z-10 py-20 sm:py-24">
             <Reveal className="max-w-3xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-aqua">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-teal">
                 {platformIntro[loc].eyebrow}
               </p>
               <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
@@ -273,7 +273,7 @@ export default async function AudienceHomePage({ params }: { params: Params }) {
                     <span className="mt-3 text-sm leading-relaxed text-canvas/[0.62]">
                       {card.body}
                     </span>
-                    <span className="mt-auto pt-5 text-sm font-semibold text-aqua transition-transform group-hover:translate-x-1">
+                    <span className="mt-auto pt-5 text-sm font-semibold text-teal transition-transform group-hover:translate-x-1">
                       -&gt;
                     </span>
                   </a>
@@ -288,7 +288,7 @@ export default async function AudienceHomePage({ params }: { params: Params }) {
         <section className={isColleagues ? "bg-night text-canvas" : "bg-aqua-wash"}>
           <Container className="py-16 sm:py-20">
             <Reveal className="mx-auto max-w-3xl text-center">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-aqua">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-teal">
                 {data.keyMessage.heading}
               </p>
               <p

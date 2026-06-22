@@ -684,6 +684,11 @@ export const colleaguesSectionsIt: AudienceSections = {
       "Formazione individuale o per team clinici, costruita sui casi reali dello studio.",
     blocks: [
       {
+        type: "statement",
+        heading: "To be announced",
+        body: "Le prossime date e i programmi dei corsi privati sono in via di definizione. Lascia una richiesta per essere avvisato in anteprima.",
+      },
+      {
         type: "list",
         heading: "Formato",
         items: [
@@ -746,6 +751,15 @@ export const colleaguesSectionsIt: AudienceSections = {
         title: "Video evento internazionale",
         caption: "Formazione e confronto internazionale sugli allineatori e sui workflow digitali.",
       },
+      {
+        type: "embed",
+        logo: "/images/brand/sas.png",
+        logoAlt: "Smart Aligner Services",
+        heading: "Smart Aligner Services",
+        body: "Scopri programmi, eventi e percorsi formativi direttamente sul sito ufficiale SAS.",
+        url: "https://smartalignerservices.com/it/",
+        linkLabel: "Apri smartalignerservices.com",
+      },
     ],
     primaryCta: c("consulting", "Richiedi informazioni sui corsi SAS"),
     secondaryCta: c("consulting", "Scopri la mentorship"),
@@ -757,31 +771,20 @@ export const colleaguesSectionsIt: AudienceSections = {
       description:
         "Uno spazio per analizzare casi, dubbi e strategie di trattamento con allineatori trasparenti.",
     },
-    h1: "P2P Align. Confronto clinico tra colleghi.",
+    h1: "P2P Align.",
     subtitle:
-      "Uno spazio per analizzare casi, dubbi e strategie di trattamento con allineatori.",
+      "Il programma Peer to Peer è gestito direttamente da Invisalign.",
     blocks: [
       {
-        type: "list",
-        heading: "Temi",
-        items: [
-          "Lettura del caso.",
-          "Obiettivi realistici.",
-          "Prescrizione.",
-          "Staging.",
-          "Attachments e ausiliari.",
-          "Elastici e controllo biomeccanico.",
-          "Refinement e gestione degli imprevisti.",
-        ],
-      },
-      {
-        type: "statement",
-        heading: "Valore",
-        body: "Il confronto migliore non conferma quello che hai già deciso. Ti fa vedere quello che stavi sottovalutando.",
+        type: "embed",
+        logo: "/images/brand/invisalign.png",
+        logoAlt: "Invisalign",
+        heading: "Un programma gestito da Invisalign",
+        body: "Il P2P (Peer to Peer) Align è un'iniziativa gestita direttamente da Align Technology / Invisalign. Per informazioni, requisiti e adesione, contatta il tuo Territory Manager Invisalign di riferimento, che potrà guidarti nel percorso più adatto.",
       },
     ],
-    primaryCta: c("consulting", "Richiedi informazioni P2P"),
-    secondaryCta: c("consulting", "Vai alla consulenza"),
+    primaryCta: c("consulting", "Vai alla consulenza"),
+    secondaryCta: c("education", "Scopri la formazione"),
   },
 
   "clinical-cases": {
@@ -861,7 +864,6 @@ export const colleaguesSectionsIt: AudienceSections = {
             options: [
               "Corso privato",
               "Mentorship",
-              "P2P Align",
               "Consulenza ClinCheck",
               "Corsi SAS",
             ],

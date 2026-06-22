@@ -90,6 +90,16 @@ export type Block =
       title: string;
       caption?: string;
     }
+  | {
+      /** Brand notice (optional logo + text) and/or an external site embed (iframe). */
+      type: "embed";
+      heading?: string;
+      body?: string;
+      logo?: string;
+      logoAlt?: string;
+      url?: string;
+      linkLabel?: string;
+    }
   | { type: "faq"; heading?: string; items: FaqEntry[] }
   | {
       type: "cases";

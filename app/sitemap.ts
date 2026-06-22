@@ -11,6 +11,7 @@ import {
   phase1Sections,
   type AlternateMap,
 } from "@/lib/routes";
+import { casesForAudience } from "@/content/cases";
 
 function abs(path: string): string {
   return `${SITE_URL}${path}`;
@@ -62,6 +63,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
           },
         });
       }
+    }
+
+    // Clinical-case detail pages — canonical set under the patients journey
+    // (cases are "both", but we list one URL per case to avoid duplication).
+    for (const c of casesForAudience("patients")) {
+      entries.push({
+        url: abs(`${sectionPath(locale, "patients", "clinical-cases")}/${c.slug}`),
+        lastModified,
+        changeFrequency: "yearly",
+        priority: 0.6,
+        alternates: {
+          languages: Object.fromEntries(
+            locales.map((l) => [
+              l,
+              abs(`${sectionPath(l, "patients", "clinical-cases")}/${c.slug}`),
+            ]),
+          ),
+        },
+      });
     }
 
     for (const doc of ["privacy", "cookie"]) {

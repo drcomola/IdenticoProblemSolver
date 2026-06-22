@@ -71,6 +71,22 @@ export type CaseImagePair = {
   after: CaseImage;
 };
 
+/** Patient-friendly malocclusion categories used by browse + smile finder. */
+export type CaseCategoryKey =
+  | "crowding"
+  | "deep-bite"
+  | "open-bite"
+  | "crossbite"
+  | "class-ii"
+  | "class-iii"
+  | "spacing"
+  | "impacted-canine"
+  | "interceptive"
+  | "interdisciplinary"
+  | "relapse";
+
+export type PatientType = "child" | "teen" | "adult";
+
 export type ClinicalCase = {
   slug: string;
   /** Which journey(s) the case is shown in. */
@@ -85,6 +101,10 @@ export type ClinicalCase = {
   consent: boolean;
   featured?: boolean;
   publishedAt: string; // ISO date
+  /** Browse/quiz metadata (derived in the factory, override per case if needed). */
+  patientType?: PatientType;
+  categories?: CaseCategoryKey[];
+  tags?: string[];
 };
 
 /**
@@ -141,6 +161,7 @@ const categoryCopy: Record<string, Record<Locale, string>> = {
   "pre-protesico": text("Pre-Protesico", "Pre-prosthetic", "Preprotesico"),
   "seconda-classe": text("Seconda Classe", "Class II", "Clase II"),
   "terza-classe": text("Terza Classe", "Class III", "Clase III"),
+  "diastemi": text("Diastemi", "Spacing", "Diastemas"),
 };
 
 const phaseCopy: Record<CaseImageKind, Record<Locale, string>> = {
@@ -188,16 +209,63 @@ function image(
   };
 }
 
+/** Italian category folder → patient-friendly category key(s). */
+const categorySlugToKeys: Record<string, CaseCategoryKey[]> = {
+  affollamento: ["crowding"],
+  "seconda-classe": ["class-ii"],
+  "terza-classe": ["class-iii"],
+  "morso-coperto": ["deep-bite"],
+  "morso-aperto": ["open-bite"],
+  "morso-crociato": ["crossbite"],
+  diastemi: ["spacing"],
+  estetico: ["spacing"],
+  agenesie: ["interdisciplinary"],
+  "pre-protesico": ["interdisciplinary"],
+  parodontale: ["interdisciplinary"],
+  "casi-complessi": ["interdisciplinary"],
+};
+
+/** Derive categories from folder + slug/title keywords (additive). */
+function deriveCategories(
+  slug: string,
+  categorySlug: string,
+  title: string,
+): CaseCategoryKey[] {
+  const keys = new Set<CaseCategoryKey>(categorySlugToKeys[categorySlug] ?? []);
+  const hay = `${slug} ${title}`.toLowerCase();
+  if (/canin|inclus/.test(hay)) keys.add("impacted-canine");
+  if (/cresc|espansion|bambin|interc/.test(hay)) keys.add("interceptive");
+  if (/followup|follow-up|recidiv|relapse/.test(hay)) keys.add("relapse");
+  return [...keys];
+}
+
+function derivePatientType(title: string): PatientType | undefined {
+  const t = title.toLowerCase();
+  if (/bambin|infantil/.test(t)) return "child";
+  if (/adolescent/.test(t)) return "teen";
+  if (/adult/.test(t)) return "adult";
+  if (/cresc/.test(t)) return "child";
+  return undefined;
+}
+
 function clinicalCase({
   slug,
   categorySlug,
   title,
   images,
+  patientType,
+  categories,
+  tags,
+  featured,
 }: {
   slug: string;
   categorySlug: keyof typeof categoryCopy;
   title: Record<Locale, string>;
   images: CaseImage[];
+  patientType?: PatientType;
+  categories?: CaseCategoryKey[];
+  tags?: string[];
+  featured?: boolean;
 }): ClinicalCase {
   return {
     slug,
@@ -209,6 +277,10 @@ function clinicalCase({
     images,
     consent: true,
     publishedAt: "2026-06-18",
+    patientType: patientType ?? derivePatientType(title.it),
+    categories: categories ?? deriveCategories(slug, categorySlug, title.it),
+    tags,
+    featured,
   };
 }
 
@@ -233,6 +305,18 @@ function pairedImages(
 
 export const cases: ClinicalCase[] = [
   clinicalCase({
+    slug: "diastemi-01",
+    categorySlug: "diastemi",
+    title: text(
+      "Diastemi e spazi tra i denti",
+      "Spacing and gaps between teeth",
+      "Diastemas y espacios entre dientes",
+    ),
+    patientType: "adult",
+    featured: true,
+    images: pairedImages("diastemi", "diastemi-01"),
+  }),
+  clinicalCase({
     slug: "affollamento-grave-followup",
     categorySlug: "affollamento",
     title: text("Affollamento grave con follow-up", "Severe crowding with follow-up", "Apinamiento severo con seguimiento"),
@@ -249,11 +333,7 @@ export const cases: ClinicalCase[] = [
     slug: "affollamento-grave-adulto",
     categorySlug: "affollamento",
     title: text("Affollamento grave nell'adulto", "Severe adult crowding", "Apinamiento severo en adulto"),
-    images: pairedImages("affollamento", "affollamento-grave-adulto", [
-      ...views5.slice(0, 3),
-      ["overjet", "overjet"],
-      ...views5.slice(3),
-    ]),
+    images: pairedImages("affollamento", "affollamento-grave-adulto"),
   }),
   clinicalCase({
     slug: "affollamento-seconda-classe",
@@ -528,4 +608,84 @@ export function caseImagePairs(c: ClinicalCase): CaseImagePair[] {
       return before && after ? { view, before, after } : undefined;
     })
     .filter((pair): pair is CaseImagePair => Boolean(pair));
+}
+
+/* ------------------------------------------------------------------ */
+/* Browse + Smile Finder taxonomy & previews                           */
+/* ------------------------------------------------------------------ */
+
+/** Display order for the category grid. */
+export const caseCategoryOrder: CaseCategoryKey[] = [
+  "crowding",
+  "deep-bite",
+  "open-bite",
+  "crossbite",
+  "class-ii",
+  "class-iii",
+  "spacing",
+  "impacted-canine",
+  "interceptive",
+  "interdisciplinary",
+  "relapse",
+];
+
+/** Patient-friendly category labels. */
+export const caseCategoryLabels: Record<CaseCategoryKey, Record<Locale, string>> = {
+  crowding: text("Affollamento / denti storti", "Crowding / crooked teeth", "Apiñamiento / dientes torcidos"),
+  "deep-bite": text("Morso coperto", "Deep bite", "Mordida profunda"),
+  "open-bite": text("Morso aperto", "Open bite", "Mordida abierta"),
+  crossbite: text("Morso crociato", "Crossbite", "Mordida cruzada"),
+  "class-ii": text("Denti superiori sporgenti", "Protruding upper teeth", "Dientes superiores salientes"),
+  "class-iii": text("Terza classe / morso inverso", "Class III / underbite", "Clase III / mordida invertida"),
+  spacing: text("Spazi tra i denti", "Spacing", "Espacios entre dientes"),
+  "impacted-canine": text("Canino incluso / dente bloccato", "Impacted canine", "Canino incluido"),
+  interceptive: text("Bambini e crescita", "Children & growth", "Niños y crecimiento"),
+  interdisciplinary: text("Casi complessi", "Complex cases", "Casos complejos"),
+  relapse: text("Recidive ortodontiche", "Orthodontic relapse", "Recidivas ortodónticas"),
+};
+
+export function casesByCategory(key: CaseCategoryKey): ClinicalCase[] {
+  return cases.filter((c) => c.categories?.includes(key));
+}
+
+/** Featured cases, with a graceful fallback to the first complete cases. */
+export function featuredCases(limit = 6): ClinicalCase[] {
+  const flagged = cases.filter((c) => c.featured);
+  const pool = flagged.length ? flagged : cases;
+  return pool.slice(0, limit);
+}
+
+/** Serializable, localized preview for the client explorer/quiz. */
+export type CasePreview = {
+  slug: string;
+  title: string;
+  categories: CaseCategoryKey[];
+  primaryCategoryLabel: string;
+  patientType?: PatientType;
+  tags: string[];
+  featured: boolean;
+  beforeSrc?: string;
+  afterSrc?: string;
+  beforeAlt?: string;
+  afterAlt?: string;
+};
+
+export function getCasePreviews(locale: Locale): CasePreview[] {
+  return cases.map((c) => {
+    const pair = caseImagePairs(c)[0];
+    const cats = c.categories ?? [];
+    return {
+      slug: c.slug,
+      title: c.title[locale],
+      categories: cats,
+      primaryCategoryLabel: cats[0] ? caseCategoryLabels[cats[0]][locale] : c.category,
+      patientType: c.patientType,
+      tags: c.tags ?? [],
+      featured: Boolean(c.featured),
+      beforeSrc: pair?.before.src,
+      afterSrc: pair?.after.src,
+      beforeAlt: pair?.before.alt[locale],
+      afterAlt: pair?.after.alt[locale],
+    };
+  });
 }
