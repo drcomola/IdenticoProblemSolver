@@ -25,6 +25,8 @@ next-env.d.ts
 /Logo brand/
 /Casiclinici/
 /Fotodrop/
+# game source sub-project (built static export lives in /public/gioco-allineatori)
+/Videogame prova/
 /InvisalignVideoGame/chrome-test-profile/
 /InvisalignVideoGame/chrome-test-profile-mobile/
 

@@ -250,7 +250,7 @@ export const patientsSectionsEn: AudienceSections = {
       {
         type: "game",
         heading: "Aligner game",
-        src: "/gioco-allineatori/index.html",
+        src: "/gioco-allineatori/it/pazienti/smile-runner/index.html",
         title: "Aligner game",
         directLinkLabel: "Open full screen",
       },
