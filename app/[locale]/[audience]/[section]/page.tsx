@@ -18,7 +18,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { Filigree } from "@/components/ui/Filigree";
-import { Icon, sectionIconName } from "@/components/ui/icons";
+import { SectionBrandIcon } from "@/components/icons/SectionBrandIcon";
 import { sectionLabel } from "@/content/navigation";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { SectionBlocks } from "@/components/sections/SectionBlocks";
@@ -253,7 +253,7 @@ export default async function SectionPage({ params }: { params: Params }) {
     <>
       <HeroSection
         eyebrow={sectionLabel(loc, aud, sec)}
-        icon={<Icon name={sectionIconName(aud, sec)} className="h-6 w-6" />}
+        icon={<SectionBrandIcon audience={aud} section={sec} className="h-8 w-8" />}
         title={isPatientCases ? xs.heroTitle : data.h1}
         subtitle={isPatientCases ? xs.heroSubtitle : data.subtitle}
         intro={isPatientCases ? undefined : data.lead}
@@ -301,7 +301,7 @@ export default async function SectionPage({ params }: { params: Params }) {
           bookHref={sectionPath(loc, "patients", "book")}
         />
       ) : (
-        <SectionBlocks blocks={data.blocks} locale={loc} audience={aud} />
+        <SectionBlocks blocks={data.blocks} locale={loc} audience={aud} section={sec} />
       )}
 
       {/* Closing conversion band */}
