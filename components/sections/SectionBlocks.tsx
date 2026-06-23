@@ -325,7 +325,7 @@ function renderBlock(
               city: c.city,
               email: c.email,
               tel: c.tel,
-              mobile: c.mobile,
+              whatsapp: c.whatsapp,
               whatsappUrl: clinicWhatsappUrl(c),
               mapsUrl: clinicMapsUrl(c),
             })),

@@ -17,7 +17,7 @@ export type ClinicOption = {
   city: string;
   email: string;
   tel?: string;
-  mobile?: boolean;
+  whatsapp?: string;
   whatsappUrl: string;
   mapsUrl: string;
 };
@@ -171,7 +171,7 @@ export function ContactForm({
                     {clinicPicker.callLabel}
                   </a>
                 ) : null}
-                {selectedClinic.mobile && selectedClinic.tel ? (
+                {selectedClinic.whatsapp ? (
                   <a
                     href={selectedClinic.whatsappUrl}
                     target="_blank"

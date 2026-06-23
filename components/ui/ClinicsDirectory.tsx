@@ -64,7 +64,21 @@ export function ClinicsDirectory({ labels }: { labels: Labels }) {
                 />
               </div>
             ) : null}
-            <h3 className="text-base font-semibold text-teal-deep">{clinic.name}</h3>
+            <h3 className="text-base font-semibold text-teal-deep">
+              {clinic.website ? (
+                <a
+                  href={clinic.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline-offset-2 transition-colors hover:text-teal hover:underline"
+                >
+                  {clinic.name}
+                  <span aria-hidden className="ml-1 text-xs text-teal/70">↗</span>
+                </a>
+              ) : (
+                clinic.name
+              )}
+            </h3>
             <p className="mt-2 flex items-start gap-2 text-sm leading-relaxed text-ink/70">
               <Icon name="pin" className="mt-0.5 h-4 w-4 shrink-0 text-teal" />
               <span>
@@ -89,7 +103,7 @@ export function ClinicsDirectory({ labels }: { labels: Labels }) {
                   {labels.call}
                 </a>
               ) : null}
-              {clinic.mobile && clinic.tel ? (
+              {clinic.whatsapp ? (
                 <a
                   href={clinicWhatsappUrl(clinic)}
                   target="_blank"

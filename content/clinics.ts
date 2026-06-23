@@ -1,7 +1,8 @@
 /**
  * Collaborating clinics (studi). Real partner practices supplied by Dr. Comola.
- * Phones are kept as given for display; `tel` is the dialable E.164-ish form and
- * `mobile` marks numbers that can receive WhatsApp.
+ * `phone` is the display telephone, `tel` its dialable form; `whatsapp` is a
+ * separate dialable WhatsApp number (only set when confirmed); `website` is the
+ * official studio site. Contacts updated 23/06/2026 from public sources.
  */
 
 export type Clinic = {
@@ -12,10 +13,11 @@ export type Clinic = {
   city: string;
   province?: string;
   country: string; // ISO display ("IT")
-  phone?: string; // display (optional until confirmed)
-  tel?: string; // dialable, e.g. +393396897057
-  mobile?: boolean; // true → WhatsApp-capable
+  phone?: string; // display telephone (optional until confirmed)
+  tel?: string; // dialable phone, e.g. +390114373515
+  whatsapp?: string; // dialable WhatsApp number, e.g. +393924709233 (only when confirmed)
   email: string; // booking inbox for this clinic
+  website?: string; // official studio site (clickable name)
   logo?: string; // /images/clinics/<id>.<ext> — empty when no logo supplied
 };
 
@@ -30,10 +32,11 @@ export const clinics: Clinic[] = [
     zip: "10143",
     city: "Torino",
     country: "IT",
-    phone: "+39 114 373515",
-    tel: "+39114373515",
-    mobile: false,
+    phone: "011 437 3515",
+    tel: "+390114373515",
+    whatsapp: "+393924709233",
     email: "infostudiocalabrese@gmail.com",
+    website: "https://dottordavidecalabrese.it",
   },
   {
     id: "givi-seregno",
@@ -43,10 +46,10 @@ export const clinics: Clinic[] = [
     city: "Seregno",
     province: "MB",
     country: "IT",
-    phone: "+39 39 238522",
-    tel: "+3939238522",
-    mobile: false,
+    phone: "0362 238522",
+    tel: "+390362238522",
     email: "accettazione@gividental.com",
+    website: "https://www.gividental.com/studio-dentistico-seregno/",
   },
   {
     id: "givi-monza",
@@ -56,22 +59,24 @@ export const clinics: Clinic[] = [
     city: "Monza",
     province: "MB",
     country: "IT",
-    phone: "+39 039 748434",
+    phone: "039 748434",
     tel: "+39039748434",
-    mobile: false,
-    email: "accettazione@gividental.com",
+    email: "amministrazione@gividental.com",
+    website: "https://www.gividental.com/locations/studio-dentistico-monza-gividental/",
   },
   {
     id: "zorzi-piera",
     name: "Dr. Thomas Zorzi",
     address: "Località Piera 2",
     zip: "38038",
-    city: "Piera",
+    city: "Tesero",
+    province: "TN",
     country: "IT",
-    phone: "339 6897057",
-    tel: "+393396897057",
-    mobile: true,
+    phone: "0462 813121",
+    tel: "+390462813121",
+    whatsapp: "+393272466217",
     email: "thomaszorziodontoiatra@gmail.com",
+    website: "https://www.studiodentisticozorzi.com",
   },
   {
     id: "arri-asti",
@@ -80,9 +85,8 @@ export const clinics: Clinic[] = [
     zip: "14100",
     city: "Asti",
     country: "IT",
-    phone: "339 6897057",
-    tel: "+393396897057",
-    mobile: true,
+    phone: "0141 275444",
+    tel: "+390141275444",
     email: CENTRAL_EMAIL,
   },
   {
@@ -92,10 +96,10 @@ export const clinics: Clinic[] = [
     zip: "20149",
     city: "Milano",
     country: "IT",
-    phone: "+39 02 799651",
+    phone: "02 799651",
     tel: "+3902799651",
-    mobile: false,
-    email: CENTRAL_EMAIL,
+    email: "dott.marcopasqualini@gmail.com",
+    website: "https://www.studiomarcopasqualini.it",
   },
   {
     id: "paolo-pasqualini-borgovalsugana",
@@ -105,9 +109,8 @@ export const clinics: Clinic[] = [
     city: "Borgo Valsugana",
     province: "TN",
     country: "IT",
-    phone: "+39 461 753176",
-    tel: "+39461753176",
-    mobile: false,
+    phone: "0461 753176",
+    tel: "+390461753176",
     email: "infostudiodentisticopasqualini@gmail.com",
   },
   {
@@ -118,10 +121,10 @@ export const clinics: Clinic[] = [
     city: "Trento",
     province: "TN",
     country: "IT",
-    phone: "+39 461 923444",
-    tel: "+39461923444",
-    mobile: false,
+    phone: "0461 923444",
+    tel: "+390461923444",
     email: "studio.massimo.pasqualini@gmail.com",
+    website: "https://www.dentistapasqualini.it",
   },
   {
     id: "manenti-bergamo",
@@ -130,10 +133,10 @@ export const clinics: Clinic[] = [
     zip: "24122",
     city: "Bergamo",
     country: "IT",
-    phone: "+39 35 238782",
-    tel: "+3935238782",
-    mobile: false,
-    email: "info@studiodentisticomanenti.it",
+    phone: "035 238782",
+    tel: "+39035238782",
+    email: "info@studioodontoiatricomanenti.it",
+    website: "https://www.studioodontoiatricomanenti.it",
   },
   {
     id: "dental-chiese-creto",
@@ -143,21 +146,21 @@ export const clinics: Clinic[] = [
     city: "Creto",
     province: "TN",
     country: "IT",
-    phone: "+39 465 674621",
-    tel: "+39465674621",
-    mobile: false,
-    email: "dentalchiese@gmail.com",
+    phone: "0465 674621",
+    tel: "+390465674621",
+    whatsapp: "+393276862223",
+    email: "info@dentalchiese.it",
+    website: "https://www.dentalchiese.it",
   },
   {
     id: "rinonapoli-milano",
-    name: "Dr. Rinonapoli Mauro",
+    name: "Dr. Mauro Rinonapoli",
     address: "Via Pinamonte da Vimercate 3",
     zip: "20121",
     city: "Milano",
     country: "IT",
-    phone: "+39 02 798740",
+    phone: "02 798740",
     tel: "+3902798740",
-    mobile: false,
     email: CENTRAL_EMAIL,
   },
   {
@@ -168,10 +171,11 @@ export const clinics: Clinic[] = [
     city: "Montebelluna",
     province: "TV",
     country: "IT",
-    phone: "+39 42 321159",
-    tel: "+3942321159",
-    mobile: false,
+    phone: "0423 21159",
+    tel: "+39042321159",
+    whatsapp: "+39042321159",
     email: "info@methas.it",
+    website: "https://www.methas.it",
   },
   {
     id: "leonardi-genova",
@@ -180,10 +184,10 @@ export const clinics: Clinic[] = [
     zip: "16121",
     city: "Genova",
     country: "IT",
-    phone: "+39 0105 740296",
+    phone: "010 5740296",
     tel: "+390105740296",
-    mobile: false,
     email: "info@alessandroleonardi.it",
+    website: "https://alessandroleonardi.it",
   },
   {
     id: "clinica-sorriso-tione",
@@ -193,10 +197,10 @@ export const clinics: Clinic[] = [
     city: "Tione di Trento",
     province: "TN",
     country: "IT",
-    phone: "+39 0465 881611",
+    phone: "0465 881611",
     tel: "+390465881611",
-    mobile: false,
     email: "Saranna.sas01@gmail.com",
+    website: "https://www.clinicadelsorriso.eu",
   },
   {
     id: "tv-odontoiatria-gardolo",
@@ -206,10 +210,11 @@ export const clinics: Clinic[] = [
     city: "Trento — Gardolo",
     province: "TN",
     country: "IT",
-    phone: "+39 0461 961718",
+    phone: "0461 961718",
     tel: "+390461961718",
-    mobile: false,
+    whatsapp: "+393519007275",
     email: "info@tvodontoiatria.it",
+    website: "https://www.tvodontoiatria.it",
   },
   {
     id: "identico-pagani",
@@ -219,10 +224,10 @@ export const clinics: Clinic[] = [
     city: "Pagani",
     province: "SA",
     country: "IT",
-    phone: "+39 0811 9758822",
+    phone: "081 19758822",
     tel: "+3908119758822",
-    mobile: false,
     email: CENTRAL_EMAIL,
+    website: "https://tortoramedical.it",
   },
 ];
 
@@ -268,9 +273,9 @@ export function clinicEmbedUrl(c: Clinic): string {
   return `https://www.google.com/maps?q=${q}&output=embed`;
 }
 
-/** wa.me link (digits only, no +). Only meaningful when c.mobile is true. */
+/** wa.me link (digits only, no +). Only meaningful when c.whatsapp is set. */
 export function clinicWhatsappUrl(c: Clinic, text?: string): string {
-  const digits = (c.tel ?? "").replace(/[^\d]/g, "");
+  const digits = (c.whatsapp ?? "").replace(/[^\d]/g, "");
   const suffix = text ? `?text=${encodeURIComponent(text)}` : "";
   return `https://wa.me/${digits}${suffix}`;
 }
