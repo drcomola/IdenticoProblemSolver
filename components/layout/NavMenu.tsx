@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import type { Locale } from "@/lib/i18n";
-import { Icon, type IconName } from "@/components/ui/icons";
+import { Icon } from "@/components/ui/icons";
 import { Logo } from "@/components/ui/Logo";
 import { LanguageSelector } from "./LanguageSelector";
 
-export type NavItem = { label: string; href: string; iconName: IconName };
+export type NavItem = { label: string; href: string; icon: ReactNode };
 export type NavGroup = {
   key: string;
   label: string;
@@ -97,8 +97,8 @@ export function NavMenu({
                             href={item.href}
                             className="group flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-ink/[0.78] transition-colors hover:bg-teal-deep/5 hover:text-teal-deep"
                           >
-                            <span className="flex h-10 w-10 items-center justify-center rounded-md bg-teal-deep/6 text-teal-deep ring-1 ring-teal-deep/8 transition-colors group-hover:bg-aqua/[0.12] group-hover:text-teal">
-                              <Icon name={item.iconName} className="h-[22px] w-[22px]" />
+                            <span className="flex h-10 w-10 items-center justify-center rounded-md bg-teal-deep/6 text-teal-deep ring-1 ring-teal-deep/8 transition-colors group-hover:bg-aqua/[0.12] group-hover:text-teal [&_svg]:h-[22px] [&_svg]:w-[22px]">
+                              {item.icon}
                             </span>
                             <span className="min-w-0">{item.label}</span>
                           </Link>
@@ -169,8 +169,8 @@ export function NavMenu({
                         href={item.href}
                         className="flex items-center gap-3 rounded-lg px-3 py-3 text-sm text-ink/80 hover:bg-teal-deep/5"
                       >
-                        <span className="flex h-11 w-11 items-center justify-center rounded-md bg-teal-deep/6 text-teal-deep ring-1 ring-teal-deep/8">
-                          <Icon name={item.iconName} className="h-6 w-6" />
+                        <span className="flex h-11 w-11 items-center justify-center rounded-md bg-teal-deep/6 text-teal-deep ring-1 ring-teal-deep/8 [&_svg]:h-6 [&_svg]:w-6">
+                          {item.icon}
                         </span>
                         <span className="min-w-0">{item.label}</span>
                       </Link>

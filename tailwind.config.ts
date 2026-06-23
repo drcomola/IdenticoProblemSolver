@@ -12,13 +12,13 @@ const config: Config = {
       colors: {
         // iDenTiCo luxury-tech palette
         teal: {
-          DEFAULT: "#006D88",
-          deep: "#00323D",
+          DEFAULT: "#1A7A8C", // medium teal — hover / accent text
+          deep: "#0F4C5C",   // darkest teal — headings / primary backgrounds
         },
         aqua: {
-          DEFAULT: "#00DDF9",
-          dark: "#00DDF9",
-          soft: "#4FB3BF",
+          DEFAULT: "#4FB3BF", // brand aqua
+          dark: "#3A98A4",    // slightly deeper for contrast
+          soft: "#8ED4DA",    // pale tint for backgrounds
         },
         blue: {
           accent: "#0039A3",
@@ -45,8 +45,8 @@ const config: Config = {
         tightish: "0em",
       },
       boxShadow: {
-        soft: "0 24px 80px -46px rgba(0, 50, 61, 0.45)",
-        glow: "0 0 0 1px rgba(0, 221, 249, 0.18), 0 24px 80px -44px rgba(0, 221, 249, 0.5)",
+        soft: "0 24px 80px -46px rgba(15, 76, 92, 0.36)",
+        glow: "0 0 0 1px rgba(79, 179, 191, 0.2), 0 24px 80px -44px rgba(79, 179, 191, 0.42)",
         panel: "0 30px 90px -55px rgba(2, 7, 10, 0.8)",
       },
       keyframes: {

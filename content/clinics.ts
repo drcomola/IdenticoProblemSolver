@@ -212,7 +212,7 @@ export const clinics: Clinic[] = [
     country: "IT",
     phone: "0461 961718",
     tel: "+390461961718",
-    whatsapp: "+393519007275",
+    whatsapp: "+390461961718",
     email: "info@tvodontoiatria.it",
     website: "https://www.tvodontoiatria.it",
   },
