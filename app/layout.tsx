@@ -19,6 +19,13 @@ export const metadata: Metadata = {
     "Advanced digital orthodontics for patients. Clinical education and mentorship for professionals.",
   applicationName: SITE_NAME,
   authors: [{ name: SITE_NAME }],
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icon.png", sizes: "64x64", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+  },
   robots: { index: true, follow: true },
 };
 

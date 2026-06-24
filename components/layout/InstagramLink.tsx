@@ -1,3 +1,5 @@
+"use client";
+
 const INSTAGRAM_URL = "https://www.instagram.com/dr.gio92/";
 const INSTAGRAM_HANDLE = "@dr.gio92";
 
@@ -23,7 +25,6 @@ function InstagramIcon({ className = "h-5 w-5" }: { className?: string }) {
 
 export function InstagramInlineLink({ tone = "light" }: { tone?: "light" | "dark" }) {
   const dark = tone === "dark";
-
   return (
     <a
       href={INSTAGRAM_URL}
@@ -46,10 +47,10 @@ export function InstagramFloatingLink() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`Follow me on Instagram ${INSTAGRAM_HANDLE}`}
-      className="fixed bottom-24 right-4 z-[70] inline-flex items-center gap-2 rounded-full border border-aqua/70 bg-aqua px-4 py-3 text-sm font-bold text-night shadow-[0_0_36px_-12px_rgba(0,221,249,0.95),0_18px_45px_-24px_rgba(2,7,10,0.9)] backdrop-blur-md transition-all hover:-translate-y-0.5 hover:bg-canvas hover:text-teal-deep sm:bottom-6 sm:right-6"
+      className="fixed right-3 top-[4.55rem] z-40 inline-flex items-center gap-2 rounded-full border border-aqua/70 bg-aqua/95 px-3.5 py-2 text-xs font-bold text-night shadow-[0_0_28px_-10px_rgba(0,221,249,0.9),0_14px_34px_-22px_rgba(2,7,10,0.9)] backdrop-blur-md transition-all hover:-translate-y-0.5 hover:bg-canvas hover:text-teal-deep sm:right-5 sm:px-4 sm:py-2.5 sm:text-sm"
     >
-      <InstagramIcon className="h-5 w-5" />
-      <span className="hidden sm:inline">Follow me on IG</span>
+      <InstagramIcon className="h-4 w-4 sm:h-5 sm:w-5" />
+      <span className="hidden lg:inline">Follow me on IG</span>
       <span>{INSTAGRAM_HANDLE}</span>
     </a>
   );

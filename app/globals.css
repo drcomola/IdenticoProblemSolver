@@ -65,7 +65,7 @@
   /* Subtle luxury-tech gradient field for hero/dark sections */
   .bg-night-field {
     background:
-      linear-gradient(135deg, rgba(0, 57, 163, 0.2) 0%, rgba(0, 50, 61, 0.14) 34%, rgba(2, 7, 10, 0) 62%),
+      linear-gradient(135deg, rgba(79, 179, 191, 0.18) 0%, rgba(15, 76, 92, 0.16) 34%, rgba(2, 7, 10, 0) 62%),
       linear-gradient(180deg, #02070a 0%, #061116 100%);
   }
 
@@ -80,7 +80,7 @@
   .bg-aqua-wash {
     background:
       linear-gradient(180deg, rgba(248, 250, 251, 0.94) 0%, rgba(239, 248, 250, 0.9) 100%),
-      linear-gradient(135deg, rgba(0, 221, 249, 0.08), rgba(0, 57, 163, 0.04)),
+      linear-gradient(135deg, rgba(79, 179, 191, 0.08), rgba(15, 76, 92, 0.04)),
       url("/images/brand/filigree-wave.png");
     background-repeat: no-repeat, no-repeat, no-repeat;
     background-position: center, center, right center;
@@ -88,7 +88,7 @@
   }
 
   .aqua-rule {
-    background: linear-gradient(90deg, rgba(0, 221, 249, 0), rgba(0, 221, 249, 0.85), rgba(0, 57, 163, 0));
+    background: linear-gradient(90deg, rgba(79, 179, 191, 0), rgba(79, 179, 191, 0.85), rgba(15, 76, 92, 0));
   }
 }
 

@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Audience, Locale } from "@/lib/i18n";
 import { sectionPath } from "@/lib/routes";
 import { sectionLabel, orderedSections } from "@/content/navigation";
-import { Icon, sectionIconName } from "@/components/ui/icons";
+import { SectionBrandIcon } from "@/components/icons/SectionBrandIcon";
 import { Container } from "../ui/Container";
 import { Reveal } from "../ui/Reveal";
 
@@ -49,7 +49,7 @@ export function SectionNavGrid({
                       : "bg-teal-deep/6 text-teal-deep ring-teal-deep/8 group-hover:bg-aqua/15"
                   }`}
                 >
-                  <Icon name={sectionIconName(audience, section)} className="h-7 w-7" />
+                  <SectionBrandIcon audience={audience} section={section} className="h-9 w-9" />
                 </span>
                 <span
                   className={`font-semibold ${
