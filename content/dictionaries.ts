@@ -33,12 +33,14 @@ export const dictionaries: Record<Locale, Dictionary> = {
     form: {
       success:
         "Grazie. La tua richiesta è stata presa in carico: ti ricontatteremo al più presto.",
+      error:
+        "Non è stato possibile inviare la richiesta. Riprova o contatta direttamente la sede.",
       consent:
         "Acconsento al trattamento dei miei dati per essere ricontattato, secondo l'informativa sulla privacy.",
       patientSubject: "Richiesta di prima visita ortodontica",
       colleagueSubject: "Richiesta formazione / consulenza — colleghi",
       mailtoHint:
-        "All'invio si aprirà la tua email con il messaggio precompilato verso lo studio.",
+        "Invio diretto: la richiesta arriva alla segreteria della sede selezionata.",
     },
     clinics: {
       call: "Chiama",
@@ -50,6 +52,34 @@ export const dictionaries: Record<Locale, Dictionary> = {
       selectPlaceholder: "Scegli lo studio più comodo",
       contactTitle: "Contatta direttamente la sede",
       mapOverviewTitle: "Le sedi sulla mappa",
+      emailCopy: "Copia email",
+      emailCopied: "Email copiata",
+      emailUnavailable: "Email non disponibile",
+      emailUseForm: "Per questa sede usa il form di prenotazione.",
+      bookHere: "Prenota in questa sede",
+    },
+    booking: {
+      clinicLabel: "Sede preferita",
+      clinicPlaceholder: "Scegli lo studio più comodo",
+      firstName: "Nome",
+      lastName: "Cognome",
+      phone: "Telefono",
+      email: "Email",
+      age: "Età del paziente",
+      city: "Città preferita",
+      xrays: "Hai già radiografie o scansioni?",
+      xraysYes: "Sì",
+      xraysNo: "No",
+      reason: "Motivo della richiesta",
+      consent:
+        "Acconsento al trattamento dei miei dati per essere ricontattato, secondo l'informativa sulla privacy.",
+      submit: "Invia richiesta di visita",
+      sending: "Invio in corso…",
+      success:
+        "Richiesta inviata correttamente. La segreteria della sede selezionata ti ricontatterà.",
+      error:
+        "Non è stato possibile inviare la richiesta. Riprova o contatta direttamente la sede.",
+      requiredHint: "I campi contrassegnati con * sono obbligatori.",
     },
     footer: {
       sectionsTitle: "Percorsi",
@@ -102,12 +132,14 @@ export const dictionaries: Record<Locale, Dictionary> = {
     form: {
       success:
         "Thank you. Your request has been received: we will get back to you shortly.",
+      error:
+        "We couldn't send your request. Please try again or contact the clinic directly.",
       consent:
         "I consent to the processing of my data to be contacted, in accordance with the privacy policy.",
       patientSubject: "Orthodontic first consultation request",
       colleagueSubject: "Education / consulting request — colleagues",
       mailtoHint:
-        "On submit, your email client opens with a pre-filled message to the clinic.",
+        "Sent directly: your request reaches the selected clinic's front desk.",
     },
     clinics: {
       call: "Call",
@@ -119,6 +151,34 @@ export const dictionaries: Record<Locale, Dictionary> = {
       selectPlaceholder: "Choose the most convenient clinic",
       contactTitle: "Contact the clinic directly",
       mapOverviewTitle: "Locations on the map",
+      emailCopy: "Copy email",
+      emailCopied: "Email copied",
+      emailUnavailable: "Email not available",
+      emailUseForm: "For this clinic, please use the booking form.",
+      bookHere: "Book at this clinic",
+    },
+    booking: {
+      clinicLabel: "Preferred location",
+      clinicPlaceholder: "Choose the most convenient clinic",
+      firstName: "First name",
+      lastName: "Last name",
+      phone: "Phone",
+      email: "Email",
+      age: "Patient age",
+      city: "Preferred city",
+      xrays: "Do you already have X-rays or scans?",
+      xraysYes: "Yes",
+      xraysNo: "No",
+      reason: "Reason for the request",
+      consent:
+        "I consent to the processing of my data to be contacted, in accordance with the privacy policy.",
+      submit: "Send appointment request",
+      sending: "Sending…",
+      success:
+        "Request sent successfully. The selected clinic's front desk will contact you.",
+      error:
+        "We couldn't send your request. Please try again or contact the clinic directly.",
+      requiredHint: "Fields marked with * are required.",
     },
     footer: {
       sectionsTitle: "Journeys",
@@ -171,12 +231,14 @@ export const dictionaries: Record<Locale, Dictionary> = {
     form: {
       success:
         "Gracias. Tu solicitud ha sido recibida: te contactaremos lo antes posible.",
+      error:
+        "No se ha podido enviar la solicitud. Inténtalo de nuevo o contacta directamente con la sede.",
       consent:
         "Consiento el tratamiento de mis datos para ser contactado, según la política de privacidad.",
       patientSubject: "Solicitud de primera visita ortodóncica",
       colleagueSubject: "Solicitud de formación / consultoría — colegas",
       mailtoHint:
-        "Al enviar se abrirá tu correo con un mensaje precargado hacia la clínica.",
+        "Envío directo: la solicitud llega a la recepción de la sede seleccionada.",
     },
     clinics: {
       call: "Llamar",
@@ -188,6 +250,34 @@ export const dictionaries: Record<Locale, Dictionary> = {
       selectPlaceholder: "Elige la clínica más cómoda",
       contactTitle: "Contacta directamente con la sede",
       mapOverviewTitle: "Las sedes en el mapa",
+      emailCopy: "Copiar email",
+      emailCopied: "Email copiado",
+      emailUnavailable: "Email no disponible",
+      emailUseForm: "Para esta sede usa el formulario de reserva.",
+      bookHere: "Reserva en esta sede",
+    },
+    booking: {
+      clinicLabel: "Sede preferida",
+      clinicPlaceholder: "Elige la clínica más cómoda",
+      firstName: "Nombre",
+      lastName: "Apellido",
+      phone: "Teléfono",
+      email: "Email",
+      age: "Edad del paciente",
+      city: "Ciudad preferida",
+      xrays: "¿Ya tienes radiografías o escaneos?",
+      xraysYes: "Sí",
+      xraysNo: "No",
+      reason: "Motivo de la solicitud",
+      consent:
+        "Consiento el tratamiento de mis datos para ser contactado, según la política de privacidad.",
+      submit: "Enviar solicitud de visita",
+      sending: "Enviando…",
+      success:
+        "Solicitud enviada correctamente. La recepción de la sede seleccionada te contactará.",
+      error:
+        "No se ha podido enviar la solicitud. Inténtalo de nuevo o contacta directamente con la sede.",
+      requiredHint: "Los campos marcados con * son obligatorios.",
     },
     footer: {
       sectionsTitle: "Recorridos",

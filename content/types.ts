@@ -177,11 +177,13 @@ export type Dictionary = {
   };
   form: {
     success: string;
+    /** Shown when a server-side submission fails. */
+    error: string;
     consent: string;
-    /** Subject lines for the generated mailto messages. */
+    /** Subject lines for the request emails. */
     patientSubject: string;
     colleagueSubject: string;
-    /** Hint shown near the submit button explaining the email client opens. */
+    /** Hint shown near the submit button. */
     mailtoHint: string;
   };
   clinics: {
@@ -194,6 +196,34 @@ export type Dictionary = {
     selectPlaceholder: string;
     contactTitle: string;
     mapOverviewTitle: string;
+    /** Email reveal/copy controls on each clinic card. */
+    emailCopy: string;
+    emailCopied: string;
+    emailUnavailable: string;
+    emailUseForm: string;
+    /** CTA on each clinic card → /prenota?sede=<bookingSlug>. */
+    bookHere: string;
+  };
+  /** Patient appointment booking form. */
+  booking: {
+    clinicLabel: string;
+    clinicPlaceholder: string;
+    firstName: string;
+    lastName: string;
+    phone: string;
+    email: string;
+    age: string;
+    city: string;
+    xrays: string;
+    xraysYes: string;
+    xraysNo: string;
+    reason: string;
+    consent: string;
+    submit: string;
+    sending: string;
+    success: string;
+    error: string;
+    requiredHint: string;
   };
   footer: {
     sectionsTitle: string;

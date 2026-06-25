@@ -4,11 +4,7 @@ import type { SectionKey } from "@/lib/routes";
 import Image from "next/image";
 import Link from "next/link";
 import { getDictionary } from "@/content";
-import {
-  clinics,
-  clinicMapsUrl,
-  clinicWhatsappUrl,
-} from "@/content/clinics";
+import { clinics } from "@/content/clinics";
 import { casesForAudience, caseImagePairs } from "@/content/cases";
 import { sectionPath } from "@/lib/routes";
 import { Container } from "../ui/Container";
@@ -17,7 +13,8 @@ import { ContentCard } from "../ui/ContentCard";
 import { CaseCard } from "../ui/CaseCard";
 import { ClinicsDirectory } from "../ui/ClinicsDirectory";
 import { FAQAccordion } from "../ui/FAQAccordion";
-import { ContactForm, type ClinicPicker } from "../ui/ContactForm";
+import { ContactForm } from "../ui/ContactForm";
+import { AppointmentForm, type ClinicChoice } from "../booking/AppointmentForm";
 import { PatientExpertProgram } from "../patient-expert/PatientExpertProgram";
 import {
   BiomechanicsIcon,
@@ -50,9 +47,6 @@ import {
   TreatmentPlanningIcon,
   type BrandIconComponent,
 } from "@/components/icons/BrandIcons";
-
-/** Central inbox for form submissions (mailto, Phase 1 — no backend). */
-const CONTACT_EMAIL = "drcomola@gmail.com";
 
 type IconCardData = {
   title: string;
@@ -594,7 +588,10 @@ function renderBlock(
           </div>
           <div className="mt-12">
             <Reveal>
-              <ClinicsDirectory labels={dict.clinics} />
+              <ClinicsDirectory
+                labels={dict.clinics}
+                bookingBasePath={sectionPath(locale, "patients", "book")}
+              />
             </Reveal>
           </div>
         </>
@@ -602,27 +599,32 @@ function renderBlock(
 
     case "form": {
       const isPatient = audience === "patients";
-      const clinicPicker: ClinicPicker | undefined = isPatient
-        ? {
-            label: dict.clinics.selectLabel,
-            placeholder: dict.clinics.selectPlaceholder,
-            contactTitle: dict.clinics.contactTitle,
-            callLabel: dict.clinics.call,
-            whatsappLabel: dict.clinics.whatsapp,
-            directionsLabel: dict.clinics.directions,
-            options: clinics.map((c) => ({
-              id: c.id,
-              name: c.name,
-              city: c.city,
-              email: c.email,
-              tel: c.tel,
-              whatsapp: c.whatsapp,
-              whatsappUrl: clinicWhatsappUrl(c),
-              mapsUrl: clinicMapsUrl(c),
-            })),
-          }
-        : undefined;
 
+      // Patients → dedicated booking form that submits to the Netlify Function
+      // (recipient resolved server-side from the chosen clinic).
+      if (isPatient) {
+        const clinicChoices: ClinicChoice[] = clinics.map((c) => ({
+          id: c.id,
+          bookingSlug: c.bookingSlug,
+          name: c.name,
+          city: c.city,
+        }));
+        return (
+          <div className="mx-auto max-w-2xl">
+            <Reveal>
+              <AppointmentForm
+                locale={locale}
+                labels={dict.booking}
+                clinics={clinicChoices}
+                microcopy={block.microcopy}
+                submitLabel={block.submitLabel}
+              />
+            </Reveal>
+          </div>
+        );
+      }
+
+      // Colleagues → general contact form (also server-side, no mailto).
       return (
         <div className="mx-auto max-w-2xl">
           {block.microcopy ? (
@@ -635,14 +637,10 @@ function renderBlock(
               fields={block.fields}
               submitLabel={block.submitLabel}
               successMessage={dict.form.success}
+              errorMessage={dict.form.error}
               consentLabel={dict.form.consent}
-              audience={audience}
-              mailtoTo={CONTACT_EMAIL}
-              mailtoSubject={
-                isPatient ? dict.form.patientSubject : dict.form.colleagueSubject
-              }
+              subject={dict.form.colleagueSubject}
               hint={dict.form.mailtoHint}
-              clinicPicker={clinicPicker}
             />
           </Reveal>
         </div>

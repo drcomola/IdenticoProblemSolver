@@ -7,7 +7,12 @@
 
 export type Clinic = {
   id: string;
-  name: string;
+  /**
+   * URL-safe slug used to preselect this clinic from the booking page, e.g.
+   * `/it/pazienti/prenota?sede=<bookingSlug>`. Currently equal to `id`.
+   */
+  bookingSlug: string;
+  name: string; // clinic display name (clinicName)
   address?: string; // street + number (optional until confirmed)
   zip?: string;
   city: string;
@@ -16,15 +21,26 @@ export type Clinic = {
   phone?: string; // display telephone (optional until confirmed)
   tel?: string; // dialable phone, e.g. +390114373515
   whatsapp?: string; // dialable WhatsApp number, e.g. +393924709233 (only when confirmed)
-  email: string; // booking inbox for this clinic
+  /**
+   * Dedicated booking inbox for this clinic. OPTIONAL: when a clinic has no own
+   * address, leave it unset — the booking function then routes the request to
+   * the central inbox (CENTRAL_EMAIL). To add/update a clinic email, just set
+   * (or change) the `email` field on the relevant entry below.
+   */
+  email?: string;
   website?: string; // official studio site (clickable name)
   logo?: string; // /images/clinics/<id>.<ext> — empty when no logo supplied
 };
 
-/** Fallback inbox for clinics without a dedicated address. */
+/**
+ * Fallback inbox for clinics without a dedicated address. Any clinic whose
+ * `email` is unset has its appointment requests delivered here (server-side).
+ */
 export const CENTRAL_EMAIL = "drcomola@gmail.com";
 
-export const clinics: Clinic[] = [
+// `bookingSlug` is derived from `id` (already a clean slug) so we don't have to
+// repeat it on every entry. To diverge a slug from the id, set it explicitly.
+const baseClinics: Array<Omit<Clinic, "bookingSlug">> = [
   {
     id: "calabrese-torino",
     name: "Dott. Davide Calabrese",
@@ -87,7 +103,6 @@ export const clinics: Clinic[] = [
     country: "IT",
     phone: "0141 275444",
     tel: "+390141275444",
-    email: CENTRAL_EMAIL,
   },
   {
     id: "marco-pasqualini-milano",
@@ -161,7 +176,6 @@ export const clinics: Clinic[] = [
     country: "IT",
     phone: "02 798740",
     tel: "+3902798740",
-    email: CENTRAL_EMAIL,
   },
   {
     id: "methas-montebelluna",
@@ -226,10 +240,18 @@ export const clinics: Clinic[] = [
     country: "IT",
     phone: "081 19758822",
     tel: "+3908119758822",
-    email: CENTRAL_EMAIL,
     website: "https://tortoramedical.it",
   },
 ];
+
+/**
+ * Public clinics list. Each entry gets `bookingSlug` (defaulting to its id) so
+ * the booking page can preselect a clinic via `?sede=<bookingSlug>`.
+ */
+export const clinics: Clinic[] = baseClinics.map((c) => ({
+  ...c,
+  bookingSlug: c.id,
+}));
 
 /**
  * Clinic logos (from the "Loghi Studi" folder, normalized into public/images/clinics).
@@ -282,6 +304,23 @@ export function clinicWhatsappUrl(c: Clinic, text?: string): string {
 
 export function clinicById(id: string): Clinic | undefined {
   return clinics.find((c) => c.id === id);
+}
+
+/** Resolve a clinic from either its id or its bookingSlug (used server-side). */
+export function clinicByIdOrSlug(value?: string | null): Clinic | undefined {
+  if (!value) return undefined;
+  const v = value.trim();
+  return clinics.find((c) => c.id === v || c.bookingSlug === v);
+}
+
+/**
+ * Recipient inbox for a clinic's appointment requests. Clinics WITHOUT a
+ * dedicated `email` fall back to the central inbox (CENTRAL_EMAIL =
+ * drcomola@gmail.com). This is the single source of truth for routing and is
+ * only ever called server-side — the frontend never decides the recipient.
+ */
+export function clinicRecipient(clinic: Clinic): string {
+  return clinic.email && clinic.email.trim() ? clinic.email.trim() : CENTRAL_EMAIL;
 }
 
 /**

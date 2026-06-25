@@ -1,2 +1,8 @@
 [build]
   command = "npm run build"
+
+# Server-side email sending lives in Netlify Functions (v2). The booking form
+# posts to /.netlify/functions/appointment-request.
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"

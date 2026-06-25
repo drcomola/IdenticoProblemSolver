@@ -7,9 +7,11 @@ import {
   clinicWhatsappUrl,
 } from "@/content/clinics";
 import Image from "next/image";
+import Link from "next/link";
 import type { Dictionary } from "@/content/types";
 import { Icon } from "./icons";
 import { ClinicsMap } from "./ClinicsMap";
+import { ClinicEmail } from "./ClinicEmail";
 
 type Labels = Dictionary["clinics"];
 
@@ -21,7 +23,15 @@ type Labels = Dictionary["clinics"];
  * An optional combined all-pins map is shown at the top when
  * NEXT_PUBLIC_CLINICS_MAP_URL (a Google "My Maps" embed URL) is configured.
  */
-export function ClinicsDirectory({ labels }: { labels: Labels }) {
+export function ClinicsDirectory({
+  labels,
+  bookingBasePath,
+}: {
+  labels: Labels;
+  /** Base path of the booking page, e.g. /it/pazienti/prenota. The per-clinic
+   *  CTA appends ?sede=<bookingSlug>. */
+  bookingBasePath: string;
+}) {
   const overviewUrl = process.env.NEXT_PUBLIC_CLINICS_MAP_URL;
 
   return (
@@ -93,6 +103,8 @@ export function ClinicsDirectory({ labels }: { labels: Labels }) {
               </span>
             </p>
 
+            {/* Contact shortcuts. Phone stays a tel: link; directions stay an
+                external map link; email is a reveal/copy (NOT mailto:). */}
             <div className="mt-4 flex flex-wrap gap-2">
               {clinic.tel ? (
                 <a
@@ -115,13 +127,6 @@ export function ClinicsDirectory({ labels }: { labels: Labels }) {
                 </a>
               ) : null}
               <a
-                href={`mailto:${clinic.email}`}
-                className="inline-flex items-center gap-1.5 rounded-full border border-teal-deep/20 px-3 py-1.5 text-xs font-medium text-teal-deep transition-colors hover:bg-teal-deep/5"
-              >
-                <Icon name="mail" className="h-3.5 w-3.5" />
-                {labels.email}
-              </a>
-              <a
                 href={clinicMapsUrl(clinic)}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -130,6 +135,11 @@ export function ClinicsDirectory({ labels }: { labels: Labels }) {
                 <Icon name="directions" className="h-3.5 w-3.5" />
                 {labels.directions}
               </a>
+            </div>
+
+            {/* Email: revealed as plain text + copy, or a graceful note. */}
+            <div className="mt-3">
+              <ClinicEmail email={clinic.email} labels={labels} />
             </div>
 
             <details className="group mt-4">
@@ -146,6 +156,15 @@ export function ClinicsDirectory({ labels }: { labels: Labels }) {
                 />
               </div>
             </details>
+
+            {/* Booking CTA → preselects this clinic on the booking page. */}
+            <Link
+              href={`${bookingBasePath}?sede=${clinic.bookingSlug}`}
+              className="mt-5 inline-flex items-center justify-center gap-1.5 rounded-full bg-teal-deep px-4 py-2.5 text-xs font-semibold text-canvas transition-all duration-300 hover:-translate-y-0.5 hover:bg-teal-deep/90"
+            >
+              <Icon name="calendar" className="h-3.5 w-3.5" />
+              {labels.bookHere}
+            </Link>
           </li>
         ))}
       </ul>

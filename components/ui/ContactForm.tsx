@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import { Icon } from "./icons";
 
 export type Field = {
@@ -11,62 +11,31 @@ export type Field = {
   options?: string[];
 };
 
-export type ClinicOption = {
-  id: string;
-  name: string;
-  city: string;
-  email: string;
-  tel?: string;
-  whatsapp?: string;
-  whatsappUrl: string;
-  mapsUrl: string;
-};
-
-export type ClinicPicker = {
-  label: string;
-  placeholder: string;
-  options: ClinicOption[];
-  contactTitle: string;
-  callLabel: string;
-  whatsappLabel: string;
-  directionsLabel: string;
-};
+const ENDPOINT = "/.netlify/functions/appointment-request";
 
 /**
- * Contact form that, on submit, opens the visitor's email client with a
- * pre-filled message (no backend in Phase 1). Patients can also pick a preferred
- * clinic — which is added to the message and surfaces direct call/WhatsApp/map
- * shortcuts for that location.
+ * General contact form (colleagues "Richiedi consulenza"). On submit it POSTs
+ * to the Netlify Function in "general" mode — the request is delivered to the
+ * central inbox server-side. No mailto: anywhere; the email client never opens.
  */
 export function ContactForm({
   fields,
   submitLabel,
   successMessage,
+  errorMessage,
   consentLabel,
-  mailtoTo,
-  mailtoSubject,
+  subject,
   hint,
-  audience,
-  clinicPicker,
 }: {
   fields: Field[];
   submitLabel: string;
   successMessage: string;
+  errorMessage: string;
   consentLabel: string;
-  mailtoTo: string;
-  mailtoSubject: string;
+  subject: string;
   hint?: string;
-  audience: "patients" | "colleagues";
-  clinicPicker?: ClinicPicker;
 }) {
-  const [sent, setSent] = useState(false);
-  const [sending, setSending] = useState(false);
-  const [clinicId, setClinicId] = useState("");
-
-  const selectedClinic = useMemo(
-    () => clinicPicker?.options.find((c) => c.id === clinicId),
-    [clinicPicker, clinicId],
-  );
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -76,50 +45,31 @@ export function ContactForm({
       label: f.label,
       value: (data.get(f.name) as string | null)?.trim() || "—",
     }));
-    if (clinicPicker && selectedClinic) {
-      fieldData.push({
-        label: clinicPicker.label,
-        value: `${selectedClinic.name} (${selectedClinic.city})`,
-      });
-    }
 
     const emailField = fields.find((f) => f.type === "email");
-    const replyTo = emailField
-      ? String(data.get(emailField.name) ?? "")
-      : undefined;
+    const replyTo = emailField ? String(data.get(emailField.name) ?? "") : undefined;
 
-    setSending(true);
-    // Try the server endpoint first (real email); fall back to mailto.
+    setStatus("sending");
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch(ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          audience,
-          clinicId: selectedClinic?.id,
-          subject: mailtoSubject,
+          kind: "general",
+          subject,
           replyTo,
+          consent: data.get("consent") === "on",
           fields: fieldData,
+          honeypot: String(data.get("company") ?? ""),
         }),
       });
-      if (res.ok) {
-        setSent(true);
-        setSending(false);
-        return;
-      }
+      setStatus(res.ok ? "success" : "error");
     } catch {
-      /* network/endpoint unavailable → fall back */
+      setStatus("error");
     }
-
-    const recipient = selectedClinic?.email || mailtoTo;
-    const body = fieldData.map((f) => `${f.label}: ${f.value}`).join("\n");
-    const params = new URLSearchParams({ subject: mailtoSubject, body });
-    window.location.href = `mailto:${recipient}?${params.toString()}`;
-    setSending(false);
-    setSent(true);
   }
 
-  if (sent) {
+  if (status === "success") {
     return (
       <div
         role="status"
@@ -136,67 +86,6 @@ export function ContactForm({
       noValidate
       className="grid gap-5 rounded-2xl border border-titanium/60 bg-white p-7"
     >
-      {clinicPicker ? (
-        <div className="flex flex-col gap-1.5">
-          <label htmlFor="clinic" className="text-sm font-medium text-ink/80">
-            {clinicPicker.label}
-          </label>
-          <select
-            id="clinic"
-            name="clinic"
-            value={clinicId}
-            onChange={(e) => setClinicId(e.target.value)}
-            className="rounded-xl border border-titanium/70 bg-canvas/50 px-4 py-2.5 text-sm focus-visible:border-aqua"
-          >
-            <option value="">{clinicPicker.placeholder}</option>
-            {clinicPicker.options.map((c) => (
-              <option key={c.id} value={c.id}>
-                {c.name} — {c.city}
-              </option>
-            ))}
-          </select>
-
-          {selectedClinic ? (
-            <div className="mt-2 rounded-xl border border-aqua/30 bg-aqua/5 p-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.15em] text-teal">
-                {clinicPicker.contactTitle}
-              </p>
-              <div className="mt-3 flex flex-wrap gap-2">
-                {selectedClinic.tel ? (
-                  <a
-                    href={`tel:${selectedClinic.tel}`}
-                    className="inline-flex items-center gap-1.5 rounded-full border border-teal-deep/20 bg-white px-3 py-1.5 text-xs font-medium text-teal-deep hover:bg-teal-deep/5"
-                  >
-                    <Icon name="phone" className="h-3.5 w-3.5" />
-                    {clinicPicker.callLabel}
-                  </a>
-                ) : null}
-                {selectedClinic.whatsapp ? (
-                  <a
-                    href={selectedClinic.whatsappUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 rounded-full border border-teal-deep/20 bg-white px-3 py-1.5 text-xs font-medium text-teal-deep hover:bg-teal-deep/5"
-                  >
-                    <Icon name="whatsapp" className="h-3.5 w-3.5" />
-                    {clinicPicker.whatsappLabel}
-                  </a>
-                ) : null}
-                <a
-                  href={selectedClinic.mapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 rounded-full border border-teal-deep/20 bg-white px-3 py-1.5 text-xs font-medium text-teal-deep hover:bg-teal-deep/5"
-                >
-                  <Icon name="directions" className="h-3.5 w-3.5" />
-                  {clinicPicker.directionsLabel}
-                </a>
-              </div>
-            </div>
-          ) : null}
-        </div>
-      ) : null}
-
       <div className="grid gap-5 sm:grid-cols-2">
         {fields.map((field) => {
           const isWide = field.type === "textarea";
@@ -245,18 +134,37 @@ export function ContactForm({
         })}
       </div>
 
+      {/* Honeypot — hidden anti-spam field, must stay empty. */}
+      <div aria-hidden className="pointer-events-none absolute h-0 w-0 overflow-hidden opacity-0">
+        <label htmlFor="company">Company (leave empty)</label>
+        <input id="company" name="company" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
+
       <label className="flex items-start gap-3 text-xs text-ink/65">
         <input type="checkbox" name="consent" required className="mt-0.5 accent-teal-deep" />
         <span>{consentLabel}</span>
       </label>
 
+      {status === "error" ? (
+        <p role="alert" className="rounded-xl border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-700">
+          {errorMessage}
+        </p>
+      ) : null}
+
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <button
           type="submit"
-          disabled={sending}
+          disabled={status === "sending"}
           className="inline-flex items-center justify-center gap-2 rounded-full bg-teal-deep px-7 py-3 text-sm font-medium text-canvas transition-all duration-300 hover:-translate-y-0.5 hover:bg-teal-deep/90 disabled:cursor-not-allowed disabled:opacity-60"
         >
-          <Icon name="mail" className="h-4 w-4" />
+          {status === "sending" ? (
+            <span
+              aria-hidden
+              className="h-4 w-4 animate-spin rounded-full border-2 border-canvas/40 border-t-canvas"
+            />
+          ) : (
+            <Icon name="mail" className="h-4 w-4" />
+          )}
           {submitLabel}
         </button>
         {hint ? <p className="text-xs text-ink/55">{hint}</p> : null}
