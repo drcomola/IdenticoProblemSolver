@@ -120,8 +120,10 @@ async function sendViaResend(opts: {
 
   if (!res.ok) {
     const detail = await res.text().catch(() => "");
+    console.error("[resend] error", res.status, detail);
     return { ok: false, status: 502, detail };
   }
+  console.log("[resend] sent ok");
   return { ok: true };
 }
 
