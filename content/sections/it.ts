@@ -481,6 +481,20 @@ export const patientsSectionsIt: AudienceSections = {
     secondaryCta: p("invisalign", "Leggi Invisalign"),
   },
 
+  "aligner-support": {
+    seo: {
+      title: "Supporto Allineatori | Problemi con mascherine, attachment ed elastici",
+      description:
+        "Guida rapida per pazienti in trattamento con allineatori: mascherina persa, attachment staccato, elastici, tracking, dolore e contenzione.",
+    },
+    h1: "Supporto Allineatori",
+    subtitle:
+      "Risposte rapide ai dubbi più comuni durante il trattamento con allineatori.",
+    blocks: [],
+    primaryCta: p("book", "Contatta lo studio"),
+    secondaryCta: p("faq", "Consulta le FAQ"),
+  },
+
   book: {
     seo: {
       title: "Prenota una valutazione ortodontica | Dr. Giorgio Comola",

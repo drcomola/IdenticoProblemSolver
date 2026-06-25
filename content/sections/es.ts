@@ -436,6 +436,20 @@ export const patientsSectionsEs: AudienceSections = {
     secondaryCta: p("invisalign", "Leer sobre Invisalign"),
   },
 
+  "aligner-support": {
+    seo: {
+      title: "Soporte Alineadores | Ayuda con alineadores, attachments y elásticos",
+      description:
+        "Guía rápida para pacientes: alineadores perdidos o dañados, attachments, elásticos, tracking, molestias, higiene y retención.",
+    },
+    h1: "Soporte Alineadores",
+    subtitle:
+      "Respuestas rápidas a las dudas más comunes durante el tratamiento con alineadores.",
+    blocks: [],
+    primaryCta: p("book", "Contactar con la clínica"),
+    secondaryCta: p("faq", "Consultar las FAQ"),
+  },
+
   book: {
     seo: {
       title: "Reserva una valoración ortodóncica | Dr. Giorgio Comola",

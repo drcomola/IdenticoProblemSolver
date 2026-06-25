@@ -1,0 +1,1779 @@
+{
+  "source": "Database_Supporto_Allineatori_Giorgio_Comola_v1.docx",
+  "ruleBasedOnly": true,
+  "generalDisclaimer": "Questa guida raccoglie indicazioni generali per i problemi più frequenti durante il trattamento con allineatori. Non sostituisce una valutazione clinica. In caso di trauma, gonfiore, pus, febbre, sanguinamento importante o dolore intenso, contattare lo studio o un odontoiatra senza attendere.",
+  "categories": [
+    {
+      "id": "mascherine",
+      "label": "Mascherine",
+      "icon": "aligner"
+    },
+    {
+      "id": "attachments",
+      "label": "Attachments",
+      "icon": "attachment"
+    },
+    {
+      "id": "elastici-bottoni",
+      "label": "Elastici e bottoni",
+      "icon": "elastic"
+    },
+    {
+      "id": "dolore-fastidio",
+      "label": "Dolore e fastidio",
+      "icon": "pain"
+    },
+    {
+      "id": "tracking",
+      "label": "Tracking",
+      "icon": "tracking"
+    },
+    {
+      "id": "igiene-routine",
+      "label": "Igiene e routine quotidiana",
+      "icon": "hygiene"
+    },
+    {
+      "id": "contenzione",
+      "label": "Contenzione",
+      "icon": "retention"
+    },
+    {
+      "id": "urgenze",
+      "label": "Urgenze e contatto studio",
+      "icon": "urgency"
+    }
+  ],
+  "guidedFlows": [
+    [
+      [
+        "1",
+        "La mascherina è disponibile?",
+        "Sì / No / È rotta"
+      ],
+      [
+        "2",
+        "Se sì: entra completamente?",
+        "Sì / No / Entra ma resta sollevata"
+      ],
+      [
+        "3",
+        "Se no o rotta: proporre articoli",
+        "Ho perso una mascherina; Ho rotto una mascherina; La mascherina non entra"
+      ]
+    ],
+    [
+      [
+        "1",
+        "Vedi un attachment mancante?",
+        "Sì / No / Non sono sicuro"
+      ],
+      [
+        "2",
+        "La mascherina calza ancora bene?",
+        "Sì / No"
+      ],
+      [
+        "3",
+        "Proporre articoli",
+        "Si è staccato un attachment; La mascherina entra anche se manca un attachment; Un dente non segue la mascherina"
+      ]
+    ],
+    [
+      [
+        "1",
+        "Il problema è l’elastico o il bottone?",
+        "Elastico / Bottone / Non so dove agganciare"
+      ],
+      [
+        "2",
+        "Riesci a portarli come prescritto?",
+        "Sì / No / Li ho dimenticati"
+      ],
+      [
+        "3",
+        "Proporre articoli",
+        "Ho dimenticato gli elastici; Si è staccato un bottone; Non so dove agganciare gli elastici"
+      ]
+    ],
+    [
+      [
+        "1",
+        "Il fastidio è lieve o intenso?",
+        "Lieve / Intenso / Associato a gonfiore o trauma"
+      ],
+      [
+        "2",
+        "Quando è iniziato?",
+        "Nuova mascherina / Dopo attachment / Improvviso"
+      ],
+      [
+        "3",
+        "Proporre articoli",
+        "Ho dolore nei primi giorni; Ho sensibilità dentale; Ho gonfiore, pus o dolore intenso"
+      ]
+    ],
+    [
+      [
+        "1",
+        "Vedi spazio tra dente e mascherina?",
+        "Sì / No / Solo su un lato"
+      ],
+      [
+        "2",
+        "Il chewies migliora la calzata?",
+        "Sì / No / Non lo uso"
+      ],
+      [
+        "3",
+        "Proporre articoli",
+        "Un dente non segue la mascherina; Vedo spazio tra dente e allineatore; Il chewies non aiuta"
+      ]
+    ],
+    [
+      [
+        "1",
+        "Hai ancora la contenzione?",
+        "Sì / No / È rotta"
+      ],
+      [
+        "2",
+        "Entra correttamente?",
+        "Sì / No / Solo forzando"
+      ],
+      [
+        "3",
+        "Proporre articoli",
+        "Ho perso la contenzione; La contenzione non entra più; Il retainer si è rotto"
+      ]
+    ]
+  ],
+  "items": [
+    {
+      "id": "mascherina-persa",
+      "locale": "it",
+      "category": "Mascherine",
+      "categoryId": "mascherine",
+      "icon": "aligner",
+      "title": "Ho perso una mascherina",
+      "keywords": [
+        "persa",
+        "smarrita",
+        "aligner perso",
+        "mascherina sparita",
+        "non trovo la mascherina"
+      ],
+      "shortAnswer": "Nella maggior parte dei casi non è un’urgenza, ma è importante non restare senza allineatore.",
+      "whatToDo": "Prova a inserire la mascherina successiva. Se entra bene e aderisce correttamente, continua con quella. Se non entra, torna alla mascherina precedente e contatta lo studio.",
+      "whenToContactClinic": "Se la mascherina successiva non entra, se sei rimasto senza allineatore per più giorni o se senti che i denti si sono mossi.",
+      "whatToAvoid": "Non restare senza mascherina. Non forzare una mascherina che non entra.",
+      "relatedItems": [
+        "mascherina-non-entra",
+        "mascherina-saltata",
+        "mascherina-poco-uso"
+      ],
+      "relatedTitles": [
+        "La mascherina non entra",
+        "Ho saltato una mascherina",
+        "Ho portato poco la mascherina"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "mascherina-rotta",
+      "locale": "it",
+      "category": "Mascherine",
+      "categoryId": "mascherine",
+      "icon": "aligner",
+      "title": "Ho rotto una mascherina",
+      "keywords": [
+        "rotta",
+        "spezzata",
+        "crepa",
+        "frattura",
+        "mascherina danneggiata",
+        "aligner rotto"
+      ],
+      "shortAnswer": "Una piccola crepa può essere gestibile, ma una mascherina deformata o spezzata non lavora correttamente.",
+      "whatToDo": "Se la mascherina è solo leggermente crepata ma calza bene, continua a usarla con attenzione. Se è spezzata o deformata, prova la successiva. Se la successiva non entra, torna alla precedente e contatta lo studio.",
+      "whenToContactClinic": "Se la mascherina si è spezzata, se punge, se non aderisce o se non sai quale allineatore usare.",
+      "whatToAvoid": "Non incollare la mascherina. Non usare una mascherina che ferisce o non mantiene la forma.",
+      "relatedItems": [
+        "mascherina-persa",
+        "mascherina-non-entra"
+      ],
+      "relatedTitles": [
+        "Ho perso una mascherina",
+        "La mascherina taglia la gengiva",
+        "La mascherina non entra"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "mascherina-non-entra",
+      "locale": "it",
+      "category": "Mascherine",
+      "categoryId": "mascherine",
+      "icon": "aligner",
+      "title": "La mascherina non entra",
+      "keywords": [
+        "non entra",
+        "non calza",
+        "non si inserisce",
+        "non riesco a mettere",
+        "troppo stretta"
+      ],
+      "shortAnswer": "Di solito significa che i denti non sono pronti per quella mascherina o che è stata saltata una fase.",
+      "whatToDo": "Controlla di avere il numero corretto di mascherina. Prova a inserirla gradualmente e usa i chewies se indicati. Se non entra in modo completo, torna alla mascherina precedente che calza bene.",
+      "whenToContactClinic": "Se anche la mascherina precedente non entra, se sei rimasto senza allineatore o se il problema persiste oltre 24-48 ore.",
+      "whatToAvoid": "Non mordere con forza per farla entrare. Non passare avanti se la mascherina resta sollevata.",
+      "relatedItems": [
+        "mascherina-saltata",
+        "mascherina-poco-uso",
+        "spazio-dente-aligner"
+      ],
+      "relatedTitles": [
+        "Ho saltato una mascherina",
+        "Ho portato poco la mascherina",
+        "Vedo spazio tra dente e allineatore"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "mascherina-non-aderisce",
+      "locale": "it",
+      "category": "Mascherine",
+      "categoryId": "mascherine",
+      "icon": "aligner",
+      "title": "La mascherina non aderisce a un dente",
+      "keywords": [
+        "non aderisce",
+        "spazio",
+        "gap",
+        "dente non segue",
+        "mascherina sollevata",
+        "tracking"
+      ],
+      "shortAnswer": "Un piccolo spazio può comparire, ma deve essere monitorato perché può indicare una perdita di tracking.",
+      "whatToDo": "Usa i chewies nella zona interessata per alcuni minuti più volte al giorno, se ti sono stati consigliati. Continua a portare la mascherina con costanza.",
+      "whenToContactClinic": "Se lo spazio aumenta, se la mascherina non scatta, se il dente resta visibilmente distante dopo alcuni giorni.",
+      "whatToAvoid": "Non ignorare uno spazio che peggiora. Non cambiare mascherina se quella attuale non aderisce bene.",
+      "relatedItems": [
+        "dente-non-segue",
+        "spazio-dente-aligner",
+        "chewies-non-aiuta"
+      ],
+      "relatedTitles": [
+        "Un dente non segue la mascherina",
+        "Vedo spazio tra dente e allineatore",
+        "Il chewies non aiuta"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "mascherina-taglia",
+      "locale": "it",
+      "category": "Mascherine",
+      "categoryId": "mascherine",
+      "icon": "aligner",
+      "title": "La mascherina taglia la gengiva o la guancia",
+      "keywords": [
+        "taglia",
+        "ferisce",
+        "bordo",
+        "gengiva",
+        "guancia",
+        "irritazione",
+        "piaga",
+        "limare"
+      ],
+      "shortAnswer": "Un bordo fastidioso può capitare e spesso si risolve con una piccola rifinitura.",
+      "whatToDo": "Individua il punto che dà fastidio. Se il bordo è chiaramente ruvido, puoi levigarlo delicatamente con una limetta pulita, senza modificare la forma della mascherina.",
+      "whenToContactClinic": "Se compare una ferita importante, se il fastidio non migliora o se non sei sicuro di dove intervenire.",
+      "whatToAvoid": "Non tagliare ampie parti della mascherina. Non modificare zone che coprono i denti.",
+      "relatedItems": [
+        "ferita-mascherina"
+      ],
+      "relatedTitles": [
+        "Ho una ferita da mascherina",
+        "La mascherina è deformata",
+        "Ho dolore nei primi giorni"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "mascherina-saltata",
+      "locale": "it",
+      "category": "Mascherine",
+      "categoryId": "mascherine",
+      "icon": "aligner",
+      "title": "Ho saltato una mascherina",
+      "keywords": [
+        "saltata",
+        "ho saltato",
+        "numero sbagliato",
+        "mascherina successiva",
+        "step"
+      ],
+      "shortAnswer": "Saltare una mascherina può creare una perdita di adattamento tra denti e allineatore.",
+      "whatToDo": "Controlla la sequenza numerica. Se hai saltato uno step, torna alla mascherina corretta se calza bene. Se non calza, usa quella che aderisce meglio e contatta lo studio.",
+      "whenToContactClinic": "Se non sai quale mascherina usare o se nessuna mascherina entra correttamente.",
+      "whatToAvoid": "Non continuare automaticamente con quella più avanzata se non aderisce.",
+      "relatedItems": [
+        "mascherina-non-entra",
+        "mascherina-poco-uso",
+        "spazio-dente-aligner"
+      ],
+      "relatedTitles": [
+        "La mascherina non entra",
+        "Ho portato poco la mascherina",
+        "Vedo spazio tra dente e allineatore"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "mascherina-poco-uso",
+      "locale": "it",
+      "category": "Mascherine",
+      "categoryId": "mascherine",
+      "icon": "aligner",
+      "title": "Ho portato poco la mascherina",
+      "keywords": [
+        "poco",
+        "poche ore",
+        "dimenticato",
+        "22 ore",
+        "non ho portato",
+        "compliance"
+      ],
+      "shortAnswer": "Gli allineatori funzionano solo se il tempo di utilizzo è sufficiente.",
+      "whatToDo": "Riprendi subito l’uso regolare. Se la mascherina calza bene, prolunga l’uso di alcuni giorni prima di passare alla successiva.",
+      "whenToContactClinic": "Se la mascherina non entra più, se senti che i denti sono tornati indietro o se hai saltato molti giorni.",
+      "whatToAvoid": "Non cambiare mascherina rispettando il calendario originale se l’utilizzo è stato molto ridotto.",
+      "relatedItems": [
+        "mascherina-non-entra",
+        "mascherina-saltata"
+      ],
+      "relatedTitles": [
+        "La mascherina non entra",
+        "Ho dimenticato la mascherina per più giorni",
+        "Ho saltato una mascherina"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "mascherina-dimenticata-giorni",
+      "locale": "it",
+      "category": "Mascherine",
+      "categoryId": "mascherine",
+      "icon": "aligner",
+      "title": "Ho dimenticato la mascherina per uno o più giorni",
+      "keywords": [
+        "dimenticata",
+        "senza mascherina",
+        "uno giorno",
+        "due giorni",
+        "molti giorni",
+        "non l’ho messa"
+      ],
+      "shortAnswer": "Più tempo passa senza allineatore, maggiore è il rischio che i denti si spostino.",
+      "whatToDo": "Prova a reinserire l’ultima mascherina che calza bene. Se entra completamente, portala con costanza e valuta di prolungare lo step.",
+      "whenToContactClinic": "Se la mascherina non entra, se senti pressione anomala o se sei rimasto senza allineatore per diversi giorni.",
+      "whatToAvoid": "Non passare subito alla mascherina successiva se l’ultima non calza bene.",
+      "relatedItems": [
+        "mascherina-poco-uso",
+        "mascherina-non-entra",
+        "mascherina-persa"
+      ],
+      "relatedTitles": [
+        "Ho portato poco la mascherina",
+        "La mascherina non entra",
+        "Ho perso una mascherina"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "mascherina-deformata",
+      "locale": "it",
+      "category": "Mascherine",
+      "categoryId": "mascherine",
+      "icon": "aligner",
+      "title": "La mascherina si è deformata",
+      "keywords": [
+        "deformata",
+        "calore",
+        "acqua calda",
+        "piegata",
+        "storta",
+        "non ha forma"
+      ],
+      "shortAnswer": "Una mascherina deformata può perdere precisione e non deve essere usata se non calza correttamente.",
+      "whatToDo": "Confrontala con la mascherina precedente o successiva. Se è visibilmente deformata, non usarla come riferimento principale.",
+      "whenToContactClinic": "Se non sai quale mascherina indossare o se quella successiva non entra bene.",
+      "whatToAvoid": "Non usare acqua calda. Non cercare di raddrizzarla manualmente.",
+      "relatedItems": [
+        "mascherina-rotta",
+        "mascherina-non-entra"
+      ],
+      "relatedTitles": [
+        "Ho rotto una mascherina",
+        "La mascherina non entra",
+        "Come pulisco le mascherine"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "cambio-mascherina-anticipo-ritardo",
+      "locale": "it",
+      "category": "Mascherine",
+      "categoryId": "mascherine",
+      "icon": "aligner",
+      "title": "Ho cambiato mascherina in anticipo o in ritardo",
+      "keywords": [
+        "anticipo",
+        "ritardo",
+        "cambio",
+        "calendario",
+        "giorni",
+        "cambio mascherina"
+      ],
+      "shortAnswer": "Il cambio deve seguire le indicazioni ricevute, ma un errore isolato spesso si può correggere.",
+      "whatToDo": "Se hai anticipato e la mascherina non aderisce, torna alla precedente. Se hai ritardato ma calza bene, riprendi la sequenza senza saltare step.",
+      "whenToContactClinic": "Se il calendario non è chiaro, se la mascherina non entra o se hai accumulato più errori di sequenza.",
+      "whatToAvoid": "Non recuperare il tempo perso saltando mascherine.",
+      "relatedItems": [
+        "mascherina-saltata",
+        "mascherina-poco-uso",
+        "mascherina-non-aderisce"
+      ],
+      "relatedTitles": [
+        "Ho saltato una mascherina",
+        "Ho portato poco la mascherina",
+        "La mascherina non aderisce a un dente"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "attachment-staccato",
+      "locale": "it",
+      "category": "Attachments",
+      "categoryId": "attachments",
+      "icon": "attachment",
+      "title": "Si è staccato un attachment",
+      "keywords": [
+        "attachment staccato",
+        "attacco",
+        "pallino",
+        "bottoncino",
+        "si è tolto",
+        "non c’è più"
+      ],
+      "shortAnswer": "Di solito non è un’urgenza immediata, ma va segnalato perché alcuni movimenti dipendono dagli attachment.",
+      "whatToDo": "Continua a portare le mascherine come indicato. Controlla se la mascherina continua a calzare bene.",
+      "whenToContactClinic": "Contatta lo studio per segnalare quale attachment si è staccato, soprattutto se la mascherina non aderisce o se il dente perde tracking.",
+      "whatToAvoid": "Non interrompere la terapia. Non cercare di reincollare l’attachment.",
+      "relatedItems": [
+        "mascherina-non-aderisce",
+        "dente-non-segue"
+      ],
+      "relatedTitles": [
+        "La mascherina non aderisce a un dente",
+        "Un dente non segue la mascherina",
+        "La mascherina entra anche senza attachment"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "attachment-fastidio",
+      "locale": "it",
+      "category": "Attachments",
+      "categoryId": "attachments",
+      "icon": "attachment",
+      "title": "Un attachment dà fastidio",
+      "keywords": [
+        "fastidio attachment",
+        "punge",
+        "gratta",
+        "ruvido",
+        "attacco fastidioso"
+      ],
+      "shortAnswer": "Gli attachment possono essere ruvidi nei primi giorni, soprattutto quando la mascherina è fuori dalla bocca.",
+      "whatToDo": "Verifica se il fastidio compare solo quando togli la mascherina. In genere la sensazione si riduce con il tempo.",
+      "whenToContactClinic": "Se crea una ferita, se interferisce molto con la chiusura o se il fastidio non migliora.",
+      "whatToAvoid": "Non limare l’attachment autonomamente. Non lasciare la mascherina fuori per evitare il fastidio.",
+      "relatedItems": [
+        "ferita-mascherina",
+        "attachment-staccato"
+      ],
+      "relatedTitles": [
+        "Ho una ferita da mascherina",
+        "Ho dolore nei primi giorni",
+        "Si è staccato un attachment"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "attachment-consumato",
+      "locale": "it",
+      "category": "Attachments",
+      "categoryId": "attachments",
+      "icon": "attachment",
+      "title": "Mi sembra che un attachment si sia consumato",
+      "keywords": [
+        "consumato",
+        "usurato",
+        "piccolo",
+        "attachment rovinato",
+        "attacco consumato"
+      ],
+      "shortAnswer": "Gli attachment possono apparire meno evidenti, ma non sempre questo significa che non funzionino.",
+      "whatToDo": "Continua a usare le mascherine e osserva se calzano correttamente.",
+      "whenToContactClinic": "Se la mascherina non aggancia più bene, se il dente non segue o se l’attachment è chiaramente scomparso.",
+      "whatToAvoid": "Non modificare l’attachment. Non sospendere la terapia.",
+      "relatedItems": [
+        "attachment-staccato",
+        "mascherina-non-aderisce",
+        "dente-non-segue"
+      ],
+      "relatedTitles": [
+        "Si è staccato un attachment",
+        "La mascherina non aderisce a un dente",
+        "Un dente non segue la mascherina"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "mascherina-entra-senza-attachment",
+      "locale": "it",
+      "category": "Attachments",
+      "categoryId": "attachments",
+      "icon": "attachment",
+      "title": "La mascherina entra anche se manca un attachment",
+      "keywords": [
+        "entra senza attachment",
+        "calza",
+        "manca attacco",
+        "attachment perso ma mascherina entra"
+      ],
+      "shortAnswer": "Il fatto che la mascherina entri è positivo, ma alcuni movimenti possono comunque essere meno controllati.",
+      "whatToDo": "Continua la terapia e segnala allo studio l’attachment mancante.",
+      "whenToContactClinic": "Se il dente interessato inizia a non seguire, se compare spazio o se l’attachment era stato appena applicato.",
+      "whatToAvoid": "Non ignorarlo per tutta la terapia. Non pensare che sia sempre irrilevante.",
+      "relatedItems": [
+        "attachment-staccato",
+        "spazio-dente-aligner"
+      ],
+      "relatedTitles": [
+        "Si è staccato un attachment",
+        "Vedo spazio tra dente e allineatore",
+        "Tracking"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "attachment-macchiato",
+      "locale": "it",
+      "category": "Attachments",
+      "categoryId": "attachments",
+      "icon": "attachment",
+      "title": "Un attachment si è macchiato",
+      "keywords": [
+        "macchiato",
+        "giallo",
+        "colore",
+        "attachment scuro",
+        "caffè",
+        "pigmentato"
+      ],
+      "shortAnswer": "Gli attachment possono pigmentarsi leggermente con caffè, tè, fumo o cibi colorati.",
+      "whatToDo": "Mantieni igiene accurata e pulizia regolare. La pigmentazione non significa necessariamente che l’attachment non funzioni.",
+      "whenToContactClinic": "Se la macchia è molto evidente o se vuoi valutare una lucidatura durante un controllo.",
+      "whatToAvoid": "Non usare strumenti abrasivi aggressivi o prodotti non indicati.",
+      "relatedItems": [
+        "fumo-caffe"
+      ],
+      "relatedTitles": [
+        "Come pulisco le mascherine",
+        "Posso bere con le mascherine",
+        "Fumo e caffè con gli allineatori"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "attachment-appena-messo-dolore",
+      "locale": "it",
+      "category": "Attachments",
+      "categoryId": "attachments",
+      "icon": "attachment",
+      "title": "Dopo aver messo gli attachment sento più pressione",
+      "keywords": [
+        "pressione attachment",
+        "dolore dopo attachment",
+        "attacchi nuovi",
+        "fastidio dopo appuntamento"
+      ],
+      "shortAnswer": "È normale percepire più pressione dopo l’applicazione degli attachment, perché la mascherina aggancia meglio i denti.",
+      "whatToDo": "Porta la mascherina con regolarità e valuta l’andamento nei primi giorni.",
+      "whenToContactClinic": "Se il dolore è intenso, se non riesci a inserire o rimuovere la mascherina o se compare una ferita.",
+      "whatToAvoid": "Non ridurre le ore di utilizzo per evitare la pressione.",
+      "relatedItems": [
+        "attachment-fastidio",
+        "mascherina-non-entra"
+      ],
+      "relatedTitles": [
+        "Ho dolore nei primi giorni",
+        "Un attachment dà fastidio",
+        "La mascherina non entra"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "elastici-dimenticati",
+      "locale": "it",
+      "category": "Elastici e bottoni",
+      "categoryId": "elastici-bottoni",
+      "icon": "elastic",
+      "title": "Ho dimenticato gli elastici",
+      "keywords": [
+        "dimenticato elastici",
+        "non ho messo elastici",
+        "elastici poche ore",
+        "elastici notte"
+      ],
+      "shortAnswer": "Gli elastici servono a guidare la correzione occlusale. Dimenticarli riduce l’efficacia del movimento.",
+      "whatToDo": "Riprendi l’uso come prescritto appena possibile. Se li hai dimenticati per poco tempo, non raddoppiare la forza.",
+      "whenToContactClinic": "Se li hai dimenticati per molti giorni o se non ricordi più come usarli.",
+      "whatToAvoid": "Non usare due elastici per compensare senza indicazione. Non cambiare schema autonomamente.",
+      "relatedItems": [
+        "aggancio-elastici",
+        "elastici-dolore",
+        "elastici-finiti"
+      ],
+      "relatedTitles": [
+        "Non so dove agganciare gli elastici",
+        "Gli elastici mi fanno male",
+        "Ho finito gli elastici"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "bottone-staccato",
+      "locale": "it",
+      "category": "Elastici e bottoni",
+      "categoryId": "elastici-bottoni",
+      "icon": "elastic",
+      "title": "Si è staccato un bottone per gli elastici",
+      "keywords": [
+        "bottone staccato",
+        "gancio staccato",
+        "bottone elastici",
+        "non posso agganciare"
+      ],
+      "shortAnswer": "Se un bottone si stacca, l’elastico non può lavorare correttamente su quel lato.",
+      "whatToDo": "Continua a portare le mascherine. Se l’elastico era previsto bilateralmente, non compensare con forze diverse senza indicazione.",
+      "whenToContactClinic": "Contatta lo studio per riposizionare il bottone o ricevere istruzioni temporanee.",
+      "whatToAvoid": "Non agganciare l’elastico in punti non previsti. Non incollare nulla autonomamente.",
+      "relatedItems": [
+        "elastici-dimenticati",
+        "aggancio-elastici",
+        "elastici-dolore"
+      ],
+      "relatedTitles": [
+        "Ho dimenticato gli elastici",
+        "Non so dove agganciare gli elastici",
+        "Gli elastici mi fanno male"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "elastici-finiti",
+      "locale": "it",
+      "category": "Elastici e bottoni",
+      "categoryId": "elastici-bottoni",
+      "icon": "elastic",
+      "title": "Ho finito gli elastici",
+      "keywords": [
+        "finiti",
+        "non ho elastici",
+        "elastici terminati",
+        "bustina elastici",
+        "elastici persi"
+      ],
+      "shortAnswer": "Interrompere gli elastici può rallentare o ridurre la correzione programmata.",
+      "whatToDo": "Contatta lo studio per recuperarli. Nel frattempo continua a portare le mascherine come indicato.",
+      "whenToContactClinic": "Quando ti rimangono pochi elastici o se non sai quale misura usare.",
+      "whatToAvoid": "Non acquistare elastici diversi senza indicazione. Non usare elastici di altra misura o forza.",
+      "relatedItems": [
+        "elastici-dimenticati",
+        "aggancio-elastici",
+        "elastici-si-rompono"
+      ],
+      "relatedTitles": [
+        "Ho dimenticato gli elastici",
+        "Non so dove agganciare gli elastici",
+        "Gli elastici si rompono spesso"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "elastici-dolore",
+      "locale": "it",
+      "category": "Elastici e bottoni",
+      "categoryId": "elastici-bottoni",
+      "icon": "elastic",
+      "title": "Gli elastici mi fanno male",
+      "keywords": [
+        "dolore elastici",
+        "elastici fastidio",
+        "elastici tirano",
+        "male mandibola",
+        "male denti"
+      ],
+      "shortAnswer": "Una sensazione di trazione è normale, soprattutto all’inizio. Dolore intenso o persistente va valutato.",
+      "whatToDo": "Usali secondo prescrizione e osserva se il fastidio si riduce nei primi giorni.",
+      "whenToContactClinic": "Se il dolore è forte, se non riesci a portarli o se senti dolore articolare significativo.",
+      "whatToAvoid": "Non sospendere per lunghi periodi senza avvisare. Non modificare il punto di aggancio.",
+      "relatedItems": [
+        "elastici-dimenticati",
+        "aggancio-elastici"
+      ],
+      "relatedTitles": [
+        "Ho dimenticato gli elastici",
+        "Non so dove agganciare gli elastici",
+        "Ho dolore nei primi giorni"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "aggancio-elastici",
+      "locale": "it",
+      "category": "Elastici e bottoni",
+      "categoryId": "elastici-bottoni",
+      "icon": "elastic",
+      "title": "Non so dove agganciare gli elastici",
+      "keywords": [
+        "dove agganciare",
+        "elastici schema",
+        "ganci",
+        "bottoni",
+        "non capisco elastici"
+      ],
+      "shortAnswer": "Gli elastici devono essere agganciati esattamente nei punti prescritti.",
+      "whatToDo": "Controlla le istruzioni ricevute dallo studio e verifica lato destro/sinistro davanti a uno specchio.",
+      "whenToContactClinic": "Se non sei sicuro dello schema o se i ganci non corrispondono a quanto indicato.",
+      "whatToAvoid": "Non inventare uno schema alternativo. Non agganciare gli elastici a denti diversi.",
+      "relatedItems": [
+        "elastici-dimenticati",
+        "elastici-finiti"
+      ],
+      "relatedTitles": [
+        "Ho dimenticato gli elastici",
+        "Si è staccato un bottone",
+        "Ho finito gli elastici"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "elastici-si-rompono",
+      "locale": "it",
+      "category": "Elastici e bottoni",
+      "categoryId": "elastici-bottoni",
+      "icon": "elastic",
+      "title": "Gli elastici si rompono spesso",
+      "keywords": [
+        "elastici si rompono",
+        "elastico rotto",
+        "elastico spezzato",
+        "si spezza"
+      ],
+      "shortAnswer": "Può succedere, ma se accade spesso bisogna capire se c’è un problema di aggancio o di utilizzo.",
+      "whatToDo": "Sostituisci l’elastico rotto. Controlla di non tenderlo in modo anomalo e di usare la misura corretta.",
+      "whenToContactClinic": "Se si rompono continuamente o se un gancio appare tagliente o deformato.",
+      "whatToAvoid": "Non usare elastici vecchi, secchi o di misura non corretta.",
+      "relatedItems": [
+        "aggancio-elastici",
+        "elastici-finiti"
+      ],
+      "relatedTitles": [
+        "Non so dove agganciare gli elastici",
+        "Ho finito gli elastici",
+        "Si è staccato un bottone"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "irritazione-bottone",
+      "locale": "it",
+      "category": "Elastici e bottoni",
+      "categoryId": "elastici-bottoni",
+      "icon": "elastic",
+      "title": "Il bottone irrita la guancia",
+      "keywords": [
+        "bottone irrita",
+        "guancia",
+        "ferita",
+        "graffia",
+        "elastico fastidio"
+      ],
+      "shortAnswer": "Un bottone può irritare la mucosa, soprattutto nei primi giorni.",
+      "whatToDo": "Puoi usare cera ortodontica se disponibile e mantenere la mascherina inserita quando previsto.",
+      "whenToContactClinic": "Se si forma una ferita importante o se il fastidio non migliora.",
+      "whatToAvoid": "Non rimuovere o limare il bottone autonomamente.",
+      "relatedItems": [
+        "ferita-mascherina",
+        "elastici-dolore"
+      ],
+      "relatedTitles": [
+        "Ho una ferita da mascherina",
+        "Si è staccato un bottone",
+        "Gli elastici mi fanno male"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "elastici-solo-notte",
+      "locale": "it",
+      "category": "Elastici e bottoni",
+      "categoryId": "elastici-bottoni",
+      "icon": "elastic",
+      "title": "Ho portato gli elastici solo di notte invece che tutto il giorno",
+      "keywords": [
+        "solo notte",
+        "elastici notte",
+        "non li porto giorno",
+        "elastici meno ore"
+      ],
+      "shortAnswer": "Se erano prescritti per più ore, portarli solo di notte può non essere sufficiente.",
+      "whatToDo": "Riprendi lo schema corretto appena possibile.",
+      "whenToContactClinic": "Se hai seguito lo schema ridotto per molti giorni o se non ricordi l’indicazione precisa.",
+      "whatToAvoid": "Non decidere autonomamente di ridurre le ore di utilizzo.",
+      "relatedItems": [
+        "elastici-dimenticati",
+        "elastici-dolore",
+        "aggancio-elastici"
+      ],
+      "relatedTitles": [
+        "Ho dimenticato gli elastici",
+        "Gli elastici mi fanno male",
+        "Non so dove agganciare gli elastici"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "dolore-primi-giorni",
+      "locale": "it",
+      "category": "Dolore e fastidio",
+      "categoryId": "dolore-fastidio",
+      "icon": "pain",
+      "title": "Ho dolore nei primi giorni di una nuova mascherina",
+      "keywords": [
+        "dolore",
+        "primi giorni",
+        "pressione",
+        "nuova mascherina",
+        "fastidio denti"
+      ],
+      "shortAnswer": "Una pressione nei primi giorni è frequente e di solito indica che la mascherina sta lavorando.",
+      "whatToDo": "Porta la mascherina con regolarità. Se necessario, usa i rimedi antidolorifici che puoi assumere abitualmente secondo indicazione del tuo medico.",
+      "whenToContactClinic": "Se il dolore è intenso, peggiora invece di migliorare o dura oltre alcuni giorni.",
+      "whatToAvoid": "Non togliere la mascherina per molte ore: spesso aumenta la sensibilità al reinserimento.",
+      "relatedItems": [
+        "attachment-appena-messo-dolore",
+        "dolore-masticare",
+        "sensibilita-dentale"
+      ],
+      "relatedTitles": [
+        "Dopo aver messo gli attachment sento più pressione",
+        "Mi fa male masticare",
+        "Ho sensibilità dentale"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "dente-mobile",
+      "locale": "it",
+      "category": "Dolore e fastidio",
+      "categoryId": "dolore-fastidio",
+      "icon": "pain",
+      "title": "Un dente sembra mobile",
+      "keywords": [
+        "dente mobile",
+        "si muove",
+        "mobilità",
+        "dente traballa"
+      ],
+      "shortAnswer": "Una lieve mobilità può comparire durante il movimento ortodontico. Mobilità marcata o dolorosa va controllata.",
+      "whatToDo": "Continua a portare la mascherina se calza bene e monitora la sensazione.",
+      "whenToContactClinic": "Se il dente sembra molto mobile, se fa male spontaneamente o se c’è trauma, gonfiore o sanguinamento.",
+      "whatToAvoid": "Non testare continuamente la mobilità con dita o lingua.",
+      "relatedItems": [
+        "sensibilita-dentale"
+      ],
+      "relatedTitles": [
+        "Ho dolore nei primi giorni",
+        "Ho sensibilità dentale",
+        "Trauma durante il trattamento"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "sensibilita-dentale",
+      "locale": "it",
+      "category": "Dolore e fastidio",
+      "categoryId": "dolore-fastidio",
+      "icon": "pain",
+      "title": "Ho sensibilità dentale",
+      "keywords": [
+        "sensibilità",
+        "freddo",
+        "caldo",
+        "dente sensibile",
+        "dolore freddo"
+      ],
+      "shortAnswer": "La sensibilità può dipendere da movimento dentale, recessioni, igiene o altri fattori dentali.",
+      "whatToDo": "Usa un dentifricio per denti sensibili se già indicato e mantieni igiene accurata.",
+      "whenToContactClinic": "Se la sensibilità è intensa, localizzata su un solo dente, notturna o associata a dolore spontaneo.",
+      "whatToAvoid": "Non ignorare dolore acuto o persistente. Non abusare di prodotti sbiancanti durante la terapia.",
+      "relatedItems": [
+        "dolore-masticare"
+      ],
+      "relatedTitles": [
+        "Ho dolore nei primi giorni",
+        "Mi fa male masticare",
+        "Gengiva gonfia o sanguinante"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "ferita-mascherina",
+      "locale": "it",
+      "category": "Dolore e fastidio",
+      "categoryId": "dolore-fastidio",
+      "icon": "pain",
+      "title": "Ho una ferita da mascherina",
+      "keywords": [
+        "ferita",
+        "afta",
+        "taglio",
+        "piaga",
+        "guancia",
+        "gengiva",
+        "labbro"
+      ],
+      "shortAnswer": "Una piccola irritazione può derivare da un bordo ruvido o da una zona di frizione.",
+      "whatToDo": "Controlla se c’è un bordo tagliente. Puoi levigarlo delicatamente se chiaramente ruvido e usare cera ortodontica quando utile.",
+      "whenToContactClinic": "Se la ferita è estesa, sanguina, peggiora o non migliora in pochi giorni.",
+      "whatToAvoid": "Non tagliare parti ampie della mascherina. Non sospendere del tutto la terapia senza istruzioni.",
+      "relatedItems": [
+        "mascherina-taglia",
+        "irritazione-bottone",
+        "attachment-fastidio"
+      ],
+      "relatedTitles": [
+        "La mascherina taglia la gengiva o la guancia",
+        "Il bottone irrita la guancia",
+        "Un attachment dà fastidio"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "dolore-masticare",
+      "locale": "it",
+      "category": "Dolore e fastidio",
+      "categoryId": "dolore-fastidio",
+      "icon": "pain",
+      "title": "Mi fa male masticare",
+      "keywords": [
+        "male masticare",
+        "dolore masticazione",
+        "dente dolente",
+        "mangiare male"
+      ],
+      "shortAnswer": "Durante il movimento ortodontico alcuni denti possono essere più sensibili alla masticazione.",
+      "whatToDo": "Preferisci cibi morbidi per qualche giorno e osserva se il fastidio diminuisce.",
+      "whenToContactClinic": "Se il dolore è localizzato, molto intenso, associato a gonfiore o non migliora.",
+      "whatToAvoid": "Non masticare cibi molto duri sul dente dolente.",
+      "relatedItems": [
+        "sensibilita-dentale",
+        "dente-mobile"
+      ],
+      "relatedTitles": [
+        "Ho dolore nei primi giorni",
+        "Ho sensibilità dentale",
+        "Un dente sembra mobile"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "gengiva-gonfia-sanguina",
+      "locale": "it",
+      "category": "Dolore e fastidio",
+      "categoryId": "dolore-fastidio",
+      "icon": "pain",
+      "title": "La gengiva è gonfia o sanguina",
+      "keywords": [
+        "gengiva gonfia",
+        "sanguina",
+        "sangue",
+        "infiammata",
+        "gengivite"
+      ],
+      "shortAnswer": "Gonfiore e sanguinamento gengivale sono spesso legati all’igiene, ma vanno monitorati.",
+      "whatToDo": "Migliora l’igiene intorno ai denti e agli attachment. Usa gli strumenti consigliati dallo studio.",
+      "whenToContactClinic": "Se il sanguinamento è importante, se compare pus, dolore intenso o gonfiore localizzato.",
+      "whatToAvoid": "Non ridurre l’igiene per paura del sanguinamento: spesso peggiora l’infiammazione.",
+      "relatedItems": [
+        "sensibilita-dentale"
+      ],
+      "relatedTitles": [
+        "Come pulisco le mascherine",
+        "Ho sensibilità dentale",
+        "Gonfiore o infezione"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "dolore-articolare",
+      "locale": "it",
+      "category": "Dolore e fastidio",
+      "categoryId": "dolore-fastidio",
+      "icon": "pain",
+      "title": "Sento fastidio alla mandibola o all’articolazione",
+      "keywords": [
+        "mandibola",
+        "articolazione",
+        "atm",
+        "click",
+        "dolore mandibolare",
+        "mal di testa"
+      ],
+      "shortAnswer": "La terapia può modificare temporaneamente i contatti dentali. Fastidi mandibolari importanti vanno valutati.",
+      "whatToDo": "Osserva se il fastidio è lieve e transitorio. Evita di serrare volontariamente i denti.",
+      "whenToContactClinic": "Se il dolore articolare è forte, se limita l’apertura della bocca o se compare blocco mandibolare.",
+      "whatToAvoid": "Non usare elastici in modo diverso dalla prescrizione. Non masticare a lungo chewies senza indicazione.",
+      "relatedItems": [
+        "elastici-dolore",
+        "dolore-masticare"
+      ],
+      "relatedTitles": [
+        "Gli elastici mi fanno male",
+        "Ho dolore nei primi giorni",
+        "Mi fa male masticare"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "dente-non-segue",
+      "locale": "it",
+      "category": "Tracking",
+      "categoryId": "tracking",
+      "icon": "tracking",
+      "title": "Un dente non segue la mascherina",
+      "keywords": [
+        "dente non segue",
+        "tracking",
+        "fuori tracking",
+        "non si muove",
+        "dente indietro"
+      ],
+      "shortAnswer": "Quando un dente non segue, la mascherina può perdere precisione in quella zona.",
+      "whatToDo": "Usa i chewies se indicati e aumenta la precisione nell’inserimento. Verifica che la mascherina sia completamente seduta.",
+      "whenToContactClinic": "Se il problema resta evidente per più giorni o peggiora nei passaggi successivi.",
+      "whatToAvoid": "Non avanzare automaticamente se la mascherina non aderisce bene.",
+      "relatedItems": [
+        "mascherina-non-aderisce",
+        "spazio-dente-aligner",
+        "chewies-non-aiuta"
+      ],
+      "relatedTitles": [
+        "La mascherina non aderisce a un dente",
+        "Vedo spazio tra dente e allineatore",
+        "Il chewies non aiuta"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "spazio-dente-aligner",
+      "locale": "it",
+      "category": "Tracking",
+      "categoryId": "tracking",
+      "icon": "tracking",
+      "title": "Vedo spazio tra dente e allineatore",
+      "keywords": [
+        "spazio",
+        "gap",
+        "vuoto",
+        "mascherina sollevata",
+        "dente staccato"
+      ],
+      "shortAnswer": "Un piccolo spazio può essere recuperabile, ma deve ridursi con l’uso corretto.",
+      "whatToDo": "Indossa la mascherina con costanza e usa i chewies nella zona interessata se ti sono stati indicati.",
+      "whenToContactClinic": "Se lo spazio non si riduce, aumenta o rende difficile il cambio di mascherina.",
+      "whatToAvoid": "Non ignorare spazi progressivi. Non cambiare step se il gap è importante.",
+      "relatedItems": [
+        "dente-non-segue",
+        "mascherina-non-aderisce",
+        "mascherina-non-entra"
+      ],
+      "relatedTitles": [
+        "Un dente non segue la mascherina",
+        "La mascherina non aderisce a un dente",
+        "La mascherina non entra"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "mascherina-balla",
+      "locale": "it",
+      "category": "Tracking",
+      "categoryId": "tracking",
+      "icon": "tracking",
+      "title": "La mascherina “balla” o sembra instabile",
+      "keywords": [
+        "balla",
+        "instabile",
+        "larga",
+        "si muove",
+        "non tiene",
+        "cade"
+      ],
+      "shortAnswer": "Una mascherina instabile può indicare calzata non corretta, deformazione o perdita di precisione.",
+      "whatToDo": "Controlla che sia il numero giusto e che non sia deformata. Confronta con la mascherina precedente.",
+      "whenToContactClinic": "Se non resta in posizione o se hai dubbi sulla sequenza.",
+      "whatToAvoid": "Non usare una mascherina deformata o chiaramente larga senza segnalarlo.",
+      "relatedItems": [
+        "mascherina-deformata",
+        "mascherina-saltata",
+        "spazio-dente-aligner"
+      ],
+      "relatedTitles": [
+        "La mascherina si è deformata",
+        "Ho saltato una mascherina",
+        "Vedo spazio tra dente e allineatore"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "chewies-non-aiuta",
+      "locale": "it",
+      "category": "Tracking",
+      "categoryId": "tracking",
+      "icon": "tracking",
+      "title": "Il chewies non aiuta",
+      "keywords": [
+        "chewies",
+        "gommino",
+        "non aiuta",
+        "non scatta",
+        "non migliora"
+      ],
+      "shortAnswer": "I chewies aiutano solo se il problema è lieve e la mascherina è ancora recuperabile.",
+      "whatToDo": "Usali nella zona indicata, senza esagerare. Se la mascherina resta sollevata, il problema va valutato.",
+      "whenToContactClinic": "Se dopo alcuni giorni non cambia nulla o se il gap è evidente.",
+      "whatToAvoid": "Non usare chewies per forzare una mascherina completamente non calzante.",
+      "relatedItems": [
+        "dente-non-segue",
+        "spazio-dente-aligner",
+        "mascherina-non-entra"
+      ],
+      "relatedTitles": [
+        "Un dente non segue la mascherina",
+        "Vedo spazio tra dente e allineatore",
+        "La mascherina non entra"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "aligner-non-scatta-lato",
+      "locale": "it",
+      "category": "Tracking",
+      "categoryId": "tracking",
+      "icon": "tracking",
+      "title": "La mascherina non scatta su un lato",
+      "keywords": [
+        "non scatta",
+        "lato",
+        "destra",
+        "sinistra",
+        "posteriore",
+        "non aggancia"
+      ],
+      "shortAnswer": "Se un lato non scatta, la mascherina non sta lavorando in modo simmetrico.",
+      "whatToDo": "Controlla di inserirla prima da un lato e poi dall’altro, senza deformarla. Verifica eventuali attachment o bottoni staccati.",
+      "whenToContactClinic": "Se continua a non scattare o se un attachment/bottone manca.",
+      "whatToAvoid": "Non mordere forte per agganciarla. Non piegare la mascherina.",
+      "relatedItems": [
+        "attachment-staccato",
+        "mascherina-non-entra",
+        "mascherina-deformata"
+      ],
+      "relatedTitles": [
+        "Si è staccato un attachment",
+        "La mascherina non entra",
+        "La mascherina si è deformata"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "ultimo-aligner-non-perfetto",
+      "locale": "it",
+      "category": "Tracking",
+      "categoryId": "tracking",
+      "icon": "tracking",
+      "title": "Sono all’ultima mascherina ma il risultato non è perfetto",
+      "keywords": [
+        "ultima mascherina",
+        "risultato non perfetto",
+        "finito",
+        "denti non dritti",
+        "refinement"
+      ],
+      "shortAnswer": "Alla fine di una serie può essere necessario un controllo o un refinement.",
+      "whatToDo": "Continua a portare l’ultima mascherina come indicato fino al controllo.",
+      "whenToContactClinic": "Contatta lo studio per programmare la valutazione finale o eventuali mascherine aggiuntive.",
+      "whatToAvoid": "Non smettere di portare la mascherina finale. Non passare alla contenzione senza conferma.",
+      "relatedItems": [
+        "dente-non-segue",
+        "spazio-dente-aligner"
+      ],
+      "relatedTitles": [
+        "Un dente non segue la mascherina",
+        "Vedo spazio tra dente e allineatore",
+        "Contenzione finale"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "bere-con-mascherine",
+      "locale": "it",
+      "category": "Igiene e routine quotidiana",
+      "categoryId": "igiene-routine",
+      "icon": "hygiene",
+      "title": "Posso bere con le mascherine?",
+      "keywords": [
+        "bere",
+        "acqua",
+        "caffè",
+        "vino",
+        "bibite",
+        "bevande",
+        "mascherine"
+      ],
+      "shortAnswer": "Con le mascherine è preferibile bere solo acqua.",
+      "whatToDo": "Per bevande zuccherate, acide o pigmentanti, rimuovi le mascherine e lavale prima di reinserirle.",
+      "whenToContactClinic": "Se noti macchie importanti, cattivo odore persistente o irritazioni.",
+      "whatToAvoid": "Non bere bevande calde con le mascherine. Il calore può deformarle.",
+      "relatedItems": [
+        "fumo-caffe",
+        "mascherine-puzzano"
+      ],
+      "relatedTitles": [
+        "Fumo e caffè con gli allineatori",
+        "Come pulisco le mascherine",
+        "Le mascherine puzzano"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "pulizia-mascherine",
+      "locale": "it",
+      "category": "Igiene e routine quotidiana",
+      "categoryId": "igiene-routine",
+      "icon": "hygiene",
+      "title": "Come pulisco le mascherine?",
+      "keywords": [
+        "pulire",
+        "lavare",
+        "igiene",
+        "sapone",
+        "spazzolino",
+        "cristalli",
+        "sporche"
+      ],
+      "shortAnswer": "La pulizia quotidiana riduce odori, pigmentazioni e accumulo di placca.",
+      "whatToDo": "Sciacquale con acqua fredda o tiepida e puliscile delicatamente con strumenti non abrasivi. Segui eventuali prodotti consigliati dallo studio.",
+      "whenToContactClinic": "Se restano opache, maleodoranti o deformate.",
+      "whatToAvoid": "Non usare acqua bollente. Evita prodotti aggressivi o abrasivi.",
+      "relatedItems": [
+        "mascherine-puzzano",
+        "mascherina-deformata"
+      ],
+      "relatedTitles": [
+        "Le mascherine puzzano",
+        "Posso bere con le mascherine",
+        "La mascherina si è deformata"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "mascherine-puzzano",
+      "locale": "it",
+      "category": "Igiene e routine quotidiana",
+      "categoryId": "igiene-routine",
+      "icon": "hygiene",
+      "title": "Le mascherine puzzano",
+      "keywords": [
+        "puzzano",
+        "odore",
+        "alito",
+        "cattivo odore",
+        "maleodore"
+      ],
+      "shortAnswer": "Il cattivo odore di solito dipende da placca, saliva, residui alimentari o pulizia insufficiente.",
+      "whatToDo": "Pulisci le mascherine ogni giorno e lava i denti prima di reinserirle quando possibile.",
+      "whenToContactClinic": "Se l’odore persiste nonostante una buona igiene o se hai gengive infiammate.",
+      "whatToAvoid": "Non usare collutori colorati o prodotti aggressivi se non indicati.",
+      "relatedItems": [
+        "gengiva-gonfia-sanguina"
+      ],
+      "relatedTitles": [
+        "Come pulisco le mascherine",
+        "La gengiva è gonfia o sanguina",
+        "Posso bere con le mascherine"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "sport-allineatori",
+      "locale": "it",
+      "category": "Igiene e routine quotidiana",
+      "categoryId": "igiene-routine",
+      "icon": "hygiene",
+      "title": "Posso fare sport con le mascherine?",
+      "keywords": [
+        "sport",
+        "palestra",
+        "calcio",
+        "boxe",
+        "contatto",
+        "allenamento"
+      ],
+      "shortAnswer": "In molti sport le mascherine possono essere tenute, ma negli sport di contatto serve attenzione.",
+      "whatToDo": "Per attività normali puoi tenerle se non danno fastidio. Per sport di contatto o rischio trauma, chiedi istruzioni specifiche.",
+      "whenToContactClinic": "Se fai sport da contatto o hai subito un colpo ai denti.",
+      "whatToAvoid": "Non usare la mascherina come paradenti sportivo.",
+      "relatedItems": [
+        "mascherina-persa"
+      ],
+      "relatedTitles": [
+        "Trauma durante il trattamento",
+        "Parto per un viaggio",
+        "Ho perso una mascherina"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "viaggio-allineatori",
+      "locale": "it",
+      "category": "Igiene e routine quotidiana",
+      "categoryId": "igiene-routine",
+      "icon": "hygiene",
+      "title": "Parto per un viaggio: cosa porto?",
+      "keywords": [
+        "viaggio",
+        "vacanza",
+        "aereo",
+        "valigia",
+        "fuori casa",
+        "parto"
+      ],
+      "shortAnswer": "In viaggio è importante avere sempre una mascherina di sicurezza e il contenitore.",
+      "whatToDo": "Porta la mascherina attuale, quella precedente, quella successiva se prevista, elastici sufficienti e il case.",
+      "whenToContactClinic": "Prima di partire se il viaggio è lungo o coincide con più cambi di mascherina.",
+      "whatToAvoid": "Non mettere tutte le mascherine in un bagaglio che può andare perso. Non lasciarle al caldo.",
+      "relatedItems": [
+        "mascherina-persa",
+        "elastici-finiti",
+        "mascherina-deformata"
+      ],
+      "relatedTitles": [
+        "Ho perso una mascherina",
+        "Ho finito gli elastici",
+        "La mascherina si è deformata"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "mangiare-con-mascherine",
+      "locale": "it",
+      "category": "Igiene e routine quotidiana",
+      "categoryId": "igiene-routine",
+      "icon": "hygiene",
+      "title": "Posso mangiare con le mascherine?",
+      "keywords": [
+        "mangiare",
+        "cibo",
+        "pranzo",
+        "cena",
+        "snack",
+        "masticare"
+      ],
+      "shortAnswer": "No. Le mascherine vanno rimosse per mangiare.",
+      "whatToDo": "Rimuovile, conservale nel case e reinseriscile dopo igiene o almeno dopo risciacquo accurato.",
+      "whenToContactClinic": "Se hai morso o deformato una mascherina mangiando.",
+      "whatToAvoid": "Non avvolgerle in tovaglioli: è uno dei modi più comuni per perderle.",
+      "relatedItems": [
+        "mascherina-persa",
+        "mascherina-deformata"
+      ],
+      "relatedTitles": [
+        "Ho perso una mascherina",
+        "La mascherina si è deformata",
+        "Come pulisco le mascherine"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "fumo-caffe",
+      "locale": "it",
+      "category": "Igiene e routine quotidiana",
+      "categoryId": "igiene-routine",
+      "icon": "hygiene",
+      "title": "Fumo e caffè con gli allineatori",
+      "keywords": [
+        "fumo",
+        "caffè",
+        "tè",
+        "macchie",
+        "sigaretta",
+        "pigmentazione"
+      ],
+      "shortAnswer": "Fumo, caffè e bevande pigmentanti possono macchiare mascherine e attachment.",
+      "whatToDo": "Rimuovi le mascherine quando bevi caffè o bevande pigmentanti e pulisci prima di reinserirle.",
+      "whenToContactClinic": "Se compaiono macchie importanti o irritazioni gengivali.",
+      "whatToAvoid": "Non fumare con le mascherine inserite. Non bere liquidi caldi con le mascherine.",
+      "relatedItems": [
+        "attachment-macchiato"
+      ],
+      "relatedTitles": [
+        "Un attachment si è macchiato",
+        "Posso bere con le mascherine",
+        "Come pulisco le mascherine"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "conservare-mascherine",
+      "locale": "it",
+      "category": "Igiene e routine quotidiana",
+      "categoryId": "igiene-routine",
+      "icon": "hygiene",
+      "title": "Dove conservo le mascherine quando le tolgo?",
+      "keywords": [
+        "conservare",
+        "case",
+        "scatola",
+        "tovagliolo",
+        "tasca",
+        "custodia"
+      ],
+      "shortAnswer": "Le mascherine vanno sempre conservate nel loro contenitore.",
+      "whatToDo": "Quando le rimuovi, mettile subito nel case.",
+      "whenToContactClinic": "Se le hai perse o se si sono deformate perché conservate male.",
+      "whatToAvoid": "Non metterle in tasca, in borsa senza custodia o in un tovagliolo.",
+      "relatedItems": [
+        "mascherina-persa",
+        "mascherina-deformata"
+      ],
+      "relatedTitles": [
+        "Ho perso una mascherina",
+        "La mascherina si è deformata",
+        "Posso mangiare con le mascherine"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "contenzione-persa",
+      "locale": "it",
+      "category": "Contenzione",
+      "categoryId": "contenzione",
+      "icon": "retention",
+      "title": "Ho perso la contenzione",
+      "keywords": [
+        "contenzione persa",
+        "retainer perso",
+        "vivera persa",
+        "mascherina finale persa"
+      ],
+      "shortAnswer": "La contenzione mantiene il risultato. Restare senza può favorire recidive.",
+      "whatToDo": "Se hai una copia di riserva, usala subito. Se non hai copie, contatta lo studio.",
+      "whenToContactClinic": "Prima possibile, soprattutto se senti che i denti si stanno spostando.",
+      "whatToAvoid": "Non aspettare settimane senza contenzione.",
+      "relatedItems": [
+        "contenzione-non-entra",
+        "retainer-rotto"
+      ],
+      "relatedTitles": [
+        "La contenzione non entra più",
+        "Il retainer si è rotto",
+        "Devo portare la contenzione per sempre"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "contenzione-non-entra",
+      "locale": "it",
+      "category": "Contenzione",
+      "categoryId": "contenzione",
+      "icon": "retention",
+      "title": "La contenzione non entra più",
+      "keywords": [
+        "contenzione non entra",
+        "retainer stretto",
+        "vivera non entra",
+        "non calza più"
+      ],
+      "shortAnswer": "Se la contenzione non entra, può esserci stato uno spostamento dentale.",
+      "whatToDo": "Non forzarla. Prova la copia precedente o di riserva se disponibile e se calza correttamente.",
+      "whenToContactClinic": "Contatta lo studio per valutare se serve una nuova scansione o una correzione.",
+      "whatToAvoid": "Non forzare un retainer che non entra. Non restare senza nulla se hai una copia che calza.",
+      "relatedItems": [
+        "contenzione-persa",
+        "contenzione-poco-uso"
+      ],
+      "relatedTitles": [
+        "Ho perso la contenzione",
+        "Il retainer è stretto",
+        "Ho portato poco la contenzione"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "splintaggio-staccato",
+      "locale": "it",
+      "category": "Contenzione",
+      "categoryId": "contenzione",
+      "icon": "retention",
+      "title": "Lo splintaggio si è staccato",
+      "keywords": [
+        "splintaggio staccato",
+        "filo staccato",
+        "retainer fisso",
+        "contenzione fissa",
+        "filo linguale"
+      ],
+      "shortAnswer": "Uno splintaggio staccato può perdere funzione o irritare la lingua.",
+      "whatToDo": "Se hai anche una contenzione mobile, usala secondo indicazione. Non tirare il filo.",
+      "whenToContactClinic": "Contatta lo studio per ripararlo, soprattutto se punge o se senti i denti muoversi.",
+      "whatToAvoid": "Non tagliare o strappare il filo autonomamente.",
+      "relatedItems": [
+        "contenzione-persa",
+        "contenzione-non-entra",
+        "retainer-rotto"
+      ],
+      "relatedTitles": [
+        "Ho perso la contenzione",
+        "La contenzione non entra più",
+        "Il retainer si è rotto"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "contenzione-per-sempre",
+      "locale": "it",
+      "category": "Contenzione",
+      "categoryId": "contenzione",
+      "icon": "retention",
+      "title": "Devo portare la contenzione per sempre?",
+      "keywords": [
+        "per sempre",
+        "quanto portare contenzione",
+        "retainer",
+        "mantenimento",
+        "notte"
+      ],
+      "shortAnswer": "La tendenza dei denti a muoversi può restare nel tempo. La contenzione serve a proteggere il risultato.",
+      "whatToDo": "Segui lo schema indicato dallo studio. In genere la contenzione notturna è la forma più comune di mantenimento a lungo termine.",
+      "whenToContactClinic": "Se la contenzione non calza più, si rompe o noti spostamenti.",
+      "whatToAvoid": "Non sospenderla autonomamente perché i denti possono recidivare.",
+      "relatedItems": [
+        "contenzione-persa",
+        "contenzione-non-entra",
+        "contenzione-poco-uso"
+      ],
+      "relatedTitles": [
+        "Ho perso la contenzione",
+        "La contenzione non entra più",
+        "Ho portato poco la contenzione"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "retainer-rotto",
+      "locale": "it",
+      "category": "Contenzione",
+      "categoryId": "contenzione",
+      "icon": "retention",
+      "title": "Il retainer si è rotto",
+      "keywords": [
+        "retainer rotto",
+        "contenzione rotta",
+        "vivera rotta",
+        "crepa",
+        "frattura"
+      ],
+      "shortAnswer": "Un retainer rotto può non mantenere correttamente la posizione dei denti.",
+      "whatToDo": "Usa una copia integra se disponibile. Se non hai copie, contatta lo studio.",
+      "whenToContactClinic": "Se il retainer è deformato, ferisce o non mantiene i denti.",
+      "whatToAvoid": "Non incollare o riparare il retainer autonomamente.",
+      "relatedItems": [
+        "contenzione-persa",
+        "contenzione-non-entra",
+        "splintaggio-staccato"
+      ],
+      "relatedTitles": [
+        "Ho perso la contenzione",
+        "La contenzione non entra più",
+        "Lo splintaggio si è staccato"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "contenzione-poco-uso",
+      "locale": "it",
+      "category": "Contenzione",
+      "categoryId": "contenzione",
+      "icon": "retention",
+      "title": "Ho portato poco la contenzione",
+      "keywords": [
+        "poco uso contenzione",
+        "dimenticato retainer",
+        "non ho portato contenzione",
+        "recidiva"
+      ],
+      "shortAnswer": "Ridurre la contenzione aumenta il rischio di piccoli spostamenti dentali.",
+      "whatToDo": "Reinserisci la contenzione se entra senza forzare e riprendi l’uso regolare.",
+      "whenToContactClinic": "Se non entra più o se noti denti spostati.",
+      "whatToAvoid": "Non forzare un retainer che non calza. Non aspettare troppo se il problema è evidente.",
+      "relatedItems": [
+        "contenzione-non-entra",
+        "contenzione-persa"
+      ],
+      "relatedTitles": [
+        "La contenzione non entra più",
+        "Devo portare la contenzione per sempre",
+        "Ho perso la contenzione"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "trauma-trattamento",
+      "locale": "it",
+      "category": "Urgenze e contatto studio",
+      "categoryId": "urgenze",
+      "icon": "urgency",
+      "title": "Ho preso un colpo ai denti durante il trattamento",
+      "keywords": [
+        "trauma",
+        "colpo",
+        "caduta",
+        "incidente",
+        "dente rotto",
+        "sangue"
+      ],
+      "shortAnswer": "Un trauma dentale va considerato una situazione da valutare rapidamente.",
+      "whatToDo": "Rimuovi la mascherina solo se necessario e controlla se ci sono denti rotti, mobilità marcata o sanguinamento.",
+      "whenToContactClinic": "Contatta subito lo studio o un odontoiatra. In caso di trauma importante, dolore intenso o sanguinamento, non attendere.",
+      "whatToAvoid": "Non usare la mascherina come paradenti. Non ignorare denti mobili o fratturati.",
+      "relatedItems": [
+        "dente-mobile"
+      ],
+      "relatedTitles": [
+        "Un dente sembra mobile",
+        "Ho dolore nei primi giorni",
+        "Posso fare sport con le mascherine"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "gonfiore-infezione",
+      "locale": "it",
+      "category": "Urgenze e contatto studio",
+      "categoryId": "urgenze",
+      "icon": "urgency",
+      "title": "Ho gonfiore, pus o dolore intenso",
+      "keywords": [
+        "gonfiore",
+        "pus",
+        "infezione",
+        "dolore forte",
+        "febbre",
+        "ascesso"
+      ],
+      "shortAnswer": "Gonfiore, pus, febbre o dolore intenso non sono normali effetti della terapia con allineatori.",
+      "whatToDo": "Contatta rapidamente lo studio o un odontoiatra per una valutazione.",
+      "whenToContactClinic": "Subito, soprattutto se il gonfiore aumenta, compare febbre o il dolore è forte.",
+      "whatToAvoid": "Non aspettare il controllo programmato. Non attribuire automaticamente tutto agli allineatori.",
+      "relatedItems": [
+        "gengiva-gonfia-sanguina",
+        "sensibilita-dentale",
+        "dolore-masticare"
+      ],
+      "relatedTitles": [
+        "La gengiva è gonfia o sanguina",
+        "Ho sensibilità dentale",
+        "Mi fa male masticare"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "quando-chiamare-studio",
+      "locale": "it",
+      "category": "Urgenze e contatto studio",
+      "categoryId": "urgenze",
+      "icon": "urgency",
+      "title": "Quando devo contattare lo studio?",
+      "keywords": [
+        "chiamare studio",
+        "contattare",
+        "urgenza",
+        "dubbio",
+        "quando preoccuparsi"
+      ],
+      "shortAnswer": "Va contattato lo studio quando il problema impedisce l’uso corretto della terapia o quando ci sono segni clinici importanti.",
+      "whatToDo": "Contatta lo studio se non riesci a inserire le mascherine, se hai perso dispositivi importanti, se c’è dolore intenso o se il problema persiste.",
+      "whenToContactClinic": "Sempre in caso di trauma, gonfiore, pus, sanguinamento importante, dolore forte o perdita prolungata della contenzione.",
+      "whatToAvoid": "Non aspettare se il problema sta peggiorando o se sei senza mascherina/retainer da giorni.",
+      "relatedItems": [
+        "mascherina-persa",
+        "gonfiore-infezione"
+      ],
+      "relatedTitles": [
+        "Ho perso una mascherina",
+        "Si è staccato un bottone",
+        "Ho gonfiore, pus o dolore intenso"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    },
+    {
+      "id": "non-so-cosa-scegliere",
+      "locale": "it",
+      "category": "Urgenze e contatto studio",
+      "categoryId": "urgenze",
+      "icon": "urgency",
+      "title": "Non so quale problema scegliere",
+      "keywords": [
+        "non so",
+        "dubbio",
+        "problema",
+        "aiuto",
+        "identificare",
+        "cosa scegliere"
+      ],
+      "shortAnswer": "Se non riesci a identificare il problema, parti dalla categoria più vicina o usa il percorso guidato.",
+      "whatToDo": "Scegli tra mascherina, attachment, elastici, dolore, tracking, igiene, contenzione o urgenze. Se nessuna categoria è adatta, contatta lo studio.",
+      "whenToContactClinic": "Se il dubbio riguarda dolore importante, dispositivi persi o impossibilità di portare la mascherina.",
+      "whatToAvoid": "Non prendere decisioni casuali sulla sequenza delle mascherine o sugli elastici.",
+      "relatedItems": [
+        "quando-chiamare-studio",
+        "mascherina-non-entra"
+      ],
+      "relatedTitles": [
+        "Quando devo contattare lo studio?",
+        "La mascherina non entra",
+        "Ho dolore nei primi giorni"
+      ],
+      "disclaimer": "Indicazioni generali. Non sostituiscono una valutazione clinica. In caso di dubbio o peggioramento, contattare lo studio."
+    }
+  ]
+}

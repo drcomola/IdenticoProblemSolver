@@ -436,6 +436,20 @@ export const patientsSectionsEn: AudienceSections = {
     secondaryCta: p("invisalign", "Read about Invisalign"),
   },
 
+  "aligner-support": {
+    seo: {
+      title: "Aligner Support | Help with aligners, attachments and elastics",
+      description:
+        "Quick patient guide for lost or damaged aligners, attachments, elastics, tracking, discomfort, hygiene and retention.",
+    },
+    h1: "Aligner Support",
+    subtitle:
+      "Quick answers to the most common questions during clear aligner treatment.",
+    blocks: [],
+    primaryCta: p("book", "Contact the clinic"),
+    secondaryCta: p("faq", "Browse the FAQs"),
+  },
+
   book: {
     seo: {
       title: "Book an orthodontic assessment | Dr. Giorgio Comola",

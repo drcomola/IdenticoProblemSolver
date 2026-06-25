@@ -29,6 +29,7 @@ const sectionIconMap: Record<Audience, Partial<Record<SectionKey, BrandIconCompo
     invisalign: AlignerIcon,
     "invisalign-game": AlignerIcon,
     "patient-expert-program": DiamondProviderIcon,
+    "aligner-support": AlignerIcon,
     "first-consultation": FirstVisitIcon,
     "clinical-cases": CasesIcon,
     clinics: ClinicsIcon,
@@ -67,4 +68,3 @@ export function SectionBrandIcon({
   const Icon = sectionBrandIcon(audience, section);
   return <Icon {...props} />;
 }
-

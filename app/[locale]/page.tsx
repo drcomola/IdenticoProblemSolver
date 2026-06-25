@@ -7,6 +7,7 @@ import {
   audiencePath,
   localeHomeAlternates,
   localeHomePath,
+  sectionPath,
 } from "@/lib/routes";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
@@ -46,6 +47,26 @@ export default async function LocaleLandingPage({
 
   const loc = locale as Locale;
   const { landing } = getContent(loc);
+  const alignerSupport = {
+    it: {
+      label: "Ho un problema con gli allineatori",
+      description:
+        "Trova subito cosa fare in caso di mascherina persa, dolore, attachment, elastici, tracking o contenzione.",
+      actionLabel: "Apri il supporto",
+    },
+    en: {
+      label: "I have a problem with my aligners",
+      description:
+        "Quickly find out what to do about a lost aligner, discomfort, attachments, elastics, tracking or retention.",
+      actionLabel: "Open support",
+    },
+    es: {
+      label: "Tengo un problema con mis alineadores",
+      description:
+        "Descubre rápidamente qué hacer ante un alineador perdido, molestias, attachments, elásticos, tracking o retención.",
+      actionLabel: "Abrir soporte",
+    },
+  } as const;
   const identitySection = {
     it: {
       title: "Digital diagnosis. Clinical control. International education.",
@@ -120,6 +141,10 @@ export default async function LocaleLandingPage({
               href: audiencePath(loc, "colleagues"),
               label: landing.colleagueChoice.label,
               description: landing.colleagueChoice.description,
+            }}
+            support={{
+              href: sectionPath(loc, "patients", "aligner-support"),
+              ...alignerSupport[loc],
             }}
           />
         </Container>

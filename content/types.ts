@@ -172,6 +172,7 @@ export type Dictionary = {
     choosePath: string;
     patient: { label: string; description: string };
     colleague: { label: string; description: string };
+    alignerSupport: { label: string; description: string };
     enter: string;
   };
   form: {

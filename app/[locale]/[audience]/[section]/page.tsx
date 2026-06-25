@@ -30,6 +30,7 @@ import {
   getCasePreviews,
 } from "@/content/cases";
 import { explorerStrings, quizQuestions } from "@/content/casesQuiz";
+import { AlignerSupport } from "@/components/aligner-support/AlignerSupport";
 
 const heroImages: Partial<
   Record<
@@ -242,6 +243,11 @@ export default async function SectionPage({ params }: { params: Params }) {
   if (!r) notFound();
 
   const { loc, audience: aud, section: sec, data } = r;
+
+  if (aud === "patients" && sec === "aligner-support") {
+    return <AlignerSupport locale={loc} />;
+  }
+
   const faqBlock = data.blocks.find((b) => b.type === "faq");
   const heroImage = heroImages[sec];
 

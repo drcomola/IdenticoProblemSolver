@@ -30,20 +30,22 @@ export type DigitalSmileUi = {
 // Evenly distributed on the elliptical orbit (cx 50, cy 54, rx 39, ry 34) drawn
 // in the scene, spanning from the upper-left, around the bottom, to the
 // upper-right so the ring stays open at the top where the aligner sits.
-const markerPositions: SmileMarkerPosition[] = [
-  { x: 15, y: 33 },
-  { x: 9,  y: 55 },
-  { x: 23, y: 74 },
-  { x: 50, y: 82 },
-  { x: 77, y: 74 },
-  { x: 91, y: 55 },
-  { x: 85, y: 33 },
-];
+function markerPositions(count: number): SmileMarkerPosition[] {
+  return Array.from({ length: count }, (_, index) => {
+    const degrees = -150 - index * (180 / Math.max(count - 1, 1));
+    const radians = (degrees * Math.PI) / 180;
+    return {
+      x: 50 + 39 * Math.cos(radians),
+      y: 54 + 34 * Math.sin(radians),
+    };
+  });
+}
 
 const patientSections: SectionKey[] = [
   "about",
   "what-i-offer",
   "first-consultation",
+  "aligner-support",
   "clinical-cases",
   "clinics",
   "faq",
@@ -66,6 +68,7 @@ const previews: Record<Locale, Record<Audience, string[]>> = {
       "Un approccio clinico fondato su diagnosi digitale, pianificazione e controllo.",
       "Allineatori trasparenti, ortodonzia digitale e trattamenti per adulti, adolescenti e bambini.",
       "Una valutazione chiara: diagnosi, opzioni, tempi, limiti e priorità.",
+      "Risposte rapide e predefinite ai dubbi più comuni durante il trattamento.",
       "Esempi reali organizzati per problema, obiettivo e risultato.",
       "Scegli la sede più comoda per prenotare una valutazione.",
       "Risposte dirette alle domande più comuni prima di iniziare.",
@@ -86,6 +89,7 @@ const previews: Record<Locale, Record<Audience, string[]>> = {
       "A clinical approach grounded in digital diagnosis, planning and control.",
       "Clear aligners, digital orthodontics and treatment for adults, teenagers and children.",
       "A clear assessment of diagnosis, options, timing, limits and priorities.",
+      "Fast, predefined guidance for common questions during treatment.",
       "Real examples organised by problem, objective and result.",
       "Choose the most convenient clinic for your assessment.",
       "Direct answers to the most common questions before you begin.",
@@ -106,6 +110,7 @@ const previews: Record<Locale, Record<Audience, string[]>> = {
       "Un enfoque clínico basado en diagnóstico digital, planificación y control.",
       "Alineadores transparentes, ortodoncia digital y tratamientos para adultos, adolescentes y niños.",
       "Una valoración clara: diagnóstico, opciones, tiempos, límites y prioridades.",
+      "Respuestas rápidas y predefinidas para las dudas más comunes del tratamiento.",
       "Ejemplos reales organizados por problema, objetivo y resultado.",
       "Elige la clínica más cómoda para reservar una valoración.",
       "Respuestas directas a las preguntas más frecuentes antes de empezar.",
@@ -167,12 +172,13 @@ export function getSmileJourneyDefinitions(
   audience: Audience,
 ): SmileJourneyItemDefinition[] {
   const sections = audience === "patients" ? patientSections : colleagueSections;
+  const positions = markerPositions(sections.length);
 
   return sections.map((section, index) => ({
     id: `${audience}-${section}`,
     section,
     shortPreview: previews[locale][audience][index],
-    markerPosition: markerPositions[index],
+    markerPosition: positions[index],
     code: String(index + 1).padStart(2, "0"),
   }));
 }

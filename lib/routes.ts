@@ -27,6 +27,7 @@ export const sectionKeys = {
     "invisalign",
     "invisalign-game",
     "patient-expert-program",
+    "aligner-support",
     "first-consultation",
     "clinical-cases",
     "clinics",
@@ -71,6 +72,11 @@ export const sectionSlugs: Record<
       it: "patient-expert-program",
       en: "patient-expert-program",
       es: "patient-expert-program",
+    },
+    "aligner-support": {
+      it: "supporto-allineatori",
+      en: "aligner-support",
+      es: "soporte-alineadores",
     },
     "first-consultation": {
       it: "prima-visita",

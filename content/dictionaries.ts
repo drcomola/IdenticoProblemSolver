@@ -24,6 +24,10 @@ export const dictionaries: Record<Locale, Dictionary> = {
         label: "Sono un collega",
         description: "Formazione, mentorship, ClinCheck e corsi sugli allineatori.",
       },
+      alignerSupport: {
+        label: "Ho un problema con gli allineatori",
+        description: "Risposte rapide su mascherine, dolore, attachment, elastici e contenzione.",
+      },
       enter: "Entra",
     },
     form: {
@@ -89,6 +93,10 @@ export const dictionaries: Record<Locale, Dictionary> = {
         label: "I am a colleague",
         description: "Education, mentorship, ClinCheck and aligner courses.",
       },
+      alignerSupport: {
+        label: "I have an aligner problem",
+        description: "Quick guidance on aligners, discomfort, attachments, elastics and retention.",
+      },
       enter: "Enter",
     },
     form: {
@@ -153,6 +161,10 @@ export const dictionaries: Record<Locale, Dictionary> = {
       colleague: {
         label: "Soy colega",
         description: "Formación, mentoría, ClinCheck y cursos de alineadores.",
+      },
+      alignerSupport: {
+        label: "Tengo un problema con mis alineadores",
+        description: "Respuestas rápidas sobre alineadores, molestias, attachments, elásticos y retención.",
       },
       enter: "Entrar",
     },
