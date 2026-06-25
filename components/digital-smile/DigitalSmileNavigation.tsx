@@ -192,6 +192,19 @@ const _algInner = TEETH.map((t) => radial(tw(t, 0, CERVI[t.type]), -8));
 const ALIGNER_BODY = `${poly(_algOuter)} ${back(_algInner)} Z`;
 const ALIGNER_RIM = poly(_algOuter);
 
+// ─── Floating data motes ──────────────────────────────────────────────────────
+// Light ambient particles that drift upward to give the HUD volume + motion.
+const MOTES = [
+  { x: 168, y: 300, r: 1.6, op: 0.55, travel: 150, dur: 7.0, delay: 0.0 },
+  { x: 250, y: 340, r: 1.1, op: 0.4,  travel: 190, dur: 9.5, delay: 1.4 },
+  { x: 360, y: 360, r: 2.0, op: 0.6,  travel: 210, dur: 8.0, delay: 0.6 },
+  { x: 470, y: 332, r: 1.2, op: 0.42, travel: 175, dur: 10.5, delay: 2.2 },
+  { x: 560, y: 312, r: 1.7, op: 0.5,  travel: 160, dur: 7.8, delay: 1.0 },
+  { x: 612, y: 270, r: 1.0, op: 0.36, travel: 140, dur: 11.0, delay: 3.0 },
+  { x: 312, y: 296, r: 1.3, op: 0.45, travel: 180, dur: 9.0, delay: 2.6 },
+  { x: 430, y: 286, r: 1.5, op: 0.5,  travel: 200, dur: 8.6, delay: 0.3 },
+] as const;
+
 // ─── Animated tooth component ────────────────────────────────────────────────
 function AnimatedTooth({
   tooth, progress, reducedMotion, g, hl,
@@ -247,23 +260,29 @@ function DentalScene3D({ progress, reducedMotion }: {
   const toothShadId   = `ts-${uid}`;
   const glowFiltId    = `gf-${uid}`;
   const scanFiltId    = `sf-${uid}`;
+  const ringGlowId    = `rg-${uid}`;
+  const orbitPathId   = `op-${uid}`;
 
-  // ── Camera rotation (the orbit effect) ──────────────────────────────────
+  // ── Camera rotation (the orbit effect) — wider sweep for a stronger 3-D
+  //    parallax as the user scrolls through the journey.
   const sceneRotX = useTransform(
     progress, [0, 0.38, 0.72, 1],
-    reducedMotion ? [0,0,0,0] : [22, 8, -2, -4]);
+    reducedMotion ? [0,0,0,0] : [28, 11, -3, -8]);
   const sceneRotY = useTransform(
     progress, [0, 0.44, 0.78, 1],
-    reducedMotion ? [0,0,0,0] : [-7, 0, 4, 3]);
+    reducedMotion ? [0,0,0,0] : [-13, -2, 7, 5]);
 
-  // ── Aligner descent (Z + Y) ──────────────────────────────────────────────
+  // ── Aligner descent (Z + Y) — drops from further back for more depth ──────
   const alignerZ = useTransform(
     progress, [0, 0.48, 0.86, 1],
-    reducedMotion ? [14,14,8,8] : [90, 70, 16, 8]);
+    reducedMotion ? [14,14,8,8] : [128, 92, 18, 8]);
   const alignerY = useTransform(
     progress, [0, 0.50, 0.86, 1],
-    reducedMotion ? [0,0,0,0] : [-68, -36, -5, 0]);
+    reducedMotion ? [0,0,0,0] : [-88, -46, -6, 0]);
   const alignerGlow = useTransform(progress, [0.28, 0.68, 1], [0.55, 0.96, 0.78]);
+  const alignerTilt = useTransform(
+    progress, [0, 0.5, 0.86, 1],
+    reducedMotion ? [0,0,0,0] : [-9, -4, 1, 0]);
 
   // ── Orbit ring pulse ────────────────────────────────────────────────────
   const orbitOp = useTransform(progress, [0, 0.22, 0.8, 1], [0.2, 0.48, 0.6, 0.44]);
@@ -274,7 +293,7 @@ function DentalScene3D({ progress, reducedMotion }: {
   return (
     <div
       className="relative w-full select-none"
-      style={{ perspective: "1300px", perspectiveOrigin: "50% 42%" }}
+      style={{ perspective: "1150px", perspectiveOrigin: "50% 42%" }}
       aria-hidden="true"
     >
       <motion.div
@@ -285,6 +304,8 @@ function DentalScene3D({ progress, reducedMotion }: {
           rotateY: sceneRotY,
           aspectRatio: "760 / 440",
         }}
+        animate={reducedMotion ? undefined : { y: [0, -13, 0], rotateZ: [0, 0.7, 0, -0.7, 0] }}
+        transition={reducedMotion ? undefined : { duration: 10, repeat: Infinity, ease: "easeInOut" }}
       >
 
         {/* ── Z −110 · Ground shadow / ambient bloom ─── */}
@@ -327,15 +348,72 @@ function DentalScene3D({ progress, reducedMotion }: {
                 <feDropShadow dx="0" dy="7" stdDeviation="6"
                   floodColor="#000" floodOpacity=".62" />
               </filter>
+              {/* Soft glow for the orbit ring + travelling pulses */}
+              <filter id={ringGlowId} x="-25%" y="-45%" width="150%" height="190%">
+                <feGaussianBlur stdDeviation="3.2" result="b" />
+                <feMerge>
+                  <feMergeNode in="b" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
             </defs>
 
-            {/* Orbit ring — matches the marker ellipse */}
-            <motion.ellipse
-              cx="380" cy="214" rx="312" ry="150"
-              fill="none" stroke="#7fe3ea"
-              strokeWidth="1.1" strokeDasharray="2 10" strokeLinecap="round"
-              style={{ opacity: orbitOp }}
-            />
+            {/* Orbit ring — the circumference that carries the journey nodes.
+                A soft glow band gives it presence, two counter-rotating dashed
+                rings + a flowing-dash ring make energy run along it, and light
+                pulses travel around the path beneath the markers. */}
+            <motion.g style={{ opacity: orbitOp }}>
+              {/* Presence glow band */}
+              <ellipse cx="380" cy="214" rx="306" ry="146" fill="none"
+                stroke="#3fb0bd" strokeOpacity="0.2" strokeWidth="3"
+                filter={`url(#${ringGlowId})`} />
+
+              {/* Counter-rotating dashed rings */}
+              <motion.g
+                style={{ transformBox: "view-box", transformOrigin: "380px 214px" }}
+                animate={reducedMotion ? undefined : { rotate: 360 }}
+                transition={reducedMotion ? undefined : { duration: 64, repeat: Infinity, ease: "linear" }}
+              >
+                <ellipse cx="380" cy="214" rx="312" ry="150" fill="none" stroke="#7fe3ea"
+                  strokeWidth="1.1" strokeDasharray="2 10" strokeLinecap="round" />
+              </motion.g>
+              <motion.g
+                style={{ transformBox: "view-box", transformOrigin: "380px 214px" }}
+                animate={reducedMotion ? undefined : { rotate: -360 }}
+                transition={reducedMotion ? undefined : { duration: 96, repeat: Infinity, ease: "linear" }}
+              >
+                <ellipse cx="380" cy="214" rx="286" ry="134" fill="none" stroke="#4FB3BF"
+                  strokeOpacity="0.55" strokeWidth="0.8" strokeDasharray="1 17" strokeLinecap="round" />
+              </motion.g>
+
+              {/* Flowing-energy ring — dashes stream continuously along the path */}
+              <motion.ellipse
+                cx="380" cy="214" rx="299" ry="142" fill="none"
+                stroke="#8af0f5" strokeWidth="1.4" strokeLinecap="round"
+                strokeDasharray="6 16" filter={`url(#${ringGlowId})`}
+                animate={reducedMotion ? undefined : { strokeDashoffset: [0, -88] }}
+                transition={reducedMotion ? undefined : { duration: 2.6, repeat: Infinity, ease: "linear" }}
+              />
+
+              {/* Travelling light pulses orbiting the circumference */}
+              {!reducedMotion && (
+                <>
+                  <path id={orbitPathId}
+                    d="M68,214 A312,150 0 1,1 692,214 A312,150 0 1,1 68,214 Z"
+                    fill="none" stroke="none" />
+                  {[0, -5.4, -10.8].map((begin, i) => (
+                    <g key={i} filter={`url(#${ringGlowId})`}>
+                      <circle r="6.5" fill="#5fd4dd" opacity="0.3" />
+                      <circle r={i === 0 ? 3 : 2.3} fill="#d6fbfe" opacity="0.95" />
+                      <animateMotion dur="16s" begin={`${begin}s`}
+                        repeatCount="indefinite" rotate="auto">
+                        <mpath href={`#${orbitPathId}`} />
+                      </animateMotion>
+                    </g>
+                  ))}
+                </>
+              )}
+            </motion.g>
 
             {/* All teeth in one shadow group */}
             <g filter={`url(#${toothShadId})`}>
@@ -352,7 +430,12 @@ function DentalScene3D({ progress, reducedMotion }: {
         {/* ── Z dynamic · Aligner tray (descends toward teeth) ─ */}
         <motion.div
           className="absolute inset-0 pointer-events-none"
-          style={{ translateZ: alignerZ, translateY: alignerY }}
+          style={{
+            translateZ: alignerZ,
+            translateY: alignerY,
+            rotateX: alignerTilt,
+            transformStyle: "preserve-3d",
+          }}
         >
           <svg viewBox="0 0 760 440" className="absolute inset-0 w-full h-full overflow-visible">
             <defs>
@@ -445,6 +528,22 @@ function DentalScene3D({ progress, reducedMotion }: {
           </svg>
         </div>
 
+        {/* ── Z +54 · Floating data motes ───────────── */}
+        {!reducedMotion && (
+          <div className="absolute inset-0 pointer-events-none"
+            style={{ transform: "translateZ(54px)" }}>
+            <svg viewBox="0 0 760 440" className="absolute inset-0 w-full h-full overflow-visible">
+              {MOTES.map((m, i) => (
+                <motion.circle
+                  key={i} cx={m.x} r={m.r} fill="#9af0f4"
+                  animate={{ cy: [m.y, m.y - m.travel], opacity: [0, m.op, 0] }}
+                  transition={{ duration: m.dur, repeat: Infinity, ease: "easeInOut", delay: m.delay }}
+                />
+              ))}
+            </svg>
+          </div>
+        )}
+
       </motion.div>
     </div>
   );
@@ -458,7 +557,18 @@ function Marker({ item, index, active, progress, reducedMotion, onActivate }: {
   const thresh = 0.06 + index * 0.115;
   const opacity = useTransform(progress, [thresh, thresh + 0.14], [0.42, 1]);
   const scale   = useTransform(progress, [thresh, thresh + 0.14], [0.82, 1]);
-  const below   = item.markerPosition.y <= 78;
+
+  // Caption placement: fan each label radially outward from the orbit centre so
+  // it clears its own node and never collides with a neighbour. Nodes on the
+  // left arc caption left, right arc caption right, bottom-centre caption below.
+  const dx = item.markerPosition.x - 50;
+  const side = dx <= -14 ? "left" : dx >= 14 ? "right" : "bottom";
+  const labelPos =
+    side === "left"
+      ? "right-full top-1/2 -translate-y-1/2 mr-3 text-right"
+      : side === "right"
+        ? "left-full top-1/2 -translate-y-1/2 ml-3 text-left"
+        : "top-full left-1/2 -translate-x-1/2 mt-3 text-center";
 
   return (
     <motion.div
@@ -471,34 +581,55 @@ function Marker({ item, index, active, progress, reducedMotion, onActivate }: {
         scale:   reducedMotion ? 1 : scale,
       }}
     >
-      <Link
-        href={item.href}
-        aria-label={`${item.label} — ${item.shortPreview}`}
-        onMouseEnter={onActivate} onFocus={onActivate} onPointerDown={onActivate}
-        className={[
-          "group relative flex h-14 w-14 items-center justify-center rounded-full",
-          "border backdrop-blur-lg transition-all duration-300 xl:h-16 xl:w-16",
-          active
-            ? "border-aqua bg-aqua/20 text-white shadow-[0_0_0_8px_rgba(79,179,191,0.14),0_0_44px_rgba(79,179,191,0.9),inset_0_0_22px_rgba(142,212,218,0.25)]"
-            : "border-white/40 bg-night/70 text-aqua shadow-[0_0_22px_rgba(79,179,191,0.22),inset_0_0_16px_rgba(79,179,191,0.1)] hover:border-aqua hover:bg-aqua/18 hover:text-white hover:shadow-[0_0_36px_rgba(79,179,191,0.65)]",
-        ].join(" ")}
+      {/* Idle bob — each marker drifts on its own cadence for a lively orbit. */}
+      <motion.div
+        className="relative"
+        animate={reducedMotion ? undefined : { y: [0, index % 2 ? 5 : -5, 0] }}
+        transition={reducedMotion ? undefined : {
+          duration: 4.4 + index * 0.45, repeat: Infinity, ease: "easeInOut",
+        }}
       >
-        <JourneyIcon item={item} className="h-8 w-8 xl:h-9 xl:w-9" strokeWidth={1.6} />
-        <span className={[
-          "pointer-events-none absolute inset-[-8px] rounded-full border border-aqua/30",
-          "transition-opacity duration-300",
-          active ? "opacity-100" : "opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100",
-        ].join(" ")} />
-        {/* Label */}
-        <span className={[
-          "pointer-events-none absolute left-1/2 -translate-x-1/2 whitespace-nowrap",
-          "text-[0.6rem] font-semibold uppercase tracking-[0.18em] transition-colors duration-300",
-          below ? "top-full mt-2.5" : "bottom-full mb-2.5",
-          active ? "text-aqua" : "text-white/72",
-        ].join(" ")}>
-          {item.label}
-        </span>
-      </Link>
+        {/* Contrast scrim — a soft dark vignette behind every marker so the node
+            reads clearly no matter what part of the scene sits behind it. */}
+        <span
+          aria-hidden
+          className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[5.5rem] w-[5.5rem] rounded-full xl:h-24 xl:w-24"
+          style={{ background: "radial-gradient(circle, rgba(3,9,13,0.95) 28%, rgba(3,9,13,0.6) 55%, transparent 76%)" }}
+        />
+        <Link
+          href={item.href}
+          aria-label={`${item.label} — ${item.shortPreview}`}
+          onMouseEnter={onActivate} onFocus={onActivate} onPointerDown={onActivate}
+          className={[
+            "group relative flex h-14 w-14 items-center justify-center rounded-full",
+            "border-2 backdrop-blur-lg transition-all duration-300 xl:h-16 xl:w-16",
+            active
+              ? "border-aqua bg-aqua/25 text-white shadow-[0_0_0_8px_rgba(79,179,191,0.18),0_0_48px_rgba(79,179,191,0.95),inset_0_0_24px_rgba(142,212,218,0.3)]"
+              : "border-aqua/70 bg-[#06141b]/92 text-white shadow-[0_0_28px_rgba(79,179,191,0.45),inset_0_0_18px_rgba(79,179,191,0.16)] hover:border-aqua hover:bg-aqua/22 hover:text-white hover:shadow-[0_0_42px_rgba(79,179,191,0.8)]",
+          ].join(" ")}
+        >
+          <JourneyIcon item={item} className="h-8 w-8 xl:h-9 xl:w-9" strokeWidth={1.7} />
+          {/* Steady halo ring — always faintly visible, full on active/hover. */}
+          <span className={[
+            "pointer-events-none absolute inset-[-7px] rounded-full border border-aqua/45",
+            "transition-opacity duration-300",
+            active ? "opacity-100" : "opacity-50 group-hover:opacity-100 group-focus-visible:opacity-100",
+          ].join(" ")} />
+          {/* Label — set on its own dark pill so the caption never gets lost in
+              the glowing arch behind it. */}
+          <span className={[
+            "pointer-events-none absolute z-10 whitespace-nowrap rounded-full",
+            "border px-2.5 py-1 backdrop-blur-md transition-colors duration-300",
+            "text-[0.6rem] font-semibold uppercase tracking-[0.18em] leading-none",
+            labelPos,
+            active
+              ? "border-aqua/55 bg-[#06141b]/92 text-aqua shadow-[0_0_18px_rgba(79,179,191,0.4)]"
+              : "border-white/15 bg-[#03090d]/90 text-white/90",
+          ].join(" ")}>
+            {item.label}
+          </span>
+        </Link>
+      </motion.div>
     </motion.div>
   );
 }
@@ -550,7 +681,7 @@ function SectionStrip({ items, activeId, ui }: {
               "transition-all duration-200",
               item.id === activeId
                 ? "border-aqua bg-aqua/16 text-aqua shadow-[0_0_16px_rgba(79,179,191,0.32)]"
-                : "border-white/18 bg-white/[0.05] text-white/68 hover:border-aqua/45 hover:text-white",
+                : "border-white/25 bg-[#06141b]/70 text-white/85 hover:border-aqua/55 hover:text-white",
             ].join(" ")}
           >
             <JourneyIcon item={item} className="h-3.5 w-3.5 shrink-0" strokeWidth={1.6} />
