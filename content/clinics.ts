@@ -164,7 +164,7 @@ const baseClinics: Array<Omit<Clinic, "bookingSlug">> = [
     phone: "0465 674621",
     tel: "+390465674621",
     whatsapp: "+393276862223",
-    email: "info@dentalchiese.it",
+    email: "dentalchiese@gmail.com",
     website: "https://www.dentalchiese.it",
   },
   {
