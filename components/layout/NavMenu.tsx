@@ -7,6 +7,7 @@ import type { Locale } from "@/lib/i18n";
 import { Icon } from "@/components/ui/icons";
 import { Logo } from "@/components/ui/Logo";
 import { LanguageSelector } from "./LanguageSelector";
+import { InstagramHeaderLink, InstagramInlineLink } from "./InstagramLink";
 
 export type NavItem = { label: string; href: string; icon: ReactNode };
 export type NavGroup = {
@@ -114,6 +115,7 @@ export function NavMenu({
       </nav>
 
       <div className="flex shrink-0 items-center gap-3">
+        <InstagramHeaderLink />
         <div className="hidden sm:block">
           <LanguageSelector current={locale} ariaLabel={langAria} />
         </div>
@@ -179,8 +181,9 @@ export function NavMenu({
                 </ul>
               ))}
 
-            <div className="mt-6 border-t border-titanium/60 pt-5">
+            <div className="mt-6 flex flex-col gap-4 border-t border-titanium/60 pt-5">
               <LanguageSelector current={locale} ariaLabel={langAria} />
+              <InstagramInlineLink />
             </div>
           </div>
         </div>

@@ -7,7 +7,6 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CookieBanner } from "@/components/layout/CookieBanner";
 import { JsonLd } from "@/components/ui/JsonLd";
-import { InstagramFloatingLink } from "@/components/layout/InstagramLink";
 
 /** Pre-render one document per locale. */
 export function generateStaticParams() {
@@ -45,7 +44,6 @@ export default async function LocaleLayout({
           {children}
         </main>
         <Footer locale={locale} />
-        <InstagramFloatingLink />
 
         <CookieBanner
           message={dict.cookie.message}

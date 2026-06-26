@@ -40,17 +40,21 @@ export function InstagramInlineLink({ tone = "light" }: { tone?: "light" | "dark
   );
 }
 
-export function InstagramFloatingLink() {
+/**
+ * Compact Instagram link for the header, sitting next to the language selector.
+ * Replaces the old fixed/floating button so the hero top-right stays clear.
+ */
+export function InstagramHeaderLink() {
   return (
     <a
       href={INSTAGRAM_URL}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`Follow me on Instagram ${INSTAGRAM_HANDLE}`}
-      className="fixed right-3 top-[4.55rem] z-40 inline-flex items-center gap-2 rounded-full border border-aqua/70 bg-aqua/95 px-3.5 py-2 text-xs font-bold text-night shadow-[0_0_28px_-10px_rgba(0,221,249,0.9),0_14px_34px_-22px_rgba(2,7,10,0.9)] backdrop-blur-md transition-all hover:-translate-y-0.5 hover:bg-canvas hover:text-teal-deep sm:right-5 sm:px-4 sm:py-2.5 sm:text-sm"
+      className="hidden items-center gap-1.5 rounded-full border border-aqua bg-aqua/90 px-3 py-1.5 text-xs font-bold text-night shadow-[0_2px_14px_-4px_rgba(79,179,191,0.7)] transition-all hover:-translate-y-px hover:bg-aqua sm:inline-flex"
     >
-      <InstagramIcon className="h-4 w-4 sm:h-5 sm:w-5" />
-      <span className="hidden lg:inline">Follow me on IG</span>
+      <InstagramIcon className="h-4 w-4" />
+      <span className="hidden xl:inline">Follow me on IG</span>
       <span>{INSTAGRAM_HANDLE}</span>
     </a>
   );

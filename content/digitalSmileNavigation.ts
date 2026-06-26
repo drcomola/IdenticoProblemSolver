@@ -27,16 +27,19 @@ export type DigitalSmileUi = {
   closingEyebrow: string;
 };
 
-// Evenly distributed on the elliptical orbit (cx 50, cy 54, rx 39, ry 34) drawn
-// in the scene, spanning from the upper-left, around the bottom, to the
-// upper-right so the ring stays open at the top where the aligner sits.
+// Distribuiti su un "halo aperto in basso" (cx 50, cy 52, rx 41, ry 40): i
+// bottoni riempiono la parte ALTA e i lati del pannello, lasciando il
+// centro-basso al sorriso (arcata + barra mascherine). Arco di ~280° che salta
+// l'arco inferiore centrale, partendo dal basso-sinistra fino al basso-destra.
 function markerPositions(count: number): SmileMarkerPosition[] {
+  const span = 280;
+  const start = 130;
   return Array.from({ length: count }, (_, index) => {
-    const degrees = -150 - index * (180 / Math.max(count - 1, 1));
+    const degrees = start + (index * span) / Math.max(count - 1, 1);
     const radians = (degrees * Math.PI) / 180;
     return {
-      x: 50 + 39 * Math.cos(radians),
-      y: 54 + 34 * Math.sin(radians),
+      x: 50 + 41 * Math.cos(radians),
+      y: 52 + 40 * Math.sin(radians),
     };
   });
 }
